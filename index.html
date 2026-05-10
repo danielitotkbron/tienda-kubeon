@@ -3,240 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Oficial | Mi Servidor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Tienda Oficial | Mi Servidor | NauticMC Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* CONFIGURACIÓN GENERAL */
+        /* CONFIGURACIÓN GENERAL - CALCADA DE NAUTICMC */
         :root {
-            --bg-dark: #121418;
-            --bg-card: #1c1f26;
-            --sidebar-width: 280px;
-            --color-verde: #8ed321;
-            --color-magenta: #e000ff;
-            --color-amarillo: #ffcc00;
-            --color-azul: #00b4ff;
-            --color-rojo: #ff4747;
+            --bg-page-base: #101216; /* Fondo oscuro base */
+            --bg-page-texture: radial-gradient(circle at 50% 50%, rgba(20, 24, 30, 0.9) 0%, #101216 100%);
+            --bg-panel-dark: rgba(22, 26, 33, 0.85); /* Fondo paneles */
+            --border-panel: rgba(255, 255, 255, 0.04); /* Borde paneles suave */
+            
+            /* Colores de Marca y Categorías */
+            --color-nautic-cyan: #00e5ff; /* El cian neón de NauticMC */
+            
+            --color-cat-verde: #8ed321;
+            --color-cat-magenta: #e000ff;
+            --color-cat-amarillo: #ffcc00;
+            --color-cat-gris: #4a4a4a;
+            --color-cat-rojo: #ff4747;
+            
+            --text-main: #ffffff;
+            --text-muted: #8491a5;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-dark);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page-base);
+            background-image: var(--bg-page-texture);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* HEADER / LOGO */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: radial-gradient(circle, rgba(0,180,255,0.1) 0%, rgba(18,20,24,1) 70%);
-        }
-
-        .logo {
-            max-width: 250px;
-            filter: drop-shadow(0 0 15px rgba(0, 180, 255, 0.5));
-        }
-
-        .server-info {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 1.1em;
-            color: var(--color-azul);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* CONTENEDOR PRINCIPAL */
-        .main-container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* --- BARRA DE NAVEGACIÓN SUPERIOR --- */
+        .top-nav {
             width: 100%;
-            gap: 20px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* SIDEBAR (MENÚ) */
-        .sidebar {
-            flex: 1 1 var(--sidebar-width);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .cat-btn {
-            padding: 15px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
+            height: 60px;
+            background-color: var(--bg-panel-dark);
+            border-bottom: var(--border-panel);
             display: flex;
             align-items: center;
-            transition: transform 0.2s, brightness 0.2s;
-            cursor: pointer;
-            border: none;
-            width: 100%;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-left .back-btn {
+            background-color: #242a35;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
             font-size: 14px;
-            text-align: left;
-        }
-
-        .cat-btn:hover {
-            transform: translateX(5px);
-            filter: brightness(1.2);
-        }
-
-        /* COLORES DE CATEGORÍAS */
-        .btn-ofertas { background-color: var(--color-verde); }
-        .btn-permanente { background-color: var(--color-azul); }
-        .btn-temporal { background-color: var(--color-magenta); }
-        .btn-survival { background-color: #4a4a4a; }
-        .btn-regalos { background-color: var(--color-rojo); }
-
-        /* DROPDOWN (SUB-CATEGORÍAS) */
-        .submenu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            padding-left: 20px;
-            margin-top: 5px;
-        }
-
-        .sub-btn {
-            background-color: #2a2d35;
-            padding: 10px 15px;
-            border-radius: 5px;
-            color: #ccc;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: 0.2s;
         }
 
-        .sub-btn:hover {
-            background-color: #3a3e47;
-            color: white;
+        .nav-left .back-btn:hover {
+            background-color: #2f3745;
         }
 
-        /* CONTENIDO DE PRODUCTOS */
-        .content {
-            flex: 3 1 600px;
-        }
-
-        .grid-productos {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        .nav-right {
+            display: flex;
+            align-items: center;
             gap: 20px;
         }
 
-        .card {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
+        .currency-selector, .platform-selector, .cart-status {
+            background-color: rgba(22, 26, 33, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .card:hover {
-            border-color: var(--color-azul);
+        .currency-selector:hover, .platform-selector:hover, .cart-status:hover {
+            border-color: var(--color-nautic-cyan);
+        }
+
+        .platform-selector strong { color: var(--color-nautic-cyan); }
+        .platform-selector span { color: var(--text-muted); font-size: 12px;}
+
+        .cart-status .cart-icon { width: 22px; }
+        .cart-status span { color: var(--text-muted); font-size: 12px; }
+
+        /* --- SECCIÓN CENTRAL HERO (LOGO Y WIDGETS) --- */
+        .hero-section {
+            width: 100%;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-top: 60px; /* Offset de la nav-bar */
+        }
+
+        .hero-logo-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo-container img {
+            max-width: 280px;
+            filter: drop-shadow(0 0 25px rgba(0, 229, 255, 0.6)); /* Efecto de brillo cian neón */
+        }
+
+        /* Widgets Flotantes a la Derecha */
+        .hero-widgets {
+            position: absolute;
+            right: 120px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .server-status-widget {
+            background-color: var(--bg-panel-dark);
+            border: 1px solid var(--border-panel);
+            border-radius: 8px;
+            padding: 16px;
+            width: 250px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-play-icon { width: 32px; }
+        .server-status-details { display: flex; flex-direction: column; }
+        .server-status-ip { font-weight: 800; font-size: 16px; color: var(--text-main); }
+        .server-status-players { font-weight: 600; font-size: 13px; color: var(--color-nautic-cyan); }
+
+        .discord-widget {
+            background-color: #5865F2; /* Color oficial de Discord */
+            border-radius: 8px;
+            padding: 14px;
+            width: 54px; height: 54px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .discord-widget:hover { filter: brightness(1.1); transform: scale(1.05); }
+        .discord-icon { width: 26px; }
+
+        /* --- CONTENEDOR PRINCIPAL CUADRÍCULA --- */
+        .main-store-grid {
+            max-width: 1400px;
+            margin: 0 auto 100px; /* Margen inferior para el footer */
+            width: 100%;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+
+        /* --- PANEL DE NAVEGACIÓN IZQUIERDO ("EMPIEZA A COMPRAR!") --- */
+        .store-nav-panel {
+            background-color: var(--bg-panel-dark);
+            border: 1px solid var(--border-panel);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-top: 3px solid var(--color-nautic-cyan); /* Borde superior neón */
+        }
+
+        .store-nav-header {
+            padding: 24px 20px 16px;
+            text-align: center;
+        }
+        .store-nav-title {
+            text-transform: uppercase;
+            color: var(--color-nautic-cyan);
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        .category-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo base de los botones de categoría */
+        .category-btn {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 60px;
+            padding: 0 25px;
+            margin-bottom: 5px; /* Pequeña separación */
+            font-weight: 700;
+            font-size: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background-color: transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .category-icon {
+            width: 24px;
+            margin-right: 15px;
+        }
+
+        /* Flecha para subcategorías */
+        .arrow-icon {
+            margin-left: auto;
+            width: 12px;
+            transition: transform 0.2s;
+        }
+        .category-btn.open .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Colores de Categorías Específicos */
+        .btn-verde { background-color: var(--color-cat-verde); }
+        .btn-gris { background-color: var(--color-cat-gris); } /* Survival Custom */
+        .btn-rojo { background-color: var(--color-cat-rojo); }
+
+        .category-btn:hover {
+            filter: brightness(1.1);
+            transform: translateX(5px);
+        }
+
+        /* --- SUB-CATEGORÍAS (OCULTAS POR DEFECTO) --- */
+        .sub-category-list {
+            display: none; /* Oculto */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+            background-color: rgba(22, 26, 33, 0.9);
+        }
+
+        .sub-category-list.open {
+            display: flex;
+        }
+
+        .sub-category-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .sub-category-item:last-child { border-bottom: none; }
+
+        .sub-category-link {
+            display: flex;
+            align-items: center;
+            height: 50px;
+            padding: 0 45px; /* Más indentación */
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .sub-category-link:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+            color: #ffffff;
+            padding-left: 50px; /* Efecto deslizante */
+        }
+
+        /* --- PANEL DE CONTENIDO DERECHO --- */
+        .store-content-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Cuadrícula de Packs Principales Superior */
+        .top-packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        /* Tarjeta de Pack Destacado (Oscura y pequeña) */
+        .top-pack-card {
+            background-color: #171a21;
+            border: 1px solid var(--border-panel);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .top-pack-card:hover {
+            border-color: var(--color-nautic-cyan);
             transform: translateY(-5px);
         }
 
-        .card img {
-            width: 120px;
-            margin-bottom: 15px;
+        .top-pack-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background-color: var(--color-nautic-cyan);
+            color: #0d1014;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
-        .card h3 { margin: 10px 0; font-size: 1.1em; }
-        .price { color: var(--color-verde); font-weight: bold; font-size: 1.3em; margin: 10px 0; }
+        .top-pack-icon { width: 70px; margin-right: 20px; }
+        .top-pack-details { display: flex; flex-direction: column; flex: 1; }
+        .top-pack-name { font-weight: 800; font-size: 18px; color: var(--color-nautic-cyan); margin: 0; }
+        .top-pack-prices { margin-top: 5px; font-weight: 600; font-size: 14px; }
+        .top-pack-price-old { color: var(--text-muted); text-decoration: line-through; margin-right: 8px;}
+        .top-pack-price-new { color: var(--color-cat-verde); }
 
-        .buy-btn {
-            display: block;
-            background-color: var(--color-azul);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
+        /* Panel Grande de Bienvenida */
+        .welcome-panel {
+            background-color: var(--bg-panel-dark);
+            border: 1px solid var(--border-panel);
+            border-radius: 10px;
+            padding: 40px;
         }
 
-        /* RESPONSIVE PARA MÓVIL */
-        @media (max-width: 768px) {
-            .main-container { flex-direction: column; }
-            .sidebar { order: 1; }
-            .content { order: 2; }
+        .welcome-title { font-weight: 800; font-size: 24px; color: var(--text-main); margin: 0 0 20px 0; }
+        .welcome-title span { color: var(--color-nautic-cyan); } /* Resalta Tu Servidor */
+        .welcome-text { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
+        
+        /* Tarjeta de Tienda Oficial Azul */
+        .official-store-banner {
+            background-color: #0d638f;
+            background-image: linear-gradient(to right, #0d638f, #0a4f73);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 25px;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .banner-play-icon { width: 28px; filter: brightness(0) invert(1); }
+
+        /* --- RESPONSIVE PARA MÓVIL --- */
+        @media (max-width: 900px) {
+            .main-store-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-widgets {
+                position: relative;
+                right: 0;
+                top: 0;
+                transform: translateY(0);
+                flex-direction: row;
+                margin-top: 30px;
+                justify-content: center;
+            }
+            .top-nav { padding: 0 15px; }
+            .hero-logo-container img { max-width: 220px; }
+            .welcome-panel { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="logo.png" alt="Logo" class="logo">
-        <div class="server-info">PLAY.MISERVIDOR.NET | 120 JUGADORES</div>
-    </header>
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="#" class="back-btn">
+                ← Volver a la página principal
+            </a>
+        </div>
+        <div class="nav-right">
+            <div class="currency-selector">$ USD</div>
+            <div class="platform-selector">
+                <strong>TIENDA DE JAVA</strong>
+                <span>Clickea para ir a BEDROCK</span>
+            </div>
+            <div class="cart-status">
+                <img src="https://img.icons8.com/color/48/minecraft-steve.png" alt="Cart" class="cart-icon">
+                <strong>Carrito de invitado</strong>
+                <span>Clickea para registrarte</span>
+            </div>
+        </div>
+    </nav>
 
-    <div class="main-container">
+    <section class="hero-section">
+        <div class="hero-logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
         
-        <aside class="sidebar">
-            <h2 style="font-size: 1.2em; margin-bottom: 15px; color: #888;">CATEGORÍAS</h2>
-            
-            <a href="#" class="cat-btn btn-ofertas">🔥 OFERTAS ESPECIALES</a>
-            <a href="#" class="cat-btn btn-permanente">💎 RANGOS PERMANENTES</a>
-            <a href="#" class="cat-btn btn-temporal">⏳ RANGOS TEMPORALES</a>
-            
-            <div class="dropdown-container">
-                <button class="cat-btn btn-survival" onclick="toggleMenu()">🌍 SURVIVAL CUSTOM ▾</button>
-                <div class="submenu" id="survivalMenu">
-                    <a href="#" class="sub-btn">🔑 Llaves</a>
-                    <a href="#" class="sub-btn">⚔️ Kits Exclusivos</a>
-                    <a href="#" class="sub-btn">⌨️ Comandos Exclusivos</a>
-                    <a href="#" class="sub-btn">💰 Dinero</a>
-                    <a href="#" class="sub-btn">🛡️ Protecciones</a>
+        <div class="hero-widgets">
+            <div class="server-status-widget">
+                <img src="https://via.placeholder.com/32/00e5ff?text=▶" alt="Play" class="status-play-icon">
+                <div class="server-status-details">
+                    <span class="server-status-ip">MISERVIDOR.NET</span>
+                    <span class="server-status-players">120 jugadores conectados</span>
                 </div>
             </div>
+            <div class="discord-widget">
+                <img src="https://via.placeholder.com/26/ffffff?text=D" alt="Discord" class="discord-icon">
+            </div>
+        </div>
+    </section>
 
-            <a href="#" class="cat-btn btn-regalos">🎁 REGALOS</a>
+    <main class="main-store-grid">
+        
+        <aside class="store-nav-panel">
+            <div class="store-nav-header">
+                <h3 class="store-nav-title">EMPIEZA A COMPRAR!</h3>
+            </div>
+            
+            <ul class="category-list">
+                <li>
+                    <a href="#" class="category-btn btn-verde">
+                        <img src="https://via.placeholder.com/24/ffffff?text=🔥" alt="Icon" class="category-icon">
+                        OFERTAS ESPECIALES
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="category-btn btn-gris">
+                        <img src="https://via.placeholder.com/24/ffffff?text=💎" alt="Icon" class="category-icon">
+                        RANGOS PERMANENTES
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="category-btn btn-rojo">
+                        <img src="https://via.placeholder.com/24/ffffff?text=⏳" alt="Icon" class="category-icon">
+                        RANGOS TEMPORALES
+                    </a>
+                </li>
+                
+                <li>
+                    <button class="category-btn btn-gris" id="survivalCustomBtn" onclick="toggleSurvivalSubmenu()">
+                        <img src="https://via.placeholder.com/24/ffffff?text=🌎" alt="Icon" class="category-icon">
+                        SURVIVAL CUSTOM
+                        <img src="https://via.placeholder.com/12/ffffff?text=▼" alt="▼" class="arrow-icon">
+                    </button>
+                    <ul class="sub-category-list" id="survivalSubmenu">
+                        <li class="sub-category-item"><a href="#" class="sub-category-link">Llaves</a></li>
+                        <li class="sub-category-item"><a href="#" class="sub-category-link">Kits Exclusivos</a></li>
+                        <li class="sub-category-item"><a href="#" class="sub-category-link">Comandos Exclusivos</a></li>
+                        <li class="sub-category-item"><a href="#" class="sub-category-link">Dinero</a></li>
+                        <li class="sub-category-item"><a href="#" class="sub-category-link">Protecciones</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#" class="category-btn btn-rojo">
+                        <img src="https://via.placeholder.com/24/ffffff?text=🎁" alt="Icon" class="category-icon">
+                        REGALOS
+                    </a>
+                </li>
+            </ul>
         </aside>
 
-        <main class="content">
-            <h2 style="margin-bottom: 20px;">Bienvenido a la Tienda</h2>
+        <section class="store-content-panel">
             
-            <div class="grid-productos">
-                <div class="card">
-                    <img src="https://via.placeholder.com/120?text=Pack+Inicio" alt="Pack">
-                    <h3>Pack Inicio</h3>
-                    <p style="font-size: 0.8em; color: #888;">Ideal para comenzar tu aventura.</p>
-                    <div class="price">$5.00 USD</div>
-                    <a href="AQUÍ_TU_LINK_DE_TEBEX" class="buy-btn">COMPRAR</a>
+            <div class="top-packs-grid">
+                
+                <a href="#" class="top-pack-card">
+                    <span class="top-pack-badge">NUEVO</span>
+                    <img src="https://via.placeholder.com/70/ffcc00?text=Cofre" alt="Pack" class="top-pack-icon">
+                    <div class="top-pack-details">
+                        <h4 class="top-pack-name">Pack Inicio</h4>
+                        <div class="top-packs-prices">
+                            <span class="top-pack-price-old">$10.00 USD</span>
+                            <span class="top-pack-price-new">$5.00 USD</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <img src="https://via.placeholder.com/120?text=Rango+VIP" alt="VIP">
-                    <h3>Rango VIP</h3>
-                    <p style="font-size: 0.8em; color: #888;">Acceso a comandos básicos y kit.</p>
-                    <div class="price">$10.00 USD</div>
-                    <a href="AQUÍ_TU_LINK_DE_TEBEX" class="buy-btn">COMPRAR</a>
+                <a href="#" class="top-pack-card">
+                    <span class="top-pack-badge">RECOMENDADO</span>
+                    <img src="https://via.placeholder.com/70/00e5ff?text=Coins" alt="Coins" class="top-pack-icon">
+                    <div class="top-pack-details">
+                        <h4 class="top-pack-name">10,000 Coins de Servidor</h4>
+                        <div class="top-packs-prices">
+                            <span class="top-pack-price-new">$10.00 USD</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </main>
 
-    </div>
+            <div class="welcome-panel">
+                <h2 class="welcome-title">BIENVENIDO A LA TIENDA OFICIAL DE <span>TU SERVIDOR</span></h2>
+                <p class="welcome-text">
+                    ¡Bienvenido a nuestra tienda oficial! Aquí podrás adquirir artículos para mejorar tu experiencia dentro del servidor. Ofrecemos rangos, cosméticos y variedades globales y por modalidades. Puedes elegir la categoría del producto que deseas comprar en el menú de la parte izquierda.
+                    <br><br>
+                    Correo de soporte y contacto oficial: <strong>soporte@tuservidor.net</strong>
+                </p>
+                
+                <div class="official-store-banner">
+                    ¡Estás en la tienda oficial de JAVA!
+                    <img src="https://via.placeholder.com/28/ffffff?text=▶" alt="Play" class="banner-play-icon">
+                </div>
+            </div>
+
+        </section>
+
+    </main>
 
     <script>
-        // Función para abrir/cerrar el menú de Survival Custom
-        function toggleMenu() {
-            var menu = document.getElementById("survivalMenu");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "flex";
-            }
+        function toggleSurvivalSubmenu() {
+            var submenu = document.getElementById("survivalSubmenu");
+            var btn = document.getElementById("survivalCustomBtn");
+            
+            // Alterna la clase 'open' en el submenú y el botón
+            submenu.classList.toggle("open");
+            btn.classList.toggle("open");
         }
     </script>
 
