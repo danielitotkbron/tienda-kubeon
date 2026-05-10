@@ -1,1 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Oficial | Mi Servidor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CONFIGURACIÓN GENERAL */
+        :root {
+            --bg-dark: #121418;
+            --bg-card: #1c1f26;
+            --sidebar-width: 280px;
+            --color-verde: #8ed321;
+            --color-magenta: #e000ff;
+            --color-amarillo: #ffcc00;
+            --color-azul: #00b4ff;
+            --color-rojo: #ff4747;
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER / LOGO */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle, rgba(0,180,255,0.1) 0%, rgba(18,20,24,1) 70%);
+        }
+
+        .logo {
+            max-width: 250px;
+            filter: drop-shadow(0 0 15px rgba(0, 180, 255, 0.5));
+        }
+
+        .server-info {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--color-azul);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* SIDEBAR (MENÚ) */
+        .sidebar {
+            flex: 1 1 var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cat-btn {
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s, brightness 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .cat-btn:hover {
+            transform: translateX(5px);
+            filter: brightness(1.2);
+        }
+
+        /* COLORES DE CATEGORÍAS */
+        .btn-ofertas { background-color: var(--color-verde); }
+        .btn-permanente { background-color: var(--color-azul); }
+        .btn-temporal { background-color: var(--color-magenta); }
+        .btn-survival { background-color: #4a4a4a; }
+        .btn-regalos { background-color: var(--color-rojo); }
+
+        /* DROPDOWN (SUB-CATEGORÍAS) */
+        .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .sub-btn {
+            background-color: #2a2d35;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .sub-btn:hover {
+            background-color: #3a3e47;
+            color: white;
+        }
+
+        /* CONTENIDO DE PRODUCTOS */
+        .content {
+            flex: 3 1 600px;
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--color-azul);
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 { margin: 10px 0; font-size: 1.1em; }
+        .price { color: var(--color-verde); font-weight: bold; font-size: 1.3em; margin: 10px 0; }
+
+        .buy-btn {
+            display: block;
+            background-color: var(--color-azul);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* RESPONSIVE PARA MÓVIL */
+        @media (max-width: 768px) {
+            .main-container { flex-direction: column; }
+            .sidebar { order: 1; }
+            .content { order: 2; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+        <div class="server-info">PLAY.MISERVIDOR.NET | 120 JUGADORES</div>
+    </header>
+
+    <div class="main-container">
+        
+        <aside class="sidebar">
+            <h2 style="font-size: 1.2em; margin-bottom: 15px; color: #888;">CATEGORÍAS</h2>
+            
+            <a href="#" class="cat-btn btn-ofertas">🔥 OFERTAS ESPECIALES</a>
+            <a href="#" class="cat-btn btn-permanente">💎 RANGOS PERMANENTES</a>
+            <a href="#" class="cat-btn btn-temporal">⏳ RANGOS TEMPORALES</a>
+            
+            <div class="dropdown-container">
+                <button class="cat-btn btn-survival" onclick="toggleMenu()">🌍 SURVIVAL CUSTOM ▾</button>
+                <div class="submenu" id="survivalMenu">
+                    <a href="#" class="sub-btn">🔑 Llaves</a>
+                    <a href="#" class="sub-btn">⚔️ Kits Exclusivos</a>
+                    <a href="#" class="sub-btn">⌨️ Comandos Exclusivos</a>
+                    <a href="#" class="sub-btn">💰 Dinero</a>
+                    <a href="#" class="sub-btn">🛡️ Protecciones</a>
+                </div>
+            </div>
+
+            <a href="#" class="cat-btn btn-regalos">🎁 REGALOS</a>
+        </aside>
+
+        <main class="content">
+            <h2 style="margin-bottom: 20px;">Bienvenido a la Tienda</h2>
+            
+            <div class="grid-productos">
+                <div class="card">
+                    <img src="https://via.placeholder.com/120?text=Pack+Inicio" alt="Pack">
+                    <h3>Pack Inicio</h3>
+                    <p style="font-size: 0.8em; color: #888;">Ideal para comenzar tu aventura.</p>
+                    <div class="price">$5.00 USD</div>
+                    <a href="AQUÍ_TU_LINK_DE_TEBEX" class="buy-btn">COMPRAR</a>
+                </div>
+
+                <div class="card">
+                    <img src="https://via.placeholder.com/120?text=Rango+VIP" alt="VIP">
+                    <h3>Rango VIP</h3>
+                    <p style="font-size: 0.8em; color: #888;">Acceso a comandos básicos y kit.</p>
+                    <div class="price">$10.00 USD</div>
+                    <a href="AQUÍ_TU_LINK_DE_TEBEX" class="buy-btn">COMPRAR</a>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // Función para abrir/cerrar el menú de Survival Custom
+        function toggleMenu() {
+            var menu = document.getElementById("survivalMenu");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+            }
+        }
+    </script>
+
+</body>
+</html>
