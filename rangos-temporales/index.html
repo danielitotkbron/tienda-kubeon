@@ -7,24 +7,71 @@
     <link rel="icon" type="image/png" href="../logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Mismos estilos base de tu script */
         :root {
-            --bg-body: #0b0d10; --bg-panel: #0e1014; --purple-main: #8a2be2; --purple-dark: #4b0082;
-            --gold: #ffcc00; --gold-gradient: linear-gradient(to right, #f9d423, #ffdb6e); --green-buy: #2ecc71;
+            --bg-body: #0b0d10;
+            --bg-panel: #0e1014;
+            --bg-item: #12141a;
+            --purple-main: #8a2be2; 
+            --purple-dark: #4b0082;
+            --pink-dark: #880e4f;
+            --purple-glow: rgba(138, 43, 226, 0.7);
+            --gold: #ffcc00;
+            --gold-gradient: linear-gradient(to right, #f9d423, #ffdb6e);
+            --green-buy: #2ecc71;
+            
+            /* Colores Categorías */
+            --c-inicio-b: #5d5d5d; --c-inicio-bg: #1a1c23;
+            --c-oferta-b: #8ed321; --c-oferta-bg: #161d12;
+            --c-rango-b: #8a2be2;  --c-rango-bg: #16121d;
+            --c-survival-b: #00b4ff; --c-survival-bg: #12181d;
+            --c-regalos-b: #ff4747; --c-regalos-bg: #1d1212;
         }
-        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-body); background-image: radial-gradient(circle at 50% -20%, #1a222d 0%, var(--bg-body) 80%); color: white; overflow-x: hidden; }
 
-        /* HEADER Y SIDEBAR (Igual a tu script) */
-        .header-top { display: flex; align-items: center; justify-content: space-between; padding: 25px 80px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .square-frame { width: 65px; height: 65px; background: #1c2026; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); }
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at 50% -20%, #1a222d 0%, var(--bg-body) 80%);
+            color: white; overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        .header-top {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 25px 80px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .header-btn {
+            display: flex; align-items: center; gap: 15px; padding: 10px 20px;
+            border-radius: 12px; border: 2px solid transparent; transition: 0.3s;
+            cursor: pointer; text-decoration: none; color: white;
+        }
+        .header-btn:hover { border-color: var(--purple-main); background: rgba(138, 43, 226, 0.1); }
+        .header-info-text { display: flex; flex-direction: column; }
+        .header-info-text span { font-size: 15px; font-weight: 800; }
+        .header-info-text small { color: var(--gold); font-weight: 700; font-size: 11px; margin-top: 4px; display: flex; align-items: center; gap: 5px; }
+
+        .square-frame {
+            width: 65px; height: 65px; background: #1c2026;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1);
+        }
         .square-frame img { width: 45px; border-radius: 4px; }
+        #cart-btn-header { display: none; }
+
+        /* --- LAYOUT --- */
         .store-grid { max-width: 1200px; margin: 40px auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
         .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
-        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; }
+        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
         .cat-item img { width: 32px; margin-right: 18px; }
+        
+        .c-inicio { border-color: var(--c-inicio-b); background-color: var(--c-inicio-bg); }
+        .c-ofertas { border-color: var(--c-oferta-b); background-color: var(--c-oferta-bg); }
+        .c-rangos { border-color: var(--c-rango-b); background-color: var(--c-rango-bg); }
+        .c-survival { border-color: var(--c-survival-b); background-color: var(--c-survival-bg); }
+        .c-regalos { border-color: var(--c-regalos-b); background-color: var(--c-regalos-bg); }
+
         .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 15px; }
         .submenu.active { display: flex; }
-        .sub-link { padding: 15px 20px 15px 60px; color: white; text-decoration: none; font-weight: 900; font-size: 14px; text-transform: uppercase; display: flex; align-items: center; background: rgba(255,255,255,0.02); }
+        .sub-link { padding: 15px 20px 15px 60px; color: white; text-decoration: none; font-weight: 900; font-size: 14px; text-transform: uppercase; display: flex; align-items: center; transition: 0.2s; background: rgba(255,255,255,0.02); }
         .sub-link::before { content: "▶"; font-size: 10px; margin-right: 12px; }
 
         .donors-section { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
@@ -33,44 +80,186 @@
         .donor-title { font-size: 10px; font-weight: 900; color: var(--gold); text-transform: uppercase; }
         .donor-name { font-size: 14px; font-weight: 800; color: white; display: block; margin-top: 2px; }
 
-        /* --- DISEÑO FILAS (ESTILO image_424301.png) --- */
+        /* --- CESTA LATERAL --- */
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 2999; }
+        .cart-drawer { position: fixed; top: 0; right: -420px; width: 420px; height: 100%; background: #0e1014; z-index: 3000; transition: 0.4s; box-shadow: -10px 0 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        .cart-drawer.active { right: 0; }
+        .cart-header { background: linear-gradient(135deg, var(--purple-main), var(--purple-dark)); padding: 40px 30px; color: white; position: relative; }
+        .close-cart { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 22px; opacity: 0.7; }
+        .cart-value-bar { background: #1a1d24; padding: 15px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 800; font-size: 13px; color: #a5a9b0; }
+        .cart-body { padding: 40px 30px; text-align: center; flex: 1; overflow-y: auto; }
+
+        /* --- DISEÑO DE RANGOS TEMPORALES (ESTILO image_424301.png) --- */
         .rank-row { background: #111; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); padding: 25px; margin-bottom: 30px; display: flex; flex-direction: column; }
-        .rank-row-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.05); padding-bottom: 10px; text-transform: uppercase; }
+        .rank-row-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.05); padding-bottom: 10px; text-transform: uppercase; color: white; }
         .rank-flex { display: flex; gap: 25px; align-items: center; }
         .rank-avatar-side { text-align: center; min-width: 140px; }
         .rank-avatar-side img { width: 110px; margin-bottom: 15px; }
-        .btn-details { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 800; }
+        .btn-details { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 800; text-transform: uppercase; }
+        
         .subs-container { display: flex; gap: 15px; flex: 1; }
-        .sub-option { background: rgba(138,43,226,0.05); border: 2px solid var(--purple-main); border-radius: 12px; padding: 20px; flex: 1; text-align: center; transition: 0.3s; }
-        .sub-option:hover { transform: scale(1.02); background: rgba(138,43,226,0.1); }
-        .sub-name { font-size: 18px; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; }
+        .sub-option { background: rgba(255,255,255,0.02); border: 2px solid #222; border-radius: 12px; padding: 20px; flex: 1; text-align: center; transition: 0.3s; }
+        .sub-option:hover { transform: scale(1.02); border-color: var(--purple-main); background: rgba(138,43,226,0.05); }
+        
+        .sub-name { font-size: 18px; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; color: white; }
         .sub-price-row { font-size: 22px; font-weight: 900; color: var(--gold); }
         .sub-old-price { font-size: 14px; text-decoration: line-through; opacity: 0.4; margin-left: 8px; color: white; }
-        .sub-buy-btn { background: var(--purple-main); color: white; border: none; padding: 12px 0; width: 100%; border-radius: 6px; font-weight: 900; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-size: 12px; }
+        .sub-buy-btn { background: var(--green-buy); color: black; border: none; padding: 12px 0; width: 100%; border-radius: 6px; font-weight: 900; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-        /* CESTA Y MODAL (Igual a tu script) */
-        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 2999; }
-        .cart-drawer { position: fixed; top: 0; right: -420px; width: 420px; height: 100%; background: #0e1014; z-index: 3000; transition: 0.4s; }
-        .cart-drawer.active { right: 0; }
+        /* --- MODAL --- */
+        #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 4000; }
+        .modal-content { background: #111; padding: 50px 40px; border-radius: 15px; width: 450px; text-align: center; border: 1px solid rgba(255,255,255,0.05); animation: modalFade 0.4s ease-out; }
+        @keyframes modalFade { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .input-row { background: #080808; border: 2px solid #222; border-radius: 8px; display: flex; align-items: center; padding: 5px 15px; width: 85%; margin: 0 auto 25px; transition: 0.3s; }
+        .modal-avatar-preview { width: 35px; height: 35px; border-radius: 4px; margin-right: 15px; }
+        .modal-input { background: transparent; border: none; color: white; font-size: 16px; font-weight: 600; width: 100%; padding: 15px 0; outline: none; font-family: inherit; }
+        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+
+        @media (max-width: 900px) { .header-top { padding: 20px; flex-direction: column; gap: 20px; } .store-grid { grid-template-columns: 1fr; } .rank-flex { flex-direction: column; } .subs-container { flex-direction: column; width: 100%; } }
     </style>
 </head>
 <body>
 
-    <main>
-        <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px; font-size:22px;">Rangos Temporales</h2>
-
-        <div class="rank-row">
-            <div class="rank-row-title">Rango VIP - AERION</div>
-            <div class="rank-flex">
-                <div class="rank-avatar-side"><img src="../aerion.png"><button class="btn-details">ℹ Ver detalles</button></div>
-                <div class="subs-container">
-                    <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">9.99 USD <span class="sub-old-price">29.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                    <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">24.99 USD <span class="sub-old-price">74.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                    <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">39.99 USD <span class="sub-old-price">119.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                </div>
+    <header class="header-top">
+        <div class="header-btn" onclick="openNick()">
+            <div class="square-frame"><img src="https://mc-heads.net/avatar/Steve/45" id="user-avatar" alt="Avatar"></div>
+            <div class="header-info-text">
+                <span id="user-greeting">Comprando como <strong>Invitado</strong></span>
+                <small id="user-action"><svg width="12" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg> Inicia sesión para comprar</small>
             </div>
         </div>
-    </main>
+        <div class="header-center"><a href="../index.html"><img src="../logo.png" alt="Logo" style="max-width: 140px;"></a></div>
+        <div class="header-btn" id="cart-btn-header" onclick="toggleCart()">
+            <div class="header-info-text" style="text-align: right; margin-right: 15px;"><span>VER CESTA</span><small>Tu cesta de compra</small></div>
+            <div class="square-frame" style="border-color: var(--purple-main);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
+        </div>
+    </header>
 
-    </body>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <div class="close-cart" onclick="toggleCart()">✕</div>
+            <h2 style="margin:0; display:flex; align-items:center; gap:12px; font-size:18px;">🛒 CESTA VACÍA</h2>
+            <div style="display:flex; gap:10px; margin-top:20px;">
+                <button style="background:#e74c3c; color:white; border:none; padding:10px; border-radius:6px; flex:1.5; font-weight:800; cursor:pointer; font-size:11px;" onclick="logout()">CERRAR SESIÓN</button>
+                <select style="background:#1c2026; color:white; border:none; padding:10px; border-radius:6px; flex:1; font-weight:800; font-size:11px; cursor:pointer;"><option>USD ($)</option><option>PYG (₲)</option><option>ARS ($)</option></select>
+            </div>
+        </div>
+        <div class="cart-value-bar">VALOR DE CESTA: 0,00 USD</div>
+        <div class="cart-body"><p style="color:#555; font-weight:700; margin-top:40px;">No hay artículos en tu cesta todavía.</p></div>
+    </div>
+
+    <div class="store-grid">
+        <aside>
+            <div class="sidebar-container">
+                <div style="text-align:center; font-weight:900; color:var(--gold); font-size:11px; margin-bottom:25px; text-transform:uppercase;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
+                <a href="../index.html" class="cat-item c-inicio"><img src="../tierra.png"> Inicio</a>
+                <a href="../ofertas-exclusivas/index.html" class="cat-item c-ofertas"><img src="../ofertas.png"> Ofertas Exclusivas</a>
+                
+                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="../rangos.png"> Rangos Exclusivos <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu active" id="rangosMenu">
+                    <a href="../permanentes/index.html" class="sub-link">Permanentes</a>
+                    <a href="#" class="sub-link" style="color:var(--gold)">Temporales</a>
+                </div>
+
+                <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="../survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu" id="survivalMenu">
+                    <a href="../comandos/index.html" class="sub-link">Comandos</a>
+                    <a href="../kits/index.html" class="sub-link">Kits Exclusivos</a>
+                    <a href="../llaves/index.html" class="sub-link">Llaves</a>
+                    <a href="../dinero/index.html" class="sub-link">Dinero</a>
+                    <a href="../spawners/index.html" class="sub-link">Spawners</a>
+                    <a href="../protecciones/index.html" class="sub-link">Protecciones</a>
+                </div>
+
+                <a href="../regalos/index.html" class="cat-item c-regalos"><img src="../regalos.png"> Regalos</a>
+
+                <div class="donors-section">
+                    <div style="text-align:center; font-weight:900; font-size:11px; color:var(--gold); text-transform:uppercase; margin-bottom:10px;">Top Donadores</div>
+                    <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Del Mes</span><span class="donor-name">Ninguno</span></div></div>
+                    <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Semana</span><span class="donor-name">Ninguno</span></div></div>
+                    <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Del Día</span><span class="donor-name">Ninguno</span></div></div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px; font-size:22px; letter-spacing:1px;">Rangos Temporales</h2>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - AERION</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../aerion.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">9.99 USD <span class="sub-old-price">29.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">24.99 USD <span class="sub-old-price">74.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">39.99 USD <span class="sub-old-price">119.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - OMEGA</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../omega.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">6.99 USD <span class="sub-old-price">19.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">18.99 USD <span class="sub-old-price">49.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">32.99 USD <span class="sub-old-price">89.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - MASTER</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../master.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">4.99 USD <span class="sub-old-price">14.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">12.99 USD <span class="sub-old-price">39.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">22.99 USD <span class="sub-old-price">69.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - ULTIMATE</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../ultimate.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">2.99 USD <span class="sub-old-price">9.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">7.99 USD <span class="sub-old-price">24.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">13.99 USD <span class="sub-old-price">49.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - ELITE</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../elite.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">1.49 USD <span class="sub-old-price">4.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">3.99 USD <span class="sub-old-price">12.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">6.99 USD <span class="sub-old-price">24.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="nickModal"><div class="modal-content"><h2 class="modal-title">INICIAR SESIÓN</h2><div class="input-row"><img src="https://mc-heads.net/avatar/Steve/35" id="modal-skin-preview" class="modal-avatar-preview"><input type="text" id="nick-input" class="modal-input" placeholder="Tu Nombre..." oninput="updateModalSkin()"></div><button class="modal-btn" onclick="saveNick()">INICIAR SESIÓN ❯</button></div></div>
+
+    <script>
+        window.onload = function() { const nick = localStorage.getItem('mc_nick'); if (nick) applyLogin(nick); };
+        function updateModalSkin() { const nick = document.getElementById('nick-input').value.trim(); document.getElementById('modal-skin-preview').src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`; }
+        function saveNick() { const nick = document.getElementById('nick-input').value.trim(); if (nick !== "") { localStorage.setItem('mc_nick', nick); applyLogin(nick); document.getElementById('nickModal').style.display = 'none'; } }
+        function applyLogin(nick) { document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`; document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`; document.getElementById('user-action').innerText = "➜ Nick registrado"; document.getElementById('cart-btn-header').style.display = 'flex'; }
+        function logout() { localStorage.removeItem('mc_nick'); location.reload(); }
+        function toggleCart() { const dr = document.getElementById('cartDrawer'); dr.classList.toggle('active'); document.getElementById('cartOverlay').style.display = dr.classList.contains('active') ? 'block' : 'none'; }
+        function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
+        function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
+        window.onclick = function(e) { if (e.target == document.getElementById('nickModal')) document.getElementById('nickModal').style.display = 'none'; }
+    </script>
+</body>
 </html>
