@@ -57,7 +57,7 @@
         .square-frame img { width: 45px; border-radius: 4px; }
         #cart-btn-header { display: none; }
 
-        /* --- TOP SECTION (SLIDER 5 SEG) --- */
+        /* --- TOP SECTION --- */
         .top-section { max-width: 1200px; margin: 30px auto; display: grid; grid-template-columns: 2.2fr 1fr; gap: 15px; padding: 0 20px; }
         .featured-slider { position: relative; border-radius: 10px; overflow: hidden; height: 340px; border: 1px solid rgba(255,255,255,0.1); }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 50px; box-sizing: border-box; background: linear-gradient(90deg, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2)), url('../bosk.jpg'); background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s; }
@@ -71,11 +71,11 @@
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 
-        /* --- TIENDA GRID --- */
+        /* --- SIDEBAR --- */
         .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
         .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
         .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
-        .cat-item img { width: 32px; margin-right: 18px; }
+        .cat-item img { width: 35px; margin-right: 18px; }
         
         .c-inicio { border-color: var(--c-inicio-b); background-color: var(--c-inicio-bg); }
         .c-ofertas { border-color: var(--c-oferta-b); background-color: var(--c-oferta-bg); }
@@ -103,7 +103,7 @@
         .cart-value-bar { background: #1a1d24; padding: 15px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 800; font-size: 13px; color: #a5a9b0; }
         .cart-body { padding: 40px 30px; text-align: center; flex: 1; overflow-y: auto; }
 
-        /* --- DISEÑO DE PRODUCTOS (SOLO ESTO CAMBIA) --- */
+        /* --- DISEÑO PRODUCTOS --- */
         .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .product-card { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; position: relative; }
         .product-card:hover { transform: translateY(-5px); border-color: var(--purple-main); }
@@ -114,7 +114,7 @@
         .product-price { background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 5px; font-weight: 900; color: var(--gold); margin: 0 auto 20px; font-size: 18px; border: 1px solid rgba(255,255,255,0.05); }
         .product-price span { text-decoration: line-through; opacity: 0.4; font-size: 13px; margin-left: 8px; color: white; }
         .buy-btn { background: var(--green-buy); color: black; border: none; padding: 12px; border-radius: 6px; width: 100%; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .buy-btn:hover { filter: brightness(1.1); }
+        .desc-item { background: rgba(255,255,255,0.01); margin-bottom: 6px; padding: 10px; border-radius: 6px; font-size: 12px; color: #999; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.02); }
 
         /* --- MODAL --- */
         #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 4000; }
@@ -138,10 +138,10 @@
                 <small id="user-action">➜ Inicia sesión para comprar</small>
             </div>
         </div>
-        <div class="header-center"><a href="../index.html"><img src="../logo.png" alt="Logo" style="max-width: 140px;"></a></div>
+        <div class="header-center"><a href="../index.html"><img src="../logo.png" alt="Logo" style="max-width: 150px;"></a></div>
         <div class="header-btn" id="cart-btn-header" onclick="toggleCart()">
             <div class="header-info-text" style="text-align: right; margin-right: 15px;"><span>VER CESTA</span><small>Tu cesta de compra</small></div>
-            <div class="square-frame" style="border-color: var(--purple-main);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
+            <div class="square-frame" style="border-color: var(--purple-main);"><svg width="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
         </div>
     </header>
 
@@ -149,7 +149,7 @@
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
             <div class="close-cart" onclick="toggleCart()">✕</div>
-            <h2 style="margin:0;">🛒 CESTA VACÍA</h2>
+            <h2 style="margin:0; display:flex; align-items:center; gap:12px; font-size:18px;">🛒 CESTA VACÍA</h2>
             <div style="display:flex; gap:10px; margin-top:20px;">
                 <button style="background:#e74c3c; color:white; border:none; padding:10px; border-radius:6px; flex:1.5; font-weight:800; cursor:pointer; font-size:11px;" onclick="logout()">CERRAR SESIÓN</button>
                 <select style="background:#1c2026; color:white; border:none; padding:10px; border-radius:6px; flex:1; font-weight:800; font-size:11px; cursor:pointer;"><option>USD ($)</option><option>PYG (₲)</option><option>ARS ($)</option></select>
@@ -169,7 +169,7 @@
                 <p class="offer-price">3.99 USD</p>
                 <div class="offer-buttons"><button class="btn-offer-green" style="background:var(--purple-main); color:white;">Ver más detalles</button><button class="btn-offer-dark">Artículos parecidos</button></div>
             </div>
-            </div>
+        </div>
         <div style="display:flex; flex-direction:column; gap:15px;">
             <div class="widget-box wb-ip" onclick="copyIP(this)"><svg width="30" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><div><p style="font-weight:900; margin:0; font-size:16px;">PLAY.KUBEON.XYZ</p></div></div>
             <a href="#" class="widget-box wb-discord"><svg width="30" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg><div><p style="font-weight:900; margin:0; font-size:16px;">UNETE AL DISCORD</p></div></a>
@@ -181,11 +181,11 @@
             <div class="sidebar-container">
                 <div style="text-align:center; font-weight:900; color:var(--gold); font-size:11px; margin-bottom:25px; text-transform:uppercase;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
                 <a href="../index.html" class="cat-item c-inicio"><img src="../tierra.png"> Inicio</a>
-                <a href="#" class="cat-item c-ofertas"><img src="../ofertas.png"> Ofertas Exclusivas</a>
-                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="../rangos.png"> Rangos <span style="margin-left:auto; font-size:12px;">▼</span></a>
-                <div class="submenu active" id="rangosMenu"><a href="../permanentes/index.html" class="sub-link">Permanentes</a><a href="../temporales/index.html" class="sub-link">Temporales</a></div>
+                <a href="#" class="cat-item c-active"><img src="../ofertas.png"> Ofertas Exclusivas</a>
+                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="../rangos.png"> Rangos Exclusivos <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu" id="rangosMenu"><a href="../permanentes/index.html" class="sub-link">Permanentes</a><a href="../temporales/index.html" class="sub-link">Temporales</a></div>
                 <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="../survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
-                <div class="submenu active" id="survivalMenu">
+                <div class="submenu" id="survivalMenu">
                     <a href="../comandos/index.html" class="sub-link">Comandos</a>
                     <a href="../kits/index.html" class="sub-link">Kits Exclusivos</a>
                     <a href="../llaves/index.html" class="sub-link">Llaves</a>
@@ -206,7 +206,6 @@
 
         <main>
             <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px; font-size:20px;">Ofertas Exclusivas</h2>
-            
             <div class="items-grid">
                 <div class="product-card">
                     <div class="product-img-container"><img src="../paquete_inicial.png"></div>
@@ -218,7 +217,6 @@
                         <div class="desc-item">✓ Kit de Bienvenida</div>
                     </div>
                 </div>
-
                 <div class="product-card">
                     <div class="product-img-container"><img src="../rango_aerion.png"></div>
                     <div class="product-info">
@@ -229,7 +227,6 @@
                         <div class="desc-item">✓ Validez 30 Días</div>
                     </div>
                 </div>
-
                 <div class="product-card">
                     <div class="product-img-container"><img src="../kit_minero.png"></div>
                     <div class="product-info">
@@ -252,7 +249,7 @@
         function applyLogin(nick) { document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`; document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`; document.getElementById('user-action').innerText = "➜ Nick registrado"; document.getElementById('cart-btn-header').style.display = 'flex'; }
         function saveNick() { const nick = document.getElementById('nick-input').value.trim(); if (nick !== "") { localStorage.setItem('mc_nick', nick); applyLogin(nick); document.getElementById('nickModal').style.display = 'none'; } }
         function updateModalSkin() { const nick = document.getElementById('nick-input').value.trim(); document.getElementById('modal-skin-preview').src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`; }
-        function toggleCart() { const dr = document.getElementById('cartDrawer'); dr.classList.toggle('active'); document.getElementById('cartOverlay').style.display = dr.classList.contains('active') ? 'block' : 'none'; }
+        function toggleCart() { const dr = document.getElementById('cartDrawer'); const ov = document.getElementById('cartOverlay'); dr.classList.toggle('active'); ov.style.display = dr.classList.contains('active') ? 'block' : 'none'; }
         function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
         window.onclick = function(e) { if (e.target == document.getElementById('nickModal')) document.getElementById('nickModal').style.display = 'none'; }
