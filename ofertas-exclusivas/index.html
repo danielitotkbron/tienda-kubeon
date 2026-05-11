@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubeon Network | Ofertas Exclusivas</title>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* MANTENEMOS TUS VARIABLES Y ESTILOS BASE */
+        :root {
+            --bg-body: #0b0d10; --bg-panel: #0e1014; --bg-item: #12141a;
+            --purple-main: #8a2be2; --purple-glow: rgba(138, 43, 226, 0.7);
+            --gold: #ffcc00; --green-buy: #2ecc71;
+            --c-oferta-b: #8ed321; --c-oferta-bg: #161d12;
+        }
 
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-body); color: white; overflow-x: hidden; }
+
+        /* --- HEADER (IGUAL AL PRINCIPAL) --- */
+        .header-top { display: flex; align-items: center; justify-content: space-between; padding: 25px 80px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .header-btn { display: flex; align-items: center; gap: 15px; padding: 10px 20px; border-radius: 12px; border: 2px solid transparent; transition: 0.3s; cursor: pointer; text-decoration: none; color: white; }
+        .header-btn:hover { border-color: var(--purple-main); background: rgba(138, 43, 226, 0.1); }
+        .square-frame { width: 65px; height: 65px; background: #1c2026; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1); }
+        .square-frame img { width: 45px; border-radius: 4px; }
+
+        /* --- LAYOUT --- */
+        .store-grid { max-width: 1300px; margin: 40px auto; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
+        
+        /* SIDEBAR (REDUCIDO PARA EL EJEMPLO) */
+        .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
+        .cat-item { display: flex; align-items: center; padding: 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 15px; margin-bottom: 12px; border: 1.5px solid transparent; transition: 0.2s; }
+        .cat-item img { width: 32px; margin-right: 15px; }
+        .c-active { border-color: var(--c-oferta-b); background-color: var(--c-oferta-bg); }
+
+        /* --- SECCIÓN DE ARTÍCULOS (ESTILO image_97bc3c.jpg) --- */
+        .viewing-bar { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.05); }
+        .viewing-bar small { color: #888; text-transform: uppercase; font-weight: 700; font-size: 11px; }
+        .viewing-bar h2 { margin: 5px 0 0; font-size: 18px; color: var(--gold); text-transform: uppercase; font-weight: 900; }
+
+        .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        
+        .product-card { 
+            background: #111; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s; position: relative; display: flex; flex-direction: column;
+        }
+        .product-card:hover { transform: translateY(-5px); border-color: var(--green-buy); box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); }
+        
+        .product-img-container { padding: 30px; text-align: center; background: radial-gradient(circle, rgba(46,204,113,0.1) 0%, transparent 70%); }
+        .product-img-container img { width: 150px; height: 150px; object-fit: contain; }
+
+        .product-info { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .product-title { font-size: 18px; font-weight: 900; text-align: center; text-transform: uppercase; margin-bottom: 15px; }
+        
+        .product-price { 
+            background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 5px; font-weight: 900; 
+            color: var(--gold); margin: 0 auto 20px; width: fit-content; border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .buy-row { display: flex; gap: 8px; margin-bottom: 20px; }
+        .info-btn { background: #1a1a1a; border: none; color: #555; width: 45px; border-radius: 6px; cursor: pointer; font-weight: 900; }
+        .buy-btn { background: var(--green-buy); color: black; border: none; padding: 12px; border-radius: 6px; flex: 1; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase; font-size: 13px; }
+
+        .desc-list { list-style: none; padding: 0; margin: 0; }
+        .desc-item { 
+            background: rgba(255,255,255,0.02); margin-bottom: 8px; padding: 10px 15px; 
+            border-radius: 6px; font-size: 12px; font-weight: 700; color: #aaa;
+            display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.03);
+        }
+        .desc-item svg { color: var(--green-buy); min-width: 14px; }
+
+        .new-badge { position: absolute; top: 15px; right: 15px; background: var(--gold); color: black; padding: 4px 10px; border-radius: 4px; font-weight: 900; font-size: 10px; text-transform: uppercase; }
+
+        /* --- MODAL --- */
+        #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 4000; }
+        .modal-content { background: #111; padding: 50px 40px; border-radius: 15px; width: 450px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
+        .input-row { background: #080808; border: 2px solid #222; border-radius: 8px; display: flex; align-items: center; padding: 5px 15px; width: 85%; margin: 0 auto 25px; }
+        .modal-avatar-preview { width: 35px; height: 35px; border-radius: 4px; margin-right: 15px; }
+        .modal-input { background: transparent; border: none; color: white; font-size: 16px; font-weight: 600; width: 100%; padding: 15px 0; outline: none; font-family: inherit; }
+        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+    <header class="header-top">
+        <div class="header-btn" onclick="openNick()">
+            <div class="square-frame"><img src="https://mc-heads.net/avatar/Steve/45" id="user-avatar" alt="Avatar"></div>
+            <div class="header-info-text">
+                <span id="user-greeting">Comprando como <strong>Invitado</strong></span>
+                <small id="user-action">➜ Inicia sesión para comprar</small>
+            </div>
+        </div>
+        <div class="header-center"><a href="../index.html"><img src="../logo.png" alt="Logo" style="max-width: 130px;"></a></div>
+        <div class="header-btn" id="cart-btn-header" style="display: none;">
+            <div class="header-info-text" style="text-align: right; margin-right: 15px;">
+                <span>VER CESTA</span>
+                <small>Tu cesta de compra</small>
+            </div>
+            <div class="square-frame" style="border-color: var(--purple-main);">
+                <svg width="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            </div>
+        </div>
+    </header>
+
+    <div class="store-grid">
+        <aside>
+            <div class="sidebar-container">
+                <div style="text-align:center; font-weight:900; color:var(--gold); font-size:11px; margin-bottom:25px; text-transform:uppercase; letter-spacing:1px;">🧭 ¡Empieza a comprar!</div>
+                <a href="../index.html" class="cat-item"><img src="../tierra.png"> Inicio</a>
+                <a href="#" class="cat-item c-active"><img src="../ofertas.png"> Ofertas Exclusivas</a>
+                <a href="../rangos/index.html" class="cat-item"><img src="../rangos.png"> Rangos</a>
+                <a href="../survival/index.html" class="cat-item"><img src="../survival.png"> Survival Custom</a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="viewing-bar">
+                <small>Viendo actualmente</small>
+                <h2>Ofertas Exclusivas</h2>
+            </div>
+
+            <div class="items-grid">
+                <div class="product-card">
+                    <span class="new-badge">Nuevo</span>
+                    <div class="product-img-container">
+                        <img src="../paquete_inicial.png" alt="Pack"> </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pack Inicial para SURVIVAL</h3>
+                        <div class="product-price">3.99 USD</div>
+                        <div class="buy-row">
+                            <button class="info-btn">i</button>
+                            <button class="buy-btn">
+                                <svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                Comprar
+                            </button>
+                        </div>
+                        <ul class="desc-list">
+                            <li class="desc-item"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Kit Hércules (1 sola vez)</li>
+                            <li class="desc-item"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Comando /CRAFT (Permanente)</li>
+                            <li class="desc-item"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> Comando /FLY (Temporal)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-container">
+                        <img src="../ascensores.png" alt="Pack">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">x10 ASCENSORES PREMIUM</h3>
+                        <div class="product-price">1.99 USD</div>
+                        <div class="buy-row">
+                            <button class="info-btn">i</button>
+                            <button class="buy-btn">Comprar</button>
+                        </div>
+                        <ul class="desc-list">
+                            <li class="desc-item"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> x10 Ascensores de oro</li>
+                            <li class="desc-item"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"><polyline points="20 6 9 17 4 12"></polyline></svg> ¿Muy barato verdad?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="nickModal">
+        <div class="modal-content">
+            <h2 class="modal-title">INICIA SESIÓN</h2>
+            <p class="modal-subtitle">Introduce tu nombre de Minecraft para continuar</p>
+            <div class="input-row">
+                <img src="https://mc-heads.net/avatar/Steve/35" id="modal-skin-preview" class="modal-avatar-preview">
+                <input type="text" id="nick-input" class="modal-input" placeholder="Tu Nombre..." oninput="updateModalSkin()">
+            </div>
+            <button class="modal-btn" onclick="saveNick()">INICIAR SESIÓN ❯</button>
+        </div>
+    </div>
+
+    <script>
+        // FUNCIÓN MÁGICA: Cargar el nombre si ya existe
+        window.onload = function() {
+            const savedNick = localStorage.getItem('mc_nick');
+            if (savedNick) {
+                applyLogin(savedNick);
+            }
+        };
+
+        function updateModalSkin() {
+            const nick = document.getElementById('nick-input').value.trim();
+            document.getElementById('modal-skin-preview').src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`;
+        }
+
+        function saveNick() {
+            const nick = document.getElementById('nick-input').value.trim();
+            if (nick !== "") {
+                localStorage.setItem('mc_nick', nick); // Guardar en el navegador
+                applyLogin(nick);
+                document.getElementById('nickModal').style.display = 'none';
+            }
+        }
+
+        function applyLogin(nick) {
+            document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`;
+            document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`;
+            document.getElementById('user-action').innerText = "➜ Nick registrado";
+            document.getElementById('cart-btn-header').style.display = 'flex';
+        }
+
+        function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
+        function toggleCart() { alert('Abriendo Cesta...'); } // Aquí iría tu lógica de carrito
+    </script>
+</body>
+</html>
