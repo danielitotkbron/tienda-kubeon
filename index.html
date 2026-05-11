@@ -13,10 +13,13 @@
             --purple-glow: rgba(138, 43, 226, 0.6);
             --text-gray: #a5a9b0;
             
-            --cat-verde: #8ed321;
-            --cat-magenta: #e000ff;
-            --cat-amarillo: #ffcc00;
-            --cat-azul: #00b4ff;
+            /* Colores de las tarjetas de la imagen */
+            --border-inicio: #444;
+            --border-oferta: #916934;
+            --border-cosmetico: #6e2d63;
+            --border-rango: #858032;
+            --border-survival: #3f5e2b;
+            --border-regalo: #8e2b2b;
         }
 
         body {
@@ -28,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER ESTILO DIOSESMC CON HOVER EFECTO --- */
+        /* --- HEADER --- */
         .header-top {
             display: flex;
             align-items: center;
@@ -51,7 +54,6 @@
             color: white;
         }
 
-        /* Efecto de brillo y cuadro al pasar el mouse */
         .header-btn:hover {
             border-color: var(--purple-main);
             background: rgba(138, 43, 226, 0.1);
@@ -66,10 +68,6 @@
             border: 2px solid rgba(255,255,255,0.1);
         }
         .hexagon-frame img { width: 40px; height: 40px; }
-
-        .header-info-text { display: flex; flex-direction: column; }
-        .header-info-text span { font-size: 14px; font-weight: 800; text-transform: uppercase; }
-        .header-info-text small { font-size: 11px; color: var(--purple-main); font-weight: 700; }
 
         .header-center img {
             max-width: 180px;
@@ -87,8 +85,9 @@
         }
 
         .featured-offer {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/800x400/222/555?text=IMAGEN+DE+OFERTA');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bosk.jpg'); /* FONDO BOSK.JPG */
             background-size: cover;
+            background-position: center;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.1);
             padding: 40px;
@@ -97,65 +96,83 @@
             justify-content: flex-end;
             position: relative;
             overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
         }
 
         .offer-badge {
             position: absolute; top: 20px; right: 20px;
-            background: var(--cat-verde); color: black;
+            background: #8ed321; color: black;
             padding: 5px 15px; border-radius: 5px; font-weight: 900; font-size: 12px;
         }
 
-        .offer-title { font-size: 28px; font-weight: 900; color: var(--cat-verde); margin: 0; }
-        .offer-price { font-size: 20px; font-weight: 700; margin: 10px 0; }
-
-        .widgets-column { display: flex; flex-direction: column; gap: 20px; }
+        .offer-title { font-size: 32px; font-weight: 900; color: #8ed321; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 
         .widget-box {
             flex: 1; padding: 25px; border-radius: 12px; display: flex; flex-direction: column;
             align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;
-            text-align: center; text-decoration: none; color: white;
+            text-align: center; text-decoration: none; color: white; margin-bottom: 20px;
         }
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .widget-box:hover { transform: translateY(-5px); filter: brightness(1.1); }
         .wb-title { font-weight: 900; font-size: 18px; margin: 0; }
-        .wb-sub { font-size: 12px; opacity: 0.9; font-weight: 700; }
 
-        /* --- CUERPO DE LA TIENDA --- */
+        /* --- SIDEBAR CATEGORÍAS (ESTILO IMAGEN) --- */
         .store-grid {
             max-width: 1200px;
             margin: 0 auto 100px;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
-            padding: 0 20px;
-        }
-
-        .sidebar-header {
-            text-align: center; font-weight: 900; color: var(--cat-amarillo);
-            font-size: 13px; margin-bottom: 20px; letter-spacing: 1px;
+            display: grid; grid-template-columns: 320px 1fr;
+            gap: 30px; padding: 0 20px;
         }
 
         .cat-item {
-            display: flex; align-items: center; padding: 15px 20px; border-radius: 8px;
-            text-decoration: none; color: white; font-weight: 800; font-size: 14px;
-            margin-bottom: 10px; transition: 0.3s; gap: 15px; background: #1c2026;
+            display: flex; align-items: center;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+            background: #1c2026;
             border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.2s;
+            position: relative;
         }
-        .cat-item:hover { transform: scale(1.02); background: #252a33; border-color: var(--purple-main); }
-        .cat-item img { width: 24px; }
 
+        .cat-item img { width: 32px; height: 32px; margin-right: 15px; }
+
+        /* Bordes de color según la imagen */
+        .cat-inicio { border: 1px solid var(--border-inicio); }
+        .cat-ofertas { border: 1px solid var(--border-oferta); }
+        .cat-rangos { border: 1px solid var(--border-rango); }
+        .cat-survival { border: 1px solid var(--border-survival); }
+        .cat-regalos { border: 1px solid var(--border-regalo); }
+
+        .cat-item:hover { transform: scale(1.02); background: #252a33; }
+        
+        .arrow-icon { margin-left: auto; font-size: 12px; opacity: 0.6; }
+
+        /* SUB-CATEGORÍAS */
+        .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 15px; overflow: hidden; border-radius: 0 0 10px 10px; }
+        .submenu.active { display: flex; }
+        .sub-link {
+            padding: 12px 65px;
+            text-decoration: none;
+            color: #d1d1d1;
+            font-weight: 600;
+            font-size: 13px;
+            background: rgba(138, 43, 226, 0.2); /* Fondo morado para subcategorias */
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .sub-link:hover { background: var(--purple-main); color: white; }
+
+        /* CONTENIDO */
         .main-content {
             background: var(--bg-panel); border-radius: 12px; padding: 40px;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .info-badge {
-            background: var(--cat-verde); color: black; padding: 8px 20px;
-            border-radius: 5px; font-weight: 900; display: inline-block; margin-bottom: 20px;
-        }
-
-        /* --- MODAL --- */
         #nickModal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 1000;
@@ -184,8 +201,8 @@
                 <img src="https://mc-heads.net/avatar/Steve/40" alt="Avatar">
             </div>
             <div class="header-info-text">
-                <span>Comprando como <strong>Invitado</strong></span>
-                <small>➜ Clickea para iniciar sesión</small>
+                <span style="font-weight: 800; font-size: 14px;">Comprando como Invitado</span>
+                <small style="color: var(--purple-main); font-size: 11px; font-weight: 700;">➜ Clickea para iniciar sesión</small>
             </div>
         </a>
 
@@ -194,9 +211,9 @@
         </div>
 
         <a href="#" class="header-btn">
-            <div class="header-info-text" style="text-align: right;">
-                <span>🛒 VER CESTA</span>
-                <small>Tu cesta de compra</small>
+            <div class="header-info-text" style="text-align: right; margin-right: 15px;">
+                <span style="font-weight: 800; font-size: 14px;">🛒 VER CESTA</span>
+                <small style="color: var(--purple-main); font-size: 11px; font-weight: 700;">Tu cesta de compra</small>
             </div>
             <div class="hexagon-frame" style="border-color: var(--purple-main);">
                 <img src="https://img.icons8.com/color/48/minecraft-skeleton.png" alt="Cart">
@@ -208,67 +225,97 @@
         <div class="featured-offer">
             <span class="offer-badge">EN OFERTA</span>
             <h2 class="offer-title">PACK DE KITS EXCLUSIVOS</h2>
-            <p class="offer-price">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 14px;">105.00 USD</span></p>
+            <p style="font-size: 20px; font-weight: 700; margin: 10px 0;">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 14px;">105.00 USD</span></p>
             <div style="display: flex; gap: 10px;">
-                <button style="background: var(--cat-verde); border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver más detalles</button>
+                <button style="background: #8ed321; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver más detalles</button>
                 <button style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver artículos parecidos</button>
             </div>
         </div>
 
         <div class="widgets-column">
-            <div class="widget-box wb-ip" onclick="copyIP()">
+            <div class="widget-box wb-ip" onclick="copyIP(this)">
                 <p class="wb-title">PLAY.KUBEON.XYZ</p>
-                <span class="wb-sub">1,997 USUARIOS CONECTADOS</span>
+                <span class="wb-sub">CLICK PARA COPIAR IP</span>
             </div>
             <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
                 <p class="wb-title">¡ÚNETE A NUESTRO DISCORD!</p>
-                <span class="wb-sub">130,979 USUARIOS CONECTADOS</span>
+                <span class="wb-sub">130,976 USUARIOS CONECTADOS</span>
             </a>
         </div>
     </section>
 
     <div class="store-grid">
         <aside>
-            <div class="sidebar-header">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
-            <nav>
-                <a href="#" class="cat-item"><img src="tierra.png" alt="icon"> Inicio</a>
-                <a href="#" class="cat-item"><img src="ofertas.png" alt="icon"> Packs Oferta</a>
-                <a href="#" class="cat-item"><img src="regalos.png" alt="icon"> Cosméticos Exclusivos</a>
-                <a href="#" class="cat-item" style="border-left: 4px solid var(--cat-amarillo);"><img src="rangos.png" alt="icon"> Rangos Exclusivos</a>
-                <a href="#" class="cat-item"><img src="survival.png" alt="icon"> Survival Custom</a>
-            </nav>
+            <div style="text-align: center; font-weight: 900; color: #ffcc00; font-size: 13px; margin-bottom: 20px;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
+            
+            <a href="#" class="cat-item cat-inicio">
+                <img src="tierra.png" alt="icon"> Inicio
+            </a>
+            
+            <a href="#" class="cat-item cat-ofertas">
+                <img src="ofertas.png" alt="icon"> Ofertas Exclusivas
+            </a>
+
+            <a href="javascript:void(0)" class="cat-item cat-rangos" onclick="toggleMenu('rangosMenu')">
+                <img src="rangos.png" alt="icon"> Rangos Exclusivos <span class="arrow-icon">▼</span>
+            </a>
+            <div class="submenu" id="rangosMenu">
+                <a href="#" class="sub-link">Rangos Permanentes</a>
+                <a href="#" class="sub-link">Rangos Temporales</a>
+            </div>
+
+            <a href="javascript:void(0)" class="cat-item cat-survival" onclick="toggleMenu('survivalMenu')">
+                <img src="survival.png" alt="icon"> Survival Custom <span class="arrow-icon">▼</span>
+            </a>
+            <div class="submenu" id="survivalMenu">
+                <a href="#" class="sub-link">Llaves</a>
+                <a href="#" class="sub-link">Kits Exclusivos</a>
+                <a href="#" class="sub-link">Comandos Exclusivos</a>
+                <a href="#" class="sub-link">Dinero</a>
+                <a href="#" class="sub-link">Protecciones</a>
+            </div>
+
+            <a href="#" class="cat-item cat-regalos">
+                <img src="regalos.png" alt="icon"> Regalos
+            </a>
         </aside>
 
         <main class="main-content">
-            <h2 style="margin-top: 0;">BIENVENIDO A LA TIENDA OFICIAL DE <span style="color: var(--cat-amarillo);">KUBEON NETWORK</span></h2>
-            <p style="color: var(--text-gray); font-size: 14px; line-height: 1.6;">
-                Te encuentras en la tienda de <strong>Kubeon</strong> y aquí puedes acceder a los mejores cosméticos, rangos, kits exclusivos y más artículos VIP.
-            </p>
-            
-            <div style="text-align: center; margin: 40px 0;">
-                <span class="info-badge">! INFORMACIÓN RELEVANTE</span>
-            </div>
-
-            <p style="color: var(--text-gray); font-size: 13px;">
-                Es muy importante que antes de comprar algún artículo de nuestra tienda, lo hagas teniendo por seguro si tu cuenta es premium o no. 
+            <h2 style="margin-top: 0; text-transform: uppercase;">BIENVENIDO A LA TIENDA DE <span style="color: #ffcc00;">KUBEON NETWORK</span></h2>
+            <p style="color: var(--text-gray); font-size: 15px; line-height: 1.8;">
+                Te encuentras en la tienda de <strong>Kubeon</strong> y aquí puedes adquirir los mejores rangos, cosméticos y beneficios para tu aventura. 
             </p>
         </main>
     </div>
 
     <div id="nickModal">
         <div class="modal-content">
-            <h2 style="margin: 0; font-size: 18px;">INTRODUCE TU NICK</h2>
+            <h2 style="margin: 0; font-size: 18px; color: white;">INTRODUCE TU NICK</h2>
             <input type="text" placeholder="Ingresa tu nick de Minecraft...">
-            <button class="modal-btn" onclick="closeNick()">Continuar ➜</button>
+            <button class="modal-btn" onclick="closeNick()">CONTINUAR ➜</button>
         </div>
     </div>
 
     <script>
+        function toggleMenu(id) {
+            document.getElementById(id).classList.toggle('active');
+        }
+
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
         function closeNick() { document.getElementById('nickModal').style.display = 'none'; }
-        function copyIP() {
+
+        function copyIP(element) {
+            const title = element.querySelector('.wb-title');
+            const originalText = title.innerText;
+            
             navigator.clipboard.writeText('play.kubeon.xyz');
-            alert('¡IP copiada: play.kubeon.xyz!');
+            
+            // Cambio de texto sin alert
+            title.innerText = "IP COPIADA!";
+            
+            setTimeout(() => {
+                title.innerText = originalText;
+            }, 2000);
         }
     </script>
 </body>
