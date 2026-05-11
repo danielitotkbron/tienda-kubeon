@@ -4,338 +4,344 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Oficial | Kubeon Network</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-page: #0b0d10;
-            --bg-panel: #161a21;
-            --color-main: #00b4ff;
-            --color-verde: #8ed321;
-            --color-magenta: #e000ff;
-            --color-amarillo: #ffcc00;
-            --color-rojo: #ff4747;
-            --color-gris: #313742;
-            --text-muted: #8491a5;
+            --bg-body: #0f1115;
+            --bg-panel: #16191e;
+            --purple-main: #8a2be2; /* Morado Kubeon */
+            --purple-hover: #9d4edd;
+            --text-gray: #a5a9b0;
+            
+            /* Colores Categorías */
+            --cat-verde: #8ed321;
+            --cat-magenta: #e000ff;
+            --cat-amarillo: #ffcc00;
+            --cat-azul: #00b4ff;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-page);
-            background-image: radial-gradient(circle at 50% -20%, #1a222d 0%, var(--bg-page) 70%);
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-body);
             color: white;
             overflow-x: hidden;
         }
 
-        /* --- NAVEGACIÓN SUPERIOR --- */
+        /* --- TOP NAVIGATION --- */
         .top-nav {
-            height: 60px;
-            background: rgba(16, 20, 26, 0.9);
+            height: 70px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             padding: 0 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            gap: 15px;
+            position: relative;
+            z-index: 100;
         }
 
-        .btn-back {
-            background: #242a35;
+        .currency-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 10px 20px;
+            border-radius: 8px;
             font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            gap: 8px;
             transition: 0.3s;
+        }
+        .currency-btn:hover { border-color: var(--purple-main); }
+
+        .cart-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cart-text { display: flex; flex-direction: column; }
+        .cart-title { font-weight: 800; font-size: 13px; }
+        .cart-reg { 
+            font-size: 11px; 
+            color: var(--purple-main); 
+            text-decoration: none; 
+            font-weight: 700;
             text-transform: uppercase;
         }
+        .cart-reg:hover { color: white; }
 
-        .nav-right { display: flex; gap: 20px; align-items: center; }
-        .currency { font-weight: 800; color: #fff; font-size: 14px; background: rgba(255,255,255,0.05); padding: 5px 10px; border-radius: 5px; }
-        .cart-status { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
-
-        /* --- HERO SECTION (LOGO ESTILO NAUTIC) --- */
+        /* --- HERO SECTION (ESTILO DIOSESMC) --- */
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            text-align: center;
+            padding: 40px 20px;
         }
 
         .hero-logo img {
-            max-width: 280px;
-            filter: drop-shadow(0 0 25px rgba(0, 180, 255, 0.4));
-            margin-bottom: 20px;
+            max-width: 320px;
+            filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.4));
+            margin-bottom: 40px;
         }
 
-        .server-status {
+        .hero-widgets {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255,255,255,0.02);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.05);
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
         }
 
-        .play-icon {
-            width: 35px;
-            height: 35px;
-            background: var(--color-main);
-            border-radius: 50%;
+        .widget-box {
+            flex: 1;
+            padding: 20px;
+            border-radius: 12px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 180, 255, 0.4);
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            text-decoration: none;
+            color: white;
         }
 
-        .ip-text { font-size: 20px; font-weight: 900; letter-spacing: 1px; color: white; }
-        .player-online { color: var(--color-main); font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 5px; }
+        .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
+        .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 
-        /* --- CONTENEDOR GRID --- */
-        .store-container {
-            max-width: 1250px;
-            margin: 0 auto 100px;
+        .widget-box:hover { transform: translateY(-5px); filter: brightness(1.1); }
+        .wb-title { font-weight: 900; font-size: 18px; margin: 0; }
+        .wb-sub { font-size: 12px; opacity: 0.9; font-weight: 600; }
+
+        /* --- CONTENEDOR TIENDA --- */
+        .store-grid {
+            max-width: 1300px;
+            margin: 40px auto;
             display: grid;
             grid-template-columns: 320px 1fr;
-            gap: 25px;
+            gap: 30px;
             padding: 0 20px;
         }
 
-        /* --- SIDEBAR: EMPIEZA A COMPRAR --- */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .sidebar-panel {
-            background: var(--bg-panel);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .sidebar-header {
-            padding: 20px;
-            font-size: 13px;
-            font-weight: 900;
-            color: var(--color-main);
-            text-align: center;
+        /* SIDEBAR CATEGORIAS */
+        .sidebar-title {
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-weight: 900;
+            color: var(--purple-main);
+            margin-bottom: 15px;
+            font-size: 14px;
+            letter-spacing: 1px;
         }
 
-        .cat-list { display: flex; flex-direction: column; padding: 0 15px 15px 15px; gap: 8px; }
-        
-        .cat-box {
+        .cat-item {
             display: flex;
             align-items: center;
             padding: 15px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
             color: white;
             font-weight: 800;
             font-size: 14px;
+            margin-bottom: 10px;
+            transition: 0.3s;
             gap: 15px;
-            transition: 0.2s;
-            text-transform: uppercase;
-            border-bottom: 3px solid rgba(0,0,0,0.2);
+            background: #1c2026;
         }
 
-        .cat-box:hover { transform: scale(1.02); filter: brightness(1.1); }
-        .cat-box svg { width: 22px; height: 22px; fill: white; }
+        .cat-item img { width: 24px; height: 24px; }
+        .cat-item:hover { transform: translateX(8px); }
 
-        /* Colores exactos de Nautic */
-        .cb-verde { background: var(--color-verde); }
-        .cb-cian { background: var(--color-main); }
-        .cb-magenta { background: var(--color-magenta); }
-        .cb-amarillo { background: var(--color-amarillo); }
-        .cb-gris { background: var(--color-gris); }
-        .cb-rojo { background: var(--color-rojo); }
+        /* Colores especificos */
+        .c-ofertas { border-left: 5px solid var(--cat-verde); }
+        .c-rangos { border-left: 5px solid var(--purple-main); background: #231a31; }
+        .c-survival { border-left: 5px solid var(--cat-azul); }
+        .c-regalos { border-left: 5px solid var(--cat-magenta); }
 
-        /* Submenú Survival */
+        /* Subcategorias Rangos */
         .submenu {
-            background: rgba(0,0,0,0.15);
-            margin: -5px 0 5px 0;
-            border-radius: 0 0 6px 6px;
             display: none;
             flex-direction: column;
+            margin-bottom: 15px;
+            border-radius: 0 0 8px 8px;
             overflow: hidden;
         }
         .submenu.active { display: flex; }
         .sub-link {
-            padding: 12px 20px;
-            color: #aab4c3;
+            padding: 12px 50px;
+            background: #231a31; /* Mismo que el padre */
+            color: #d1d1d1;
             text-decoration: none;
-            font-size: 13px;
             font-weight: 700;
-            border-left: 3px solid transparent;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .sub-link:hover { background: rgba(255,255,255,0.03); color: white; border-left-color: var(--color-main); }
+        .sub-link:hover { color: white; background: var(--purple-main); }
 
-        /* --- MÁXIMO DONADOR --- */
-        .donor-card {
+        /* DONADOR */
+        .donor-box {
             background: var(--bg-panel);
-            border-radius: 10px;
             padding: 20px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 15px;
-            border: 1px solid rgba(255,255,255,0.03);
+            margin-top: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .donor-avatar { width: 50px; height: 50px; border-radius: 8px; background: #2a2e35; border: 2px solid var(--purple-main); }
+
+        /* --- MODAL NICK --- */
+        #nickModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000;
+        }
+        .modal-content {
+            background: var(--bg-panel); padding: 40px; border-radius: 15px; width: 400px; text-align: center;
+            border-top: 5px solid var(--purple-main);
+        }
+        .modal-content input {
+            width: 100%; padding: 12px; margin: 20px 0; border-radius: 5px; border: none; background: #0f1115; color: white;
+        }
+        .modal-btn {
+            background: var(--purple-main); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-weight: 800; cursor: pointer;
         }
 
-        .donor-head {
-            width: 50px;
-            height: 50px;
-            background: #2a313d;
-            border-radius: 8px;
-            border: 2px solid var(--color-main);
+        /* --- DROPDOWN MONEDAS --- */
+        .currency-menu {
+            position: absolute; top: 65px; right: 240px; background: var(--bg-panel); 
+            border-radius: 8px; display: none; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
         }
-
-        .donor-info { display: flex; flex-direction: column; }
-        .donor-name { font-weight: 800; font-size: 16px; color: white; }
-        .donor-label { font-size: 11px; color: var(--text-muted); font-weight: 600; }
-
-        /* --- CONTENIDO PRINCIPAL --- */
-        .main-content {
-            background: var(--bg-panel);
-            border-radius: 10px;
-            padding: 50px;
-            border: 1px solid rgba(255,255,255,0.03);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .main-content h1 { font-size: 32px; font-weight: 900; margin-bottom: 25px; }
-        .main-content h1 span { color: var(--color-main); }
-        .main-content p { color: var(--text-muted); line-height: 1.8; font-size: 16px; }
-
-        .tebex-info {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            border-left: 4px solid var(--color-main);
-        }
-
-        .tebex-info h3 { margin-top: 0; font-weight: 800; }
-        .payment-icons { display: flex; gap: 15px; margin-top: 20px; opacity: 0.7; }
+        .currency-menu.active { display: grid; }
+        .curr-item { padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; cursor: pointer; font-size: 12px; text-align: center; font-weight: 700; }
+        .curr-item:hover { background: var(--purple-main); }
+        .curr-active { background: var(--purple-main); }
 
         @media (max-width: 900px) {
-            .store-container { grid-template-columns: 1fr; }
-            .hero-logo img { max-width: 220px; }
+            .hero-widgets { flex-direction: column; }
+            .store-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <nav class="top-nav">
-        <a href="#" class="btn-back">← Volver a la web</a>
-        <div class="nav-right">
-            <span class="currency">$ USD</span>
-            <div class="cart-status">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-main)"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                CARRITO (0)
+        <div class="currency-btn" onclick="toggleCurrency()">
+            $ USD / PYG ▾
+        </div>
+        
+        <div class="currency-menu" id="currencyMenu">
+            <div class="curr-item">AUD</div> <div class="curr-item">BRL</div>
+            <div class="curr-item">CAD</div> <div class="curr-item">EUR</div>
+            <div class="curr-item">GBP</div> <div class="curr-item">PYG</div>
+            <div class="curr-item curr-active" style="grid-column: span 2;">USD</div>
+        </div>
+
+        <div class="cart-box">
+            <img src="https://mc-heads.net/avatar/Steve/32" alt="Cart" style="border-radius: 4px;">
+            <div class="cart-text">
+                <span class="cart-title">Comprando como Invitado</span>
+                <a href="javascript:void(0)" class="cart-reg" onclick="openNick()">Clickea para registrarte</a>
             </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-logo">
-            <img src="logo.png" alt="Kubeon Logo">
+            <img src="logo.png" alt="Kubeon Network">
         </div>
-        <div class="server-status">
-            <div class="play-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>
+        
+        <div class="hero-widgets">
+            <div class="widget-box wb-ip" onclick="copyIP()">
+                <p class="wb-title">PLAY.KUBEON.XYZ</p>
+                <span class="wb-sub">CLICK PARA COPIAR IP</span>
             </div>
-            <div>
-                <div class="ip-text">KUBEON.NET</div>
-                <div class="player-online">● 120 JUGADORES CONECTADOS</div>
-            </div>
+            
+            <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
+                <p class="wb-title">¡ÚNETE A NUESTRO DISCORD!</p>
+                <span class="wb-sub">CLICK PARA ENTRAR AL SERVIDOR</span>
+            </a>
         </div>
     </header>
 
-    <div class="store-container">
-        <aside class="sidebar">
-            <div class="sidebar-panel">
-                <div class="sidebar-header">Empieza a comprar!</div>
-                <div class="cat-list">
-                    <a href="#" class="cat-box cb-verde">
-                        <svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67z"/></svg>
-                        Ofertas Especiales
-                    </a>
-                    <a href="#" class="cat-box cb-cian">
-                        <svg viewBox="0 0 24 24"><path d="M12.16 3l-4.91 5.19-2.25-1.49 1.28 11.59 5.88 2.71 5.88-2.71 1.28-11.59-2.25 1.49L12.16 3z"/></svg>
-                        Rangos Permanentes
-                    </a>
-                    <a href="#" class="cat-box cb-magenta">
-                        <svg viewBox="0 0 24 24"><path d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01H6v6h12v-6h-.01L18 15.99 14 12l4-4-.01-.01H18V2H6z"/></svg>
-                        Rangos Temporales
-                    </a>
-                    
-                    <a href="javascript:void(0)" class="cat-box cb-gris" onclick="toggleSub()">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        Survival Custom ▾
-                    </a>
-                    <div class="submenu" id="subSurvival">
-                        <a href="#" class="sub-link">Llaves de Crates</a>
-                        <a href="#" class="sub-link">Kits Exclusivos</a>
-                        <a href="#" class="sub-link">Comandos Especiales</a>
-                        <a href="#" class="sub-link">Dinero / Economía</a>
-                        <a href="#" class="sub-link">Protecciones Tier</a>
-                    </div>
-
-                    <a href="#" class="cat-box cb-rojo">
-                        <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.62 0-2.95 1.29-2.99 2.91L12 4.91l-.01-.01C11.95 3.29 10.62 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"/></svg>
-                        Regalos
-                    </a>
-                </div>
+    <div class="store-grid">
+        <aside>
+            <div class="sidebar-title">Empieza a comprar!</div>
+            
+            <a href="#" class="cat-item c-ofertas">
+                <img src="ofertas.png" alt="icon"> OFERTAS ESPECIALES
+            </a>
+            
+            <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleRangos()">
+                <img src="rangos.png" alt="icon"> RANGOS EXCLUSIVOS <span style="margin-left:auto">▾</span>
+            </a>
+            <div class="submenu" id="rangosMenu">
+                <a href="#" class="sub-link">Rangos Permanentes</a>
+                <a href="#" class="sub-link">Rangos Temporales</a>
             </div>
 
-            <div class="sidebar-header" style="padding-bottom: 5px;">Máximo Donador</div>
-            <div class="donor-card">
-                <img src="https://mc-heads.net/avatar/Steve/50" alt="Head" class="donor-head">
-                <div class="donor-info">
-                    <span class="donor-name">Ninguno</span>
-                    <span class="donor-label">Has sido quien más donó este mes</span>
+            <a href="#" class="cat-item c-survival">
+                <img src="survival.png" alt="icon"> SURVIVAL CUSTOM
+            </a>
+
+            <a href="#" class="cat-item c-regalos">
+                <img src="regalos.png" alt="icon"> REGALOS
+            </a>
+
+            <div class="sidebar-title" style="margin-top: 30px;">Máximo Donador</div>
+            <div class="donor-box">
+                <img src="https://mc-heads.net/avatar/Steve/50" class="donor-avatar" alt="Donor">
+                <div class="cart-text">
+                    <span style="font-weight: 800;">Ninguno</span>
+                    <span style="font-size: 11px; opacity: 0.7;">Has sido quien más donó este mes</span>
                 </div>
             </div>
         </aside>
 
-        <main class="main-content">
-            <h1>Bienvenido a la Tienda de <span>Kubeon</span></h1>
-            <p>
-                Esta es la tienda oficial de <strong>Kubeon Network</strong>. Aquí podrás adquirir artículos para mejorar tu experiencia dentro del servidor. Ofrecemos rangos y beneficios globales que nos ayudan a mantener el proyecto activo.
-            </p>
-            
-            <div class="tebex-info">
-                <h3>Sobre Seguridad y Pagos</h3>
-                <p>Nuestra tienda está 100% gestionada por <strong>Tebex Limited</strong>. Tus pagos están cifrados y protegidos. No guardamos información de tus tarjetas en nuestros servidores.</p>
-                <div class="payment-icons">
-                    <img src="https://img.icons8.com/color/48/000000/paypal.png" width="30">
-                    <img src="https://img.icons8.com/color/48/000000/visa.png" width="30">
-                    <img src="https://img.icons8.com/color/48/000000/mastercard.png" width="30">
-                </div>
-            </div>
-
-            <p style="margin-top: 30px;">
-                Cualquier duda o problema con tu compra, por favor abre un ticket en nuestro <strong>servidor de Discord</strong> oficial para recibir atención inmediata de nuestro Staff.
+        <main style="background: var(--bg-panel); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <h1 style="font-size: 30px; font-weight: 900; margin-top: 0;">Bienvenido a <span style="color:var(--purple-main)">Kubeon</span></h1>
+            <p style="color:var(--text-gray); line-height: 1.8;">
+                Esta es la tienda oficial de <strong>Kubeon Network</strong>. Aquí puedes adquirir rangos, beneficios y objetos exclusivos para mejorar tu experiencia en nuestros servidores. 
+                <br><br>
+                Todos los pagos son procesados de forma segura a través de <strong>Tebex</strong>. Si tienes dudas, nuestro soporte en Discord está disponible las 24 horas.
             </p>
         </main>
     </div>
 
+    <div id="nickModal">
+        <div class="modal-content">
+            <h2 style="font-weight: 900; margin: 0;">INTRODUCE TU NICK</h2>
+            <p style="font-size: 13px; opacity: 0.7;">Escribe tu nombre exacto de Minecraft para continuar</p>
+            <input type="text" placeholder="Tu nombre de usuario...">
+            <button class="modal-btn" onclick="closeNick()">CONTINUAR →</button>
+        </div>
+    </div>
+
     <script>
-        function toggleSub() {
-            document.getElementById('subSurvival').classList.toggle('active');
+        function toggleRangos() {
+            document.getElementById('rangosMenu').classList.toggle('active');
+        }
+
+        function toggleCurrency() {
+            document.getElementById('currencyMenu').classList.toggle('active');
+        }
+
+        function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
+        function closeNick() { document.getElementById('nickModal').style.display = 'none'; }
+
+        function copyIP() {
+            navigator.clipboard.writeText('play.kubeon.xyz');
+            alert('¡IP copiada al portapapeles: play.kubeon.xyz!');
+        }
+
+        // Cerrar menus al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('nickModal')) closeNick();
         }
     </script>
 </body>
