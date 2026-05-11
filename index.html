@@ -36,67 +36,67 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 25px 80px;
+            padding: 20px 80px;
             background: rgba(0,0,0,0.4);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .header-btn {
-            display: flex; align-items: center; gap: 15px; padding: 12px 25px;
+            display: flex; align-items: center; gap: 15px; padding: 10px 20px;
             border-radius: 12px; border: 2px solid transparent; transition: 0.3s;
             cursor: pointer; text-decoration: none; color: white;
         }
         .header-btn:hover { border-color: var(--purple-main); background: rgba(138, 43, 226, 0.1); box-shadow: 0 0 20px var(--purple-glow); }
 
         .hexagon-frame {
-            width: 65px; height: 65px; background: #1c2026;
+            width: 60px; height: 60px; background: #1c2026;
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
             display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1);
         }
-        .hexagon-frame img { width: 42px; }
-        .header-center img { max-width: 200px; filter: drop-shadow(0 0 15px var(--purple-glow)); }
+        .hexagon-frame img { width: 40px; }
+        .header-center img { max-width: 170px; filter: drop-shadow(0 0 15px var(--purple-glow)); }
 
-        /* --- SECCIÓN TOP (OFERTA + WIDGETS GRANDES) --- */
+        /* --- SECCIÓN TOP (OFERTA + WIDGETS EQUILIBRADOS) --- */
         .top-section {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 30px auto;
             display: grid;
-            grid-template-columns: 1.8fr 1.2fr; /* Ajustado para que los botones sean anchos */
-            gap: 20px;
+            grid-template-columns: 2.2fr 1fr; /* Columna de widgets más delgada */
+            gap: 15px;
             padding: 0 20px;
-            align-items: stretch; /* Esto hace que ambas columnas midan lo mismo */
+            align-items: stretch;
         }
 
         .featured-offer {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('bosk.jpg');
             background-size: cover;
             background-position: center;
-            border-radius: 12px;
-            padding: 50px;
+            border-radius: 10px;
+            padding: 35px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             position: relative;
-            min-height: 350px; /* Altura aumentada */
+            min-height: 280px; /* Altura más razonable */
             border: 1px solid rgba(255,255,255,0.05);
         }
 
         .offer-badge {
-            position: absolute; top: 25px; right: 25px;
+            position: absolute; top: 20px; right: 20px;
             background: #8ed321; color: black;
-            padding: 6px 18px; border-radius: 5px; font-weight: 900;
+            padding: 5px 15px; border-radius: 4px; font-weight: 900; font-size: 11px;
         }
 
         .widgets-column {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .widget-box {
-            flex: 1; /* Esto hace que cada uno tome exactamente la mitad de la altura disponible */
-            padding: 20px;
-            border-radius: 12px;
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -112,10 +112,10 @@
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         
-        .widget-box:hover { transform: scale(1.02); filter: brightness(1.1); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .widget-box:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
 
-        .wb-title { font-weight: 900; font-size: 24px; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .wb-sub { font-size: 14px; font-weight: 800; opacity: 0.9; margin-top: 5px; }
+        .wb-title { font-weight: 900; font-size: 18px; margin: 0; text-transform: uppercase; }
+        .wb-sub { font-size: 12px; font-weight: 800; opacity: 0.9; margin-top: 4px; }
 
         /* --- SIDEBAR PANEL --- */
         .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
@@ -200,24 +200,24 @@
     <section class="top-section">
         <div class="featured-offer">
             <span class="offer-badge">EN OFERTA</span>
-            <h2 style="font-size: 38px; font-weight: 900; color: #8ed321; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">PACK DE KITS EXCLUSIVOS</h2>
-            <p style="font-size: 24px; font-weight: 800; margin: 15px 0;">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 16px;">105.00 USD</span></p>
-            <div style="display: flex; gap: 15px;">
-                <button style="background: #8ed321; border: none; padding: 12px 30px; border-radius: 6px; font-weight: 900; cursor: pointer; font-size: 14px;">Ver más detalles</button>
-                <button style="background: #333; color: white; border: none; padding: 12px 30px; border-radius: 6px; font-weight: 900; cursor: pointer; font-size: 14px;">Ver artículos parecidos</button>
+            <h2 style="font-size: 32px; font-weight: 900; color: #8ed321; margin: 0; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">PACK DE KITS EXCLUSIVOS</h2>
+            <p style="font-size: 20px; font-weight: 800; margin: 12px 0;">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 15px;">105.00 USD</span></p>
+            <div style="display: flex; gap: 12px;">
+                <button style="background: #8ed321; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer; font-size: 13px;">Ver más detalles</button>
+                <button style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer; font-size: 13px;">Artículos parecidos</button>
             </div>
         </div>
 
         <div class="widgets-column">
             <div class="widget-box wb-ip" onclick="copyIP(this)">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="white" style="margin-bottom: 8px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 <p class="wb-title">PLAY.KUBEON.XYZ</p>
                 <span class="wb-sub">CLICK PARA COPIAR IP</span>
             </div>
             <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom: 10px;"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-                <p class="wb-title">¡ÚNETE AL DISCORD!</p>
-                <span class="wb-sub">130,976 USUARIOS CONECTADOS</span>
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="white" style="margin-bottom: 8px;"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                <p class="wb-title">ÚNETE AL DISCORD</p>
+                <span class="wb-sub">130,976 CONECTADOS</span>
             </a>
         </div>
     </section>
