@@ -4,98 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kubeon Network | Rangos Temporales</title>
-    <link rel="icon" type="image/png" href="../../logo.png">
+    <link rel="icon" type="image/png" href="../logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* MISMOS ESTILOS BASE */
-        :root { --bg-body: #0b0d10; --bg-panel: #0e1014; --purple-main: #8a2be2; --gold: #ffcc00; --green-buy: #2ecc71; }
-        body { margin: 0; font-family: 'Montserrat'; background-color: var(--bg-body); color: white; }
+        /* Mismos estilos base de tu script */
+        :root {
+            --bg-body: #0b0d10; --bg-panel: #0e1014; --purple-main: #8a2be2; --purple-dark: #4b0082;
+            --gold: #ffcc00; --gold-gradient: linear-gradient(to right, #f9d423, #ffdb6e); --green-buy: #2ecc71;
+        }
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-body); background-image: radial-gradient(circle at 50% -20%, #1a222d 0%, var(--bg-body) 80%); color: white; overflow-x: hidden; }
 
-        /* --- HEADER Y SIDEBAR (IGUALES AL ANTERIOR) --- */
+        /* HEADER Y SIDEBAR (Igual a tu script) */
         .header-top { display: flex; align-items: center; justify-content: space-between; padding: 25px 80px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .square-frame { width: 65px; height: 65px; background: #1c2026; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); }
-        .square-frame img { width: 45px; }
+        .square-frame img { width: 45px; border-radius: 4px; }
+        .store-grid { max-width: 1200px; margin: 40px auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
+        .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
+        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; }
+        .cat-item img { width: 32px; margin-right: 18px; }
+        .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 15px; }
+        .submenu.active { display: flex; }
+        .sub-link { padding: 15px 20px 15px 60px; color: white; text-decoration: none; font-weight: 900; font-size: 14px; text-transform: uppercase; display: flex; align-items: center; background: rgba(255,255,255,0.02); }
+        .sub-link::before { content: "▶"; font-size: 10px; margin-right: 12px; }
 
-        /* --- LAYOUT TEMPORAL (ESTILO image_424301.png) --- */
-        .store-grid { max-width: 1300px; margin: 40px auto; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
-        .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; }
-        .cat-item { display: flex; align-items: center; padding: 20px; color: white; text-decoration: none; font-weight: 800; }
-        
-        /* CONTENEDOR RANGO TEMPORAL */
-        .rank-row { background: #111; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); padding: 30px; margin-bottom: 30px; }
-        .rank-header-title { font-size: 22px; font-weight: 900; margin-bottom: 25px; border-bottom: 2px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
-        
-        .rank-flex { display: flex; gap: 40px; align-items: center; }
-        
-        .rank-left { text-align: center; min-width: 150px; }
-        .rank-left img { width: 120px; margin-bottom: 15px; }
-        .detail-btn { background: #1a1a1a; color: white; border: 1px solid #333; padding: 8px 15px; border-radius: 5px; font-size: 12px; cursor: pointer; }
+        .donors-section { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+        .donor-box { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 15px; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 15px; }
+        .donor-avatar { width: 45px; height: 45px; border-radius: 8px; border: 2px solid var(--purple-main); background: #1c2026; }
+        .donor-title { font-size: 10px; font-weight: 900; color: var(--gold); text-transform: uppercase; }
+        .donor-name { font-size: 14px; font-weight: 800; color: white; display: block; margin-top: 2px; }
 
-        .subs-grid { display: flex; gap: 15px; flex: 1; }
-        .sub-box { background: rgba(138,43,226,0.05); border: 2px solid var(--purple-main); border-radius: 12px; padding: 25px; flex: 1; text-align: center; transition: 0.3s; }
-        .sub-box:hover { transform: scale(1.02); background: rgba(138,43,226,0.1); }
-        
-        .sub-time { font-size: 20px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
-        .sub-price { font-size: 24px; font-weight: 900; color: var(--gold); margin-bottom: 5px; }
-        .sub-old-price { font-size: 14px; text-decoration: line-through; opacity: 0.4; }
-        .sub-buy { background: var(--purple-main); color: white; border: none; padding: 12px 0; width: 100%; border-radius: 6px; font-weight: 900; cursor: pointer; margin-top: 15px; }
+        /* --- DISEÑO FILAS (ESTILO image_424301.png) --- */
+        .rank-row { background: #111; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); padding: 25px; margin-bottom: 30px; display: flex; flex-direction: column; }
+        .rank-row-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.05); padding-bottom: 10px; text-transform: uppercase; }
+        .rank-flex { display: flex; gap: 25px; align-items: center; }
+        .rank-avatar-side { text-align: center; min-width: 140px; }
+        .rank-avatar-side img { width: 110px; margin-bottom: 15px; }
+        .btn-details { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 800; }
+        .subs-container { display: flex; gap: 15px; flex: 1; }
+        .sub-option { background: rgba(138,43,226,0.05); border: 2px solid var(--purple-main); border-radius: 12px; padding: 20px; flex: 1; text-align: center; transition: 0.3s; }
+        .sub-option:hover { transform: scale(1.02); background: rgba(138,43,226,0.1); }
+        .sub-name { font-size: 18px; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; }
+        .sub-price-row { font-size: 22px; font-weight: 900; color: var(--gold); }
+        .sub-old-price { font-size: 14px; text-decoration: line-through; opacity: 0.4; margin-left: 8px; color: white; }
+        .sub-buy-btn { background: var(--purple-main); color: white; border: none; padding: 12px 0; width: 100%; border-radius: 6px; font-weight: 900; cursor: pointer; margin-top: 15px; text-transform: uppercase; font-size: 12px; }
+
+        /* CESTA Y MODAL (Igual a tu script) */
+        .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 2999; }
+        .cart-drawer { position: fixed; top: 0; right: -420px; width: 420px; height: 100%; background: #0e1014; z-index: 3000; transition: 0.4s; }
+        .cart-drawer.active { right: 0; }
     </style>
 </head>
 <body>
-    <div class="store-grid">
-        <aside>
-            </aside>
 
-        <main>
-            <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px;">Rangos Temporales</h2>
+    <main>
+        <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px; font-size:22px;">Rangos Temporales</h2>
 
-            <div class="rank-row">
-                <div class="rank-header-title">Rango VIP - AERION</div>
-                <div class="rank-flex">
-                    <div class="rank-left">
-                        <img src="../../aerion.png">
-                        <button class="detail-btn">ℹ Ver detalles</button>
-                    </div>
-                    <div class="subs-grid">
-                        <div class="sub-box">
-                            <div class="sub-time">1 Mes</div>
-                            <div class="sub-price">9.99 USD</div>
-                            <div class="sub-old-price">29.99 USD</div>
-                            <button class="sub-buy">🛒 Comprar</button>
-                        </div>
-                        <div class="sub-box">
-                            <div class="sub-time">3 Meses</div>
-                            <div class="sub-price">24.99 USD</div>
-                            <div class="sub-old-price">79.99 USD</div>
-                            <button class="sub-buy">🛒 Comprar</button>
-                        </div>
-                        <div class="sub-box">
-                            <div class="sub-time">6 Meses</div>
-                            <div class="sub-price">39.99 USD</div>
-                            <div class="sub-old-price">149.99 USD</div>
-                            <button class="sub-buy">🛒 Comprar</button>
-                        </div>
-                    </div>
+        <div class="rank-row">
+            <div class="rank-row-title">Rango VIP - AERION</div>
+            <div class="rank-flex">
+                <div class="rank-avatar-side"><img src="../aerion.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                <div class="subs-container">
+                    <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">9.99 USD <span class="sub-old-price">29.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">24.99 USD <span class="sub-old-price">74.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                    <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">39.99 USD <span class="sub-old-price">119.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
                 </div>
             </div>
-
-            <div class="rank-row">
-                <div class="rank-header-title">Rango VIP - OMEGA</div>
-                <div class="rank-flex">
-                    <div class="rank-left">
-                        <img src="../../omega.png">
-                        <button class="detail-btn">ℹ Ver detalles</button>
-                    </div>
-                    <div class="subs-grid">
-                        <div class="sub-box"><div class="sub-time">1 Mes</div><div class="sub-price">6.99 USD</div><button class="sub-buy">🛒 Comprar</button></div>
-                        <div class="sub-box"><div class="sub-time">3 Meses</div><div class="sub-price">16.99 USD</div><button class="sub-buy">🛒 Comprar</button></div>
-                        <div class="sub-box"><div class="sub-time">6 Meses</div><div class="sub-price">29.99 USD</div><button class="sub-buy">🛒 Comprar</button></div>
-                    </div>
-                </div>
-            </div>
-
-        </main>
-    </div>
+        </div>
+    </main>
 
     </body>
 </html>
