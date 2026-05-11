@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kubeon Network | Bienvenido</title>
     <link rel="icon" type="image/png" href="logo.png">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,7 +18,7 @@
             --gold: #ffcc00;
             --gold-gradient: linear-gradient(to right, #f9d423, #ffdb6e);
             
-            /* Colores Categorías */
+            /* Colores Categorías (Fondo oscuro, Borde claro) */
             --c-inicio-b: #5d5d5d; --c-inicio-bg: #1a1c23;
             --c-oferta-b: #8ed321; --c-oferta-bg: #161d12;
             --c-rango-b: #8a2be2;  --c-rango-bg: #16121d;
@@ -58,11 +57,12 @@
             border: 2px solid rgba(255,255,255,0.1);
         }
         .square-frame img { width: 45px; border-radius: 4px; }
-        #cart-btn-header { display: none; }
+        #cart-btn-header { display: none; } /* Obligatorio login */
 
-        /* --- TOP SECTION --- */
+        /* --- TOP SECTION (SLIDER + WIDGETS) --- */
         .top-section { max-width: 1200px; margin: 30px auto; display: grid; grid-template-columns: 2.2fr 1fr; gap: 15px; padding: 0 20px; }
         .featured-slider { position: relative; border-radius: 10px; overflow: hidden; height: 320px; border: 1px solid rgba(255,255,255,0.1); }
+        
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 50px; box-sizing: border-box; background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s; }
         .slide.active { opacity: 1; }
         
@@ -73,18 +73,20 @@
         .offer-title { font-size: 28px; font-weight: 900; color: #2ecc71; margin: 0; text-transform: uppercase; }
         .offer-price { font-size: 20px; font-weight: 700; margin: 10px 0; }
         .offer-price span { text-decoration: line-through; opacity: 0.5; font-size: 15px; margin-left: 10px; }
+
         .offer-buttons { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-offer-green { background: #2ecc71; color: black; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px; }
-        .btn-offer-dark { background: #1a1a1a; color: white; border: 1px solid #333; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px; }
+        .btn-offer-green { background: #2ecc71; color: black; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 8px; }
+        .btn-offer-dark { background: #1a1a1a; color: white; border: 1px solid #333; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 8px; }
 
         .widget-box { flex: 1; padding: 25px; border-radius: 10px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.05); }
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 
-        /* --- SIDEBAR --- */
+        /* --- TIENDA GRID --- */
         .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
         .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
-        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; }
+        
+        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
         .cat-item img { width: 35px; margin-right: 18px; }
         
         .c-inicio { border-color: var(--c-inicio-b); background-color: var(--c-inicio-bg); }
@@ -97,7 +99,7 @@
         .sub-link { padding: 15px 20px 15px 60px; color: white; text-decoration: none; font-weight: 900; font-size: 14px; text-transform: uppercase; display: flex; align-items: center; transition: 0.2s; background: rgba(255,255,255,0.02); }
         .sub-link::before { content: "▶"; font-size: 10px; margin-right: 12px; }
 
-        /* DONADORES (RECUPERADOS) */
+        /* TOP DONADORES */
         .donors-section { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
         .donor-box { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 15px; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 15px; }
         .donor-avatar { width: 45px; height: 45px; border-radius: 8px; border: 2px solid var(--purple-main); background: #1c2026; }
@@ -116,14 +118,11 @@
 
         .cart-value-bar { background: #1a1d24; padding: 15px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 800; font-size: 13px; color: #a5a9b0; }
         .cart-body { padding: 40px 30px; text-align: center; flex: 1; overflow-y: auto; }
-        .cart-footer { padding: 25px; border-top: 1px solid rgba(255,255,255,0.05); }
 
         /* --- CONTENIDO --- */
         .main-content { background: var(--bg-panel); border-radius: 10px; padding: 60px; border: 1px solid rgba(255,255,255,0.03); }
-        .info-title { font-size: 32px; font-weight: 900; text-transform: uppercase; margin: 0; color:white; }
-        
         .payment-box { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 35px; margin-top: 45px; border-top: 4px solid var(--purple-main); }
-        .payment-icons { display: flex; gap: 20px; margin-top: 25px; opacity: 0.6; align-items: center; }
+        .payment-icons { display: flex; gap: 25px; margin-top: 25px; opacity: 0.5; align-items: center; }
         .payment-icons svg { height: 25px; fill: white; }
 
         .discord-btn { 
@@ -143,7 +142,7 @@
         .modal-avatar-preview { width: 35px; height: 35px; border-radius: 4px; margin-right: 15px; }
         .modal-input { background: transparent; border: none; color: white; font-size: 16px; font-weight: 600; width: 100%; padding: 15px 0; font-family: inherit; }
         .modal-input:focus { outline: none; }
-        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
 
         @media (max-width: 900px) { .header-top { padding: 20px; flex-direction: column; gap: 20px; } .top-section, .store-grid { grid-template-columns: 1fr; } }
     </style>
@@ -161,7 +160,7 @@
                 </small>
             </div>
         </div>
-        <div class="header-center"><img src="logo.png" alt="Logo" style="max-width: 160px;"></div>
+        <div class="header-center"><img src="logo.png" alt="Kubeon" style="max-width: 160px;"></div>
         <div class="header-btn" id="cart-btn-header" onclick="toggleCart()">
             <div class="header-info-text" style="text-align: right; margin-right: 15px;">
                 <span>VER CESTA</span>
@@ -193,7 +192,6 @@
         </div>
         <div class="cart-value-bar">VALOR DE CESTA: 0,00 USD</div>
         <div class="cart-body"><p style="color:#555; font-weight:700; margin-top:40px;">No hay artículos en tu cesta todavía.</p></div>
-        <div class="cart-footer" id="cart-checkout-area" style="display:none;"><button class="modal-btn">Finalizar Compra</button></div>
     </div>
 
     <section class="top-section">
@@ -204,6 +202,15 @@
                 <p class="offer-price">25.00 USD <span>40.00 USD</span></p>
                 <div class="offer-buttons">
                     <button class="btn-offer-green">Ver más detalles</button>
+                    <button class="btn-offer-dark">Artículos parecidos</button>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <span class="offer-tag" style="background:var(--gold); color:black;">Recomendado</span>
+                <h2 class="offer-title" style="color:var(--gold)">KITS EXCLUSIVOS</h2>
+                <p class="offer-price">15.00 USD</p>
+                <div class="offer-buttons">
+                    <button class="btn-offer-green" style="background:var(--gold)">Ver más detalles</button>
                     <button class="btn-offer-dark">Artículos parecidos</button>
                 </div>
             </div>
@@ -244,7 +251,7 @@
                 </div>
 
                 <div class="donors-section">
-                    <div style="text-align:center; font-weight:900; font-size:11px; color:var(--gold); text-transform:uppercase; margin-bottom:10px;">Top Donadores</div>
+                    <div style="text-align:center; font-weight:900; font-size:11px; color:var(--gold); text-transform:uppercase;">Top Donadores</div>
                     <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Del Mes</span><span class="donor-name">Ninguno</span></div></div>
                     <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Semana</span><span class="donor-name">Ninguno</span></div></div>
                     <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Del Día</span><span class="donor-name">Ninguno</span></div></div>
@@ -253,7 +260,7 @@
         </aside>
 
         <main class="main-content">
-            <h1 class="info-title">BIENVENIDO A LA TIENDA OFICIAL</h1>
+            <h1 style="font-size: 32px; font-weight: 900; text-transform: uppercase; margin: 0;">BIENVENIDO A LA TIENDA OFICIAL</h1>
             <div style="color:var(--purple-main); font-weight:800; letter-spacing:3px; margin-top:5px; text-transform:uppercase;">Kubeon Network</div>
             
             <div style="margin-top:40px; line-height:1.8; color:#a5a9b0;">
