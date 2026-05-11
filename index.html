@@ -34,7 +34,7 @@
             color: white; overflow-x: hidden;
         }
 
-        /* --- HEADER (image_b0327a.png) --- */
+        /* --- HEADER --- */
         .header-top {
             display: flex; align-items: center; justify-content: space-between;
             padding: 25px 80px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -51,38 +51,60 @@
         .header-info-text span { font-size: 15px; font-weight: 800; }
         .header-info-text small { color: var(--gold); font-weight: 700; font-size: 11px; margin-top: 4px; display: flex; align-items: center; gap: 5px; }
 
-        .hexagon-frame {
-            width: 65px; height: 65px; background: #1c2026;
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1);
+        /* MARCOS AHORA SON CUADROS, NO HEXÁGONOS */
+        .square-frame {
+            width: 60px; height: 60px; background: #1c2026;
+            border-radius: 10px; /* Cuadro con bordes redondeados */
+            display: flex; align-items: center; justify-content: center; 
+            border: 2px solid rgba(255,255,255,0.1);
         }
-        .hexagon-frame img { width: 45px; filter: grayscale(0.5); opacity: 0.8; }
+        .square-frame img { width: 42px; border-radius: 4px; }
 
-        #cart-btn-header { display: none; } /* Cesta obligatoria */
+        #cart-btn-header { display: none; } /* Obligatorio iniciar sesión */
 
-        /* --- SLIDER Y WIDGETS --- */
+        /* --- TOP SECTION (SLIDER + WIDGETS) --- */
         .top-section { max-width: 1200px; margin: 30px auto; display: grid; grid-template-columns: 2.2fr 1fr; gap: 15px; padding: 0 20px; }
         .featured-slider { position: relative; border-radius: 10px; overflow: hidden; height: 320px; border: 1px solid rgba(255,255,255,0.1); }
+        
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 50px; box-sizing: border-box; background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s; }
         .slide.active { opacity: 1; }
-        .slide-1 { background: linear-gradient(90deg, rgba(0,0,0,0.85), rgba(0,0,0,0.2)), url('bosk.jpg'); box-shadow: inset 0 0 60px rgba(138, 43, 226, 0.5); }
         
+        .slide-1 { background: linear-gradient(90deg, rgba(0,0,0,0.85), rgba(0,0,0,0.2)), url('bosk.jpg'); box-shadow: inset 0 0 60px rgba(138, 43, 226, 0.5); }
+        .slide-2 { background: linear-gradient(90deg, rgba(0,0,0,0.85), rgba(0,0,0,0.2)), #111; box-shadow: inset 0 0 60px rgba(255, 204, 0, 0.3); }
+
+        .offer-tag { background: #2ecc71; color: black; padding: 4px 10px; border-radius: 4px; font-weight: 900; font-size: 11px; text-transform: uppercase; width: fit-content; margin-bottom: 10px; }
+        .offer-title { font-size: 28px; font-weight: 900; color: #2ecc71; margin: 0; text-transform: uppercase; }
+        .offer-price { font-size: 20px; font-weight: 700; margin: 10px 0; }
+        .offer-price span { text-decoration: line-through; opacity: 0.5; font-size: 15px; margin-left: 10px; }
+
         .offer-buttons { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-offer-green { background: #2ecc71; color: black; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 12px; }
-        .btn-offer-dark { background: #1a1a1a; color: white; border: 1px solid #333; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+        .btn-offer-green { background: #2ecc71; color: black; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px; }
+        .btn-offer-dark { background: #1a1a1a; color: white; border: 1px solid #333; padding: 12px 20px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px; }
 
         .widget-box { flex: 1; padding: 25px; border-radius: 10px; display: flex; align-items: center; gap: 15px; cursor: pointer; color: white; text-decoration: none; border: 1px solid rgba(255,255,255,0.05); }
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 
-        /* --- SIDEBAR --- */
-        .store-grid { max-width: 1200px; margin: 40px auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
+        /* --- TIENDA GRID --- */
+        .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
         .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
-        .cat-item { display: flex; align-items: center; padding: 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 15px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; }
-        .cat-item img { width: 32px; margin-right: 15px; }
+        
+        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
+        .cat-item img { width: 35px; margin-right: 18px; }
+        
         .c-inicio { border-color: var(--c-inicio-b); background-color: var(--c-inicio-bg); }
         .c-ofertas { border-color: var(--c-oferta-b); background-color: var(--c-oferta-bg); }
         .c-rangos { border-color: var(--c-rango-b); background-color: var(--c-rango-bg); }
+        .c-survival { border-color: var(--c-survival-b); background-color: var(--c-survival-bg); }
+        .c-regalos { border-color: var(--c-regalo-b); background-color: var(--c-regalo-bg); }
+
+        /* SUB-CATEGORÍAS */
+        .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 15px; }
+        .submenu.active { display: flex; }
+        .sub-link { padding: 15px 20px 15px 60px; color: white; text-decoration: none; font-weight: 900; font-size: 14px; text-transform: uppercase; display: flex; align-items: center; transition: 0.2s; }
+        .sub-link::before { content: "▶"; font-size: 10px; margin-right: 12px; }
+        .sub-rango { background: rgba(138, 43, 226, 0.35); }
+        .sub-survival { background: rgba(0, 180, 255, 0.35); }
 
         /* DONADORES */
         .donors-section { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
@@ -96,28 +118,26 @@
         .cart-header { background: linear-gradient(135deg, var(--purple-main), var(--purple-dark)); padding: 40px 30px; color: white; position: relative; }
         .close-cart { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 22px; opacity: 0.7; }
         .cart-value-bar { background: #1a1d24; padding: 15px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 800; font-size: 13px; color: #a5a9b0; }
+        .cart-body { padding: 40px 30px; text-align: center; flex: 1; overflow-y: auto; }
         .cart-footer { padding: 25px; border-top: 1px solid rgba(255,255,255,0.05); display: none; }
         .btn-checkout { background: var(--purple-main); color: white; border: none; padding: 16px 0; width: 100%; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- CONTENIDO PRINCIPAL --- */
-        .main-content { background: var(--bg-panel); border-radius: 10px; padding: 60px; border: 1px solid rgba(255,255,255,0.03); line-height: 1.8; color: #a5a9b0; }
-        
-        /* CUADRO MÉTODOS DE PAGO */
-        .payment-box { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 35px; margin-top: 45px; border-top: 4px solid var(--purple-main); position: relative; overflow: hidden; }
-        .payment-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-        .payment-icons { display: flex; gap: 25px; margin-top: 25px; flex-wrap: wrap; align-items: center; }
-        .payment-icons svg { height: 25px; fill: white; opacity: 0.4; transition: 0.3s; }
-        .payment-icons svg:hover { opacity: 0.9; transform: scale(1.1); }
 
         /* --- MODAL --- */
         #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 4000; }
         .modal-content { background: #111; padding: 50px 40px; border-radius: 15px; width: 450px; text-align: center; border: 1px solid rgba(255,255,255,0.05); animation: modalFade 0.4s ease-out; }
         @keyframes modalFade { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        .input-row { background: #080808; border: 2px solid #222; border-radius: 8px; display: flex; align-items: center; padding: 5px 15px; width: 85%; margin: 0 auto 25px; }
-        .modal-avatar-preview { width: 35px; height: 35px; border-radius: 4px; margin-right: 15px; background: #1c2026; }
+        .input-row { background: #080808; border: 2px solid #222; border-radius: 8px; display: flex; align-items: center; padding: 5px 15px; width: 85%; margin: 0 auto 25px; transition: 0.3s; }
+        .input-row:focus-within { border-color: var(--purple-main); box-shadow: 0 0 15px var(--purple-glow); }
+        .modal-avatar-preview { width: 35px; height: 35px; border-radius: 4px; margin-right: 15px; }
         .modal-input { background: transparent; border: none; color: white; font-size: 16px; font-weight: 600; width: 100%; padding: 15px 0; font-family: inherit; }
         .modal-input:focus { outline: none; }
-        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; }
+        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto; transition: 0.3s; }
+
+        /* --- CONTENIDO --- */
+        .main-content { background: var(--bg-panel); border-radius: 10px; padding: 60px; border: 1px solid rgba(255,255,255,0.03); }
+        .payment-box { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 35px; margin-top: 45px; border-top: 4px solid var(--purple-main); }
+        .payment-icons { display: flex; gap: 25px; margin-top: 25px; flex-wrap: wrap; align-items: center; opacity: 0.5; }
+        .payment-icons svg { height: 25px; fill: white; }
 
         @media (max-width: 900px) { .header-top { padding: 20px; flex-direction: column; gap: 20px; } .top-section, .store-grid { grid-template-columns: 1fr; } }
     </style>
@@ -126,7 +146,7 @@
 
     <header class="header-top">
         <div class="header-btn" onclick="openNick()">
-            <div class="hexagon-frame"><img src="https://mc-heads.net/avatar/Steve/45" id="user-avatar" alt="Avatar"></div>
+            <div class="square-frame"><img src="https://mc-heads.net/avatar/Steve/45" id="user-avatar" alt="Avatar"></div>
             <div class="header-info-text">
                 <span id="user-greeting">Comprando como <strong>Invitado</strong></span>
                 <small id="user-action">
@@ -135,13 +155,13 @@
                 </small>
             </div>
         </div>
-        <div class="header-center"><img src="logo.png" alt="Logo" style="max-width: 160px;"></div>
+        <div class="header-center"><img src="logo.png" alt="Kubeon" style="max-width: 160px;"></div>
         <div class="header-btn" id="cart-btn-header" onclick="toggleCart()">
             <div class="header-info-text" style="text-align: right; margin-right: 15px;">
                 <span>VER CESTA</span>
                 <small>Tu cesta de compra</small>
             </div>
-            <div class="hexagon-frame" style="border-color: var(--purple-main);">
+            <div class="square-frame" style="border-color: var(--purple-main);">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             </div>
         </div>
@@ -161,7 +181,7 @@
             </div>
         </div>
         <div class="cart-value-bar">VALOR DE CESTA: 0,00 USD</div>
-        <div class="cart-body"><p style="color:#555; font-weight:700; margin-top:40px; font-size:14px;">No hay artículos en tu cesta todavía.</p></div>
+        <div class="cart-body"><p style="color:#555; font-weight:700; margin-top:40px;">No hay artículos en tu cesta todavía.</p></div>
         <div class="cart-footer" id="cart-footer-btn"><button class="btn-checkout">Finalizar Compra</button></div>
     </div>
 
@@ -172,19 +192,28 @@
                 <h2 class="offer-title">RANGO SUPREMO</h2>
                 <p class="offer-price">25.00 USD <span>40.00 USD</span></p>
                 <div class="offer-buttons">
-                    <button class="btn-offer-green"><svg width="14" viewBox="0 0 24 24" fill="black"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Ver más detalles</button>
-                    <button class="btn-offer-dark"><svg width="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Artículos parecidos</button>
+                    <button class="btn-offer-green">Ver más detalles</button>
+                    <button class="btn-offer-dark">Artículos parecidos</button>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <span class="offer-tag" style="background:var(--gold); color:black;">NUEVO</span>
+                <h2 class="offer-title" style="color:var(--gold)">LLAVES MYSTERY</h2>
+                <p class="offer-price">10.00 USD</p>
+                <div class="offer-buttons">
+                    <button class="btn-offer-green" style="background:var(--gold)">Ver más detalles</button>
+                    <button class="btn-offer-dark">Artículos parecidos</button>
                 </div>
             </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:15px;">
             <div class="widget-box wb-ip" onclick="copyIP(this)">
                 <svg width="30" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">PLAY.KUBEON.XYZ</p><small style="font-weight:800; opacity:0.8; font-size:10px;">CLICK PARA COPIAR IP</small></div>
+                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">PLAY.KUBEON.XYZ</p><small style="font-weight:800; opacity:0.8;">CLICK PARA COPIAR IP</small></div>
             </div>
             <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
                 <svg width="30" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">ÚNETE AL DISCORD</p><small style="font-weight:800; opacity:0.8; font-size:10px;">CLICK PARA IR</small></div>
+                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">ÚNETE AL DISCORD</p><small style="font-weight:800; opacity:0.8;">CLICK PARA IR</small></div>
             </a>
         </div>
     </section>
@@ -195,34 +224,51 @@
                 <div style="text-align:center; font-weight:900; color:var(--gold); font-size:13px; margin-bottom:25px;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
                 <a href="#" class="cat-item c-inicio"><img src="tierra.png"> Inicio</a>
                 <a href="ofertas/index.html" class="cat-item c-ofertas"><img src="ofertas.png"> Ofertas Exclusivas</a>
-                <a href="rangos/index.html" class="cat-item c-rangos"><img src="rangos.png"> Rangos</a>
+                
+                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="rangos.png"> Rangos <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu active" id="rangosMenu">
+                    <a href="rangos-permanentes/index.html" class="sub-link sub-rango">Permanentes</a>
+                    <a href="rangos-temporales/index.html" class="sub-link sub-rango">Temporales</a>
+                </div>
+
+                <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu active" id="survivalMenu">
+                    <a href="comandos/index.html" class="sub-link sub-survival">Comandos</a>
+                    <a href="kits-exclusivos/index.html" class="sub-link sub-survival">Kits Exclusivos</a>
+                    <a href="llaves/index.html" class="sub-link sub-survival">Llaves</a>
+                    <a href="dinero/index.html" class="sub-link sub-survival">Dinero</a>
+                    <a href="spawners/index.html" class="sub-link sub-survival">Spawners</a>
+                    <a href="protecciones/index.html" class="sub-link sub-survival">Protecciones</a>
+                </div>
+
+                <a href="regalos/index.html" class="cat-item c-regalos"><img src="regalos.png"> Regalos</a>
 
                 <div class="donors-section">
                     <div style="text-align:center; font-weight:900; font-size:11px; color:var(--gold); text-transform:uppercase;">Top Donadores</div>
-                    <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div style="display:flex; flex-direction:column;"><span style="font-size:9px; color:var(--gold); font-weight:900;">DEL MES</span><span style="font-size:14px; font-weight:800; color:white;">Ninguno</span></div></div>
+                    <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div style="display:flex; flex-direction:column;"><span style="font-size:9px; color:var(--gold); font-weight:900;">DEL MES</span><span style="font-size:14px; font-weight:800;">Ninguno</span></div></div>
                 </div>
             </div>
         </aside>
 
         <main class="main-content">
-            <h1 style="font-size: 32px; font-weight: 900; text-transform: uppercase; margin: 0; color:white;">BIENVENIDO A KUBEON NETWORK</h1>
-            <p style="margin-top:20px;">Te damos la bienvenida a nuestra tienda oficial. Todos los fondos recaudados son utilizados para mejorar tu experiencia de juego.</p>
-            <p><strong>IMPORTANTE:</strong> Si tu cuenta es premium, usa el comando <code>/premium</code> antes de comprar nada.</p>
+            <h1 style="font-size: 32px; font-weight: 900; text-transform: uppercase; margin: 0;">Kubeon Network</h1>
+            <div style="color:var(--purple-main); font-weight:800; letter-spacing:3px; margin-top:5px;">BIENVENIDO</div>
+            <div style="margin-top:40px; color:#a5a9b0; line-height:1.8;">
+                <p>Te damos la bienvenida a la tienda oficial de nuestra comunidad. Todos los fondos recaudados son utilizados para el mantenimiento del servidor.</p>
+                <p>Recuerda que si tu cuenta es premium, usa el comando <strong>/premium</strong> en el servidor antes de realizar cualquier compra.</p>
 
-            <div class="payment-box">
-                <div class="payment-title-row">
-                    <svg width="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-main)" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                    <h3 style="margin:0; color:white; font-size:16px; text-transform:uppercase;">MÉTODOS DE PAGO</h3>
-                </div>
-                <p style="font-size:14px; margin:0;">Nuestra tienda está 100% protegida y gestionada por <strong>Tebex Limited</strong>. Aceptamos PayPal, Tarjetas y métodos locales en toda Latinoamérica. Tus datos bancarios no se guardan en ningún momento.</p>
-                <div class="payment-icons">
-                    <svg viewBox="0 0 32 32" width="40" title="PayPal"><path d="M23.9 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z"/></svg>
-                    <svg viewBox="0 0 32 32" width="40" title="Visa"><path d="M12 18h2l1-7h-2l-1 7zm9.6-6.8c-.3-.2-.8-.2-1.3-.2-1.2 0-2.1.6-2.1 1.6 0 .7.6 1.1 1.1 1.3.5.3.7.4.7.7 0 .4-.5.7-1 .7-.7 0-1-.1-1.6-.4l-.2 1.3c.4.2 1.1.4 1.8.4 1.3 0 2.2-.6 2.2-1.7 0-.6-.4-.9-1.2-1.3-.5-.3-.8-.4-.8-.7 0-.3.4-.6.9-.6.5 0 .9.1 1.3.3l.2-1.2z"/></svg>
-                    <svg viewBox="0 0 32 32" width="40" title="Mastercard"><circle cx="12" cy="16" r="8" fill="currentColor"/><circle cx="20" cy="16" r="8" fill="currentColor" fill-opacity="0.5"/></svg>
+                <div class="payment-box">
+                    <h3 style="margin:0; color:white; font-size:16px; text-transform:uppercase; display:flex; align-items:center; gap:10px;">
+                        <svg width="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-main)" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        Métodos de Pago
+                    </h3>
+                    <div class="payment-icons">
+                        <svg viewBox="0 0 32 32" width="35"><path d="M23.9 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z"/></svg>
+                        <svg viewBox="0 0 32 32" width="35"><circle cx="12" cy="16" r="8" fill="currentColor"/><circle cx="20" cy="16" r="8" fill="currentColor" fill-opacity="0.5"/></svg>
+                        <svg viewBox="0 0 32 32" width="35"><path d="M12 18h2l1-7h-2l-1 7zm9.6-6.8c-.3-.2-.8-.2-1.3-.2-1.2 0-2.1.6-2.1 1.6 0 .7.6 1.1 1.1 1.3.5.3.7.4.7.7 0 .4-.5.7-1 .7-.7 0-1-.1-1.6-.4l-.2 1.3c.4.2 1.1.4 1.8.4 1.3 0 2.2-.6 2.2-1.7 0-.6-.4-.9-1.2-1.3-.5-.3-.8-.4-.8-.7 0-.3.4-.6.9-.6.5 0 .9.1 1.3.3l.2-1.2z"/></svg>
+                    </div>
                 </div>
             </div>
-            
-            <p style="margin-top:40px;">Si tu compra no llega en 5 minutos, abre un ticket en nuestro Discord para asistencia inmediata.</p>
         </main>
     </div>
 
@@ -234,17 +280,14 @@
                 <img src="https://mc-heads.net/avatar/Steve/35" id="modal-skin-preview" class="modal-avatar-preview" alt="Skin">
                 <input type="text" id="nick-input" class="modal-input" placeholder="Tu Nombre de Minecraft" oninput="updateModalSkin()">
             </div>
-            <button class="modal-btn" onclick="saveNick()">INICIAR SESIÓN <svg width="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg></button>
+            <button class="modal-btn" onclick="saveNick()">INICIAR SESIÓN ❯</button>
         </div>
     </div>
 
     <script>
-        // Actualizar Skin dinámica
         function updateModalSkin() {
-            const input = document.getElementById('nick-input');
-            const preview = document.getElementById('modal-skin-preview');
-            const nick = input.value.trim();
-            preview.src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`;
+            const nick = document.getElementById('nick-input').value.trim();
+            document.getElementById('modal-skin-preview').src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`;
         }
 
         function saveNick() {
@@ -252,9 +295,7 @@
             if (nick !== "") {
                 document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`;
                 document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`;
-                document.getElementById('user-avatar').style.filter = "none";
-                document.getElementById('user-avatar').style.opacity = "1";
-                document.getElementById('user-action').innerHTML = `<svg width="12" viewBox="0 0 24 24" fill="currentColor"><path d="M10 17l5-5-5-5v10z"/></svg> Nick registrado`;
+                document.getElementById('user-action').innerText = "➜ Nick registrado";
                 document.getElementById('cart-btn-header').style.display = 'flex';
                 document.getElementById('nickModal').style.display = 'none';
             }
@@ -264,10 +305,9 @@
             const dr = document.getElementById('cartDrawer');
             const ov = document.getElementById('cartOverlay');
             dr.classList.toggle('active');
-            ov.style.display = (dr.classList.contains('active')) ? 'block' : 'none';
+            ov.style.display = dr.classList.contains('active') ? 'block' : 'none';
         }
 
-        // Slider automático (2 segundos)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         setInterval(() => {
@@ -280,6 +320,7 @@
 
         function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
+        window.onclick = function(e) { if (e.target == document.getElementById('nickModal')) document.getElementById('nickModal').style.display = 'none'; }
         
         function copyIP(element) {
             navigator.clipboard.writeText('play.kubeon.xyz');
@@ -288,8 +329,6 @@
             p.innerText = "IP COPIADA!";
             setTimeout(() => { p.innerText = old; }, 2000);
         }
-
-        window.onclick = function(event) { if (event.target == document.getElementById('nickModal')) document.getElementById('nickModal').style.display = 'none'; }
     </script>
 </body>
 </html>
