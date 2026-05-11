@@ -123,8 +123,20 @@
                 <div style="text-align:center; font-weight:900; color:var(--gold); font-size:11px; margin-bottom:25px; text-transform:uppercase;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
                 <a href="../" class="cat-item c-inicio"><img src="../tierra.png"> Inicio</a>
                 <a href="../ofertas-exclusivas/" class="cat-item c-ofertas"><img src="../ofertas.png"> Ofertas Exclusivas</a>
+                
                 <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="../rangos.png"> Rangos Exclusivos <span style="margin-left:auto; font-size:12px;">▼</span></a>
-                <div class="submenu" id="rangosMenu"><a href="../permanentes/index.html" class="sub-link">Permanentes</a><a href="../rangos-temporales/index.html" class="sub-link">Temporales</a></div>
+                <div class="submenu" id="rangosMenu"><a href="../permanentes/" class="sub-link">Permanentes</a><a href="../temporales/" class="sub-link">Temporales</a></div>
+
+                <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="../survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu" id="survivalMenu">
+                    <a href="../comandos/" class="sub-link">Comandos</a>
+                    <a href="../kits/" class="sub-link">Kits Exclusivos</a>
+                    <a href="../llaves/" class="sub-link">Llaves</a>
+                    <a href="../dinero/" class="sub-link">Dinero</a>
+                    <a href="../spawners/" class="sub-link">Spawners</a>
+                    <a href="../protecciones/" class="sub-link">Protecciones</a>
+                </div>
+
                 <a href="#" class="cat-item c-regalos" style="border-color:var(--c-regalos-b); background-color:var(--c-regalos-bg);"><img src="../regalos.png"> Regalos</a>
 
                 <div class="donors-section">
@@ -139,51 +151,11 @@
         <main>
             <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px; font-size:22px;">Tarjetas de Regalo</h2>
             <div class="items-grid">
-                <div class="product-card">
-                    <div class="product-img-container"><img src="../regalos.png"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Tarjeta $10.00</h3>
-                        <div class="product-price">8.00 USD <span>10.00</span></div>
-                        <button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button>
-                        <div class="desc-item">✓ 20% de Descuento</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img-container"><img src="../regalos.png"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Tarjeta $25.00</h3>
-                        <div class="product-price">20.00 USD <span>25.00</span></div>
-                        <button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button>
-                        <div class="desc-item">✓ 20% de Descuento</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img-container"><img src="../regalos.png"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Tarjeta $50.00</h3>
-                        <div class="product-price">40.00 USD <span>50.00</span></div>
-                        <button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button>
-                        <div class="desc-item">✓ 20% de Descuento</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img-container"><img src="../regalos.png"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Tarjeta $75.00</h3>
-                        <div class="product-price">60.00 USD <span>75.00</span></div>
-                        <button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button>
-                        <div class="desc-item">✓ 20% de Descuento</div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img-container"><img src="../regalos.png"></div>
-                    <div class="product-info">
-                        <h3 class="product-title">Tarjeta $100.00</h3>
-                        <div class="product-price">80.00 USD <span>100.00</span></div>
-                        <button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button>
-                        <div class="desc-item">✓ 20% de Descuento</div>
-                    </div>
-                </div>
+                <div class="product-card"><div class="product-img-container"><img src="../regalos.png"></div><div class="product-info"><h3 class="product-title">Tarjeta $10.00</h3><div class="product-price">8.00 USD <span>10.00</span></div><button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button><div class="desc-item">✓ 20% de Descuento</div></div></div>
+                <div class="product-card"><div class="product-img-container"><img src="../regalos.png"></div><div class="product-info"><h3 class="product-title">Tarjeta $25.00</h3><div class="product-price">20.00 USD <span>25.00</span></div><button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button><div class="desc-item">✓ 20% de Descuento</div></div></div>
+                <div class="product-card"><div class="product-img-container"><img src="../regalos.png"></div><div class="product-info"><h3 class="product-title">Tarjeta $50.00</h3><div class="product-price">40.00 USD <span>50.00</span></div><button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button><div class="desc-item">✓ 20% de Descuento</div></div></div>
+                <div class="product-card"><div class="product-img-container"><img src="../regalos.png"></div><div class="product-info"><h3 class="product-title">Tarjeta $75.00</h3><div class="product-price">60.00 USD <span>75.00</span></div><button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button><div class="desc-item">✓ 20% de Descuento</div></div></div>
+                <div class="product-card"><div class="product-img-container"><img src="../regalos.png"></div><div class="product-info"><h3 class="product-title">Tarjeta $100.00</h3><div class="product-price">80.00 USD <span>100.00</span></div><button class="buy-btn"><svg width="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Comprar</button><div class="desc-item">✓ 20% de Descuento</div></div></div>
             </div>
         </main>
     </div>
