@@ -58,7 +58,7 @@
         #cart-btn-header { display: none; }
 
         /* --- LAYOUT --- */
-        .store-grid { max-width: 1200px; margin: 40px auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
+        .store-grid { max-width: 1300px; margin: 40px auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
         .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
         .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
         .cat-item img { width: 32px; margin-right: 18px; }
@@ -89,16 +89,16 @@
         .cart-value-bar { background: #1a1d24; padding: 15px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 800; font-size: 13px; color: #a5a9b0; }
         .cart-body { padding: 40px 30px; text-align: center; flex: 1; overflow-y: auto; }
 
-        /* --- DISEÑO DE RANGOS TEMPORALES (ESTILO image_424301.png) --- */
+        /* --- DISEÑO DE FILAS (INSPIRADO EN image_424301.png) --- */
         .rank-row { background: #111; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); padding: 25px; margin-bottom: 30px; display: flex; flex-direction: column; }
         .rank-row-title { font-size: 20px; font-weight: 900; margin-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.05); padding-bottom: 10px; text-transform: uppercase; color: white; }
         .rank-flex { display: flex; gap: 25px; align-items: center; }
         .rank-avatar-side { text-align: center; min-width: 140px; }
         .rank-avatar-side img { width: 110px; margin-bottom: 15px; }
-        .btn-details { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 800; text-transform: uppercase; }
+        .btn-details { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px 15px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 5px; }
         
         .subs-container { display: flex; gap: 15px; flex: 1; }
-        .sub-option { background: rgba(255,255,255,0.02); border: 2px solid #222; border-radius: 12px; padding: 20px; flex: 1; text-align: center; transition: 0.3s; }
+        .sub-option { background: rgba(255,255,255,0.02); border: 2px solid #222; border-radius: 12px; padding: 20px; flex: 1; text-align: center; transition: 0.3s; position: relative; }
         .sub-option:hover { transform: scale(1.02); border-color: var(--purple-main); background: rgba(138,43,226,0.05); }
         
         .sub-name { font-size: 18px; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; color: white; }
@@ -139,7 +139,10 @@
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-header">
             <div class="close-cart" onclick="toggleCart()">✕</div>
-            <h2 style="margin:0; display:flex; align-items:center; gap:12px; font-size:18px;">🛒 CESTA VACÍA</h2>
+            <h2 style="margin:0; display:flex; align-items:center; gap:12px; font-size:18px;">
+                <svg width="22" viewBox="0 0 24 24" fill="white"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                CESTA VACÍA
+            </h2>
             <div style="display:flex; gap:10px; margin-top:20px;">
                 <button style="background:#e74c3c; color:white; border:none; padding:10px; border-radius:6px; flex:1.5; font-weight:800; cursor:pointer; font-size:11px;" onclick="logout()">CERRAR SESIÓN</button>
                 <select style="background:#1c2026; color:white; border:none; padding:10px; border-radius:6px; flex:1; font-weight:800; font-size:11px; cursor:pointer;"><option>USD ($)</option><option>PYG (₲)</option><option>ARS ($)</option></select>
@@ -155,23 +158,10 @@
                 <div style="text-align:center; font-weight:900; color:var(--gold); font-size:11px; margin-bottom:25px; text-transform:uppercase;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
                 <a href="../index.html" class="cat-item c-inicio"><img src="../tierra.png"> Inicio</a>
                 <a href="../ofertas-exclusivas/index.html" class="cat-item c-ofertas"><img src="../ofertas.png"> Ofertas Exclusivas</a>
-                
-                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="../rangos.png"> Rangos Exclusivos <span style="margin-left:auto; font-size:12px;">▼</span></a>
-                <div class="submenu active" id="rangosMenu">
-                    <a href="../permanentes/index.html" class="sub-link">Permanentes</a>
-                    <a href="#" class="sub-link" style="color:var(--gold)">Temporales</a>
-                </div>
-
+                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')" style="border-color:var(--c-rango-b); background:var(--c-rango-bg);"><img src="../rangos.png"> Rangos Exclusivos <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu active" id="rangosMenu"><a href="../permanentes/index.html" class="sub-link">Permanentes</a><a href="#" class="sub-link" style="color:var(--gold)">Temporales</a></div>
                 <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="../survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
-                <div class="submenu" id="survivalMenu">
-                    <a href="../comandos/index.html" class="sub-link">Comandos</a>
-                    <a href="../kits/index.html" class="sub-link">Kits Exclusivos</a>
-                    <a href="../llaves/index.html" class="sub-link">Llaves</a>
-                    <a href="../dinero/index.html" class="sub-link">Dinero</a>
-                    <a href="../spawners/index.html" class="sub-link">Spawners</a>
-                    <a href="../protecciones/index.html" class="sub-link">Protecciones</a>
-                </div>
-
+                <div class="submenu" id="survivalMenu"><a href="../comandos/index.html" class="sub-link">Comandos</a><a href="../kits/index.html" class="sub-link">Kits Exclusivos</a><a href="../llaves/index.html" class="sub-link">Llaves</a><a href="../dinero/index.html" class="sub-link">Dinero</a><a href="../spawners/index.html" class="sub-link">Spawners</a><a href="../protecciones/index.html" class="sub-link">Protecciones</a></div>
                 <a href="../regalos/index.html" class="cat-item c-regalos"><img src="../regalos.png"> Regalos</a>
 
                 <div class="donors-section">
@@ -187,37 +177,13 @@
             <h2 style="color:var(--gold); text-transform:uppercase; font-weight:900; margin-bottom:25px; font-size:22px; letter-spacing:1px;">Rangos Temporales</h2>
 
             <div class="rank-row">
-                <div class="rank-row-title">Rango VIP - AERION</div>
+                <div class="rank-row-title">Rango VIP - ELITE</div>
                 <div class="rank-flex">
-                    <div class="rank-avatar-side"><img src="../aerion.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="rank-avatar-side"><img src="../elite.png"><button class="btn-details">ℹ Ver detalles</button></div>
                     <div class="subs-container">
-                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">9.99 USD <span class="sub-old-price">29.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">24.99 USD <span class="sub-old-price">74.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">39.99 USD <span class="sub-old-price">119.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rank-row">
-                <div class="rank-row-title">Rango VIP - OMEGA</div>
-                <div class="rank-flex">
-                    <div class="rank-avatar-side"><img src="../omega.png"><button class="btn-details">ℹ Ver detalles</button></div>
-                    <div class="subs-container">
-                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">6.99 USD <span class="sub-old-price">19.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">18.99 USD <span class="sub-old-price">49.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">32.99 USD <span class="sub-old-price">89.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="rank-row">
-                <div class="rank-row-title">Rango VIP - MASTER</div>
-                <div class="rank-flex">
-                    <div class="rank-avatar-side"><img src="../master.png"><button class="btn-details">ℹ Ver detalles</button></div>
-                    <div class="subs-container">
-                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">4.99 USD <span class="sub-old-price">14.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">12.99 USD <span class="sub-old-price">39.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">22.99 USD <span class="sub-old-price">69.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">0.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">1.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">3.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
                     </div>
                 </div>
             </div>
@@ -227,24 +193,49 @@
                 <div class="rank-flex">
                     <div class="rank-avatar-side"><img src="../ultimate.png"><button class="btn-details">ℹ Ver detalles</button></div>
                     <div class="subs-container">
-                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">2.99 USD <span class="sub-old-price">9.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">7.99 USD <span class="sub-old-price">24.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">13.99 USD <span class="sub-old-price">49.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">1.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">3.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">7.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
                     </div>
                 </div>
             </div>
 
             <div class="rank-row">
-                <div class="rank-row-title">Rango VIP - ELITE</div>
+                <div class="rank-row-title">Rango VIP - MASTER</div>
                 <div class="rank-flex">
-                    <div class="rank-avatar-side"><img src="../elite.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="rank-avatar-side"><img src="../master.png"><button class="btn-details">ℹ Ver detalles</button></div>
                     <div class="subs-container">
-                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">1.49 USD <span class="sub-old-price">4.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">3.99 USD <span class="sub-old-price">12.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
-                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">6.99 USD <span class="sub-old-price">24.99</span></div><button class="sub-buy-btn">🛒 Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">2.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">5.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">10.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
                     </div>
                 </div>
             </div>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - OMEGA</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../omega.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">3.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">7.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">14.99 USD</div><button class="sub-buy-btn">Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rank-row">
+                <div class="rank-row-title">Rango VIP - AERION</div>
+                <div class="rank-flex">
+                    <div class="rank-avatar-side"><img src="../aerion.png"><button class="btn-details">ℹ Ver detalles</button></div>
+                    <div class="subs-container">
+                        <div class="sub-option"><div class="sub-name">1 Mes</div><div class="sub-price-row">4.99 USD <span class="sub-old-price">14.99</span></div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">3 Meses</div><div class="sub-price-row">9.99 USD <span class="sub-old-price">29.99</span></div><button class="sub-buy-btn">Comprar</button></div>
+                        <div class="sub-option"><div class="sub-name">6 Meses</div><div class="sub-price-row">19.99 USD <span class="sub-old-price">59.99</span></div><button class="sub-buy-btn">Comprar</button></div>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 
