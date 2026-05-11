@@ -10,10 +10,9 @@
             --bg-body: #0b0d10;
             --bg-panel: #16191e;
             --purple-main: #8a2be2; 
-            --purple-hover: #9d4edd;
+            --purple-glow: rgba(138, 43, 226, 0.6);
             --text-gray: #a5a9b0;
             
-            /* Colores Categorías */
             --cat-verde: #8ed321;
             --cat-magenta: #e000ff;
             --cat-amarillo: #ffcc00;
@@ -29,249 +28,247 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER ESTILO DIOSESMC --- */
+        /* --- HEADER ESTILO DIOSESMC CON HOVER EFECTO --- */
         .header-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 30px 60px;
-            background: rgba(0,0,0,0.2);
+            padding: 25px 80px;
+            background: rgba(0,0,0,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .header-side { display: flex; align-items: center; gap: 15px; flex: 1; }
-        .header-right { justify-content: flex-end; text-align: right; }
+        .header-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Efecto de brillo y cuadro al pasar el mouse */
+        .header-btn:hover {
+            border-color: var(--purple-main);
+            background: rgba(138, 43, 226, 0.1);
+            box-shadow: 0 0 20px var(--purple-glow);
+        }
 
         .hexagon-frame {
-            width: 65px; height: 65px;
+            width: 60px; height: 60px;
             background: #1c2026;
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
             display: flex; align-items: center; justify-content: center;
             border: 2px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
         }
-        .hexagon-frame:hover { border-color: var(--purple-main); transform: scale(1.05); }
-        .hexagon-frame img { width: 45px; height: 45px; border-radius: 4px; }
+        .hexagon-frame img { width: 40px; height: 40px; }
 
         .header-info-text { display: flex; flex-direction: column; }
-        .header-info-text span { font-size: 14px; font-weight: 800; color: white; text-transform: uppercase; }
-        .header-info-text a, .header-info-text small { 
-            font-size: 11px; color: var(--purple-main); text-decoration: none; font-weight: 700; 
-        }
+        .header-info-text span { font-size: 14px; font-weight: 800; text-transform: uppercase; }
+        .header-info-text small { font-size: 11px; color: var(--purple-main); font-weight: 700; }
 
         .header-center img {
-            max-width: 200px;
-            filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.4));
+            max-width: 180px;
+            filter: drop-shadow(0 0 15px var(--purple-glow));
         }
 
-        /* --- WIDGETS IP Y DISCORD --- */
-        .hero-widgets {
-            display: flex; gap: 20px; width: 100%; max-width: 900px; margin: 40px auto; padding: 0 20px; box-sizing: border-box;
+        /* --- SECCIÓN TOP (OFERTA + WIDGETS) --- */
+        .top-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 0 20px;
         }
+
+        .featured-offer {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/800x400/222/555?text=IMAGEN+DE+OFERTA');
+            background-size: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-badge {
+            position: absolute; top: 20px; right: 20px;
+            background: var(--cat-verde); color: black;
+            padding: 5px 15px; border-radius: 5px; font-weight: 900; font-size: 12px;
+        }
+
+        .offer-title { font-size: 28px; font-weight: 900; color: var(--cat-verde); margin: 0; }
+        .offer-price { font-size: 20px; font-weight: 700; margin: 10px 0; }
+
+        .widgets-column { display: flex; flex-direction: column; gap: 20px; }
+
         .widget-box {
-            flex: 1; padding: 20px; border-radius: 12px; display: flex; flex-direction: column;
+            flex: 1; padding: 25px; border-radius: 12px; display: flex; flex-direction: column;
             align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;
             text-align: center; text-decoration: none; color: white;
         }
-        .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); box-shadow: 0 10px 20px rgba(249, 212, 35, 0.2); }
-        .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2); }
+        .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
+        .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .widget-box:hover { transform: translateY(-5px); filter: brightness(1.1); }
-        .wb-title { font-weight: 900; font-size: 20px; margin: 0; text-transform: uppercase; }
+        .wb-title { font-weight: 900; font-size: 18px; margin: 0; }
         .wb-sub { font-size: 12px; opacity: 0.9; font-weight: 700; }
 
-        /* --- BOTON DIVISAS --- */
-        .currency-container { position: absolute; top: 100px; right: 60px; z-index: 50; }
-        .currency-btn {
-            background: #1c2026; border: 1px solid rgba(255,255,255,0.1); color: white;
-            padding: 8px 15px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px;
+        /* --- CUERPO DE LA TIENDA --- */
+        .store-grid {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            padding: 0 20px;
         }
-        .currency-menu {
-            position: absolute; top: 40px; right: 0; background: var(--bg-panel); 
-            border-radius: 8px; display: none; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); width: 150px;
+
+        .sidebar-header {
+            text-align: center; font-weight: 900; color: var(--cat-amarillo);
+            font-size: 13px; margin-bottom: 20px; letter-spacing: 1px;
         }
-        .currency-menu.active { display: grid; }
-        .curr-item { padding: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer; font-size: 11px; text-align: center; font-weight: 700; }
-        .curr-item:hover { background: var(--purple-main); }
-
-        /* --- TIENDA GRID --- */
-        .store-grid { max-width: 1300px; margin: 20px auto 100px; display: grid; grid-template-columns: 320px 1fr; gap: 30px; padding: 0 20px; }
-
-        .sidebar-title { text-transform: uppercase; font-weight: 900; color: var(--purple-main); margin-bottom: 15px; font-size: 13px; letter-spacing: 1px; }
 
         .cat-item {
             display: flex; align-items: center; padding: 15px 20px; border-radius: 8px;
             text-decoration: none; color: white; font-weight: 800; font-size: 14px;
             margin-bottom: 10px; transition: 0.3s; gap: 15px; background: #1c2026;
-            border-bottom: 3px solid rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .cat-item img { width: 22px; height: 22px; }
-        .cat-item:hover { transform: translateX(8px); filter: brightness(1.1); }
+        .cat-item:hover { transform: scale(1.02); background: #252a33; border-color: var(--purple-main); }
+        .cat-item img { width: 24px; }
 
-        /* Estilos de bordes por categoría */
-        .c-ofertas { border-left: 5px solid var(--cat-verde); }
-        .c-rangos { border-left: 5px solid var(--purple-main); background: #231a31; }
-        .c-survival { border-left: 5px solid var(--cat-azul); }
-        .c-regalos { border-left: 5px solid var(--cat-magenta); }
-
-        /* Subcategorias Rangos */
-        .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 15px; border-radius: 0 0 8px 8px; overflow: hidden; }
-        .submenu.active { display: flex; }
-        .sub-link {
-            padding: 12px 55px; background: #231a31; color: #ccc;
-            text-decoration: none; font-weight: 700; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03);
+        .main-content {
+            background: var(--bg-panel); border-radius: 12px; padding: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .sub-link:hover { color: white; background: var(--purple-main); }
 
-        .donor-box {
-            background: var(--bg-panel); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.05);
+        .info-badge {
+            background: var(--cat-verde); color: black; padding: 8px 20px;
+            border-radius: 5px; font-weight: 900; display: inline-block; margin-bottom: 20px;
         }
-        .donor-avatar { width: 45px; height: 45px; border-radius: 6px; border: 2px solid var(--purple-main); }
-
-        /* --- CONTENIDO --- */
-        .main-content { background: var(--bg-panel); padding: 50px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); min-height: 400px; }
-        .main-content h1 { font-size: 32px; font-weight: 900; margin-top: 0; text-transform: uppercase; }
-        .main-content h1 span { color: var(--purple-main); }
 
         /* --- MODAL --- */
         #nickModal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1000;
+            background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 1000;
         }
         .modal-content {
-            background: var(--bg-panel); padding: 40px; border-radius: 15px; width: 380px; text-align: center;
-            border-top: 5px solid var(--purple-main); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            background: var(--bg-panel); padding: 40px; border-radius: 15px; width: 350px; text-align: center;
+            border-top: 5px solid var(--purple-main);
         }
         .modal-content input {
-            width: 100%; padding: 15px; margin: 25px 0; border-radius: 6px; border: none; background: #0b0d10; color: white; font-weight: 600; box-sizing: border-box;
+            width: 100%; padding: 15px; margin: 20px 0; border-radius: 5px; border: none; background: #0b0d10; color: white; box-sizing: border-box;
         }
-        .modal-btn { background: var(--purple-main); color: white; padding: 14px 0; width: 100%; border: none; border-radius: 6px; font-weight: 800; cursor: pointer; transition: 0.3s; }
-        .modal-btn:hover { background: var(--purple-hover); }
+        .modal-btn { background: var(--purple-main); color: white; padding: 12px 0; width: 100%; border: none; border-radius: 6px; font-weight: 800; cursor: pointer; }
 
         @media (max-width: 900px) {
-            .header-top { flex-direction: column; gap: 20px; padding: 20px; }
-            .header-side { justify-content: center; }
-            .hero-widgets { flex-direction: column; }
+            .header-top { flex-direction: column; padding: 20px; }
+            .top-section { grid-template-columns: 1fr; }
             .store-grid { grid-template-columns: 1fr; }
-            .currency-container { position: relative; top: 0; right: 0; text-align: center; margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
 
     <header class="header-top">
-        <div class="header-side header-left">
+        <a href="javascript:void(0)" class="header-btn" onclick="openNick()">
             <div class="hexagon-frame">
-                <img src="https://mc-heads.net/avatar/Steve/45" alt="Invitado">
+                <img src="https://mc-heads.net/avatar/Steve/40" alt="Avatar">
             </div>
             <div class="header-info-text">
                 <span>Comprando como <strong>Invitado</strong></span>
-                <a href="javascript:void(0)" onclick="openNick()">[➜] Inicia sesión para comprar</a>
+                <small>➜ Clickea para iniciar sesión</small>
             </div>
-        </div>
+        </a>
 
         <div class="header-center">
             <img src="logo.png" alt="Kubeon Network">
         </div>
 
-        <div class="header-side header-right">
-            <div class="header-info-text">
+        <a href="#" class="header-btn">
+            <div class="header-info-text" style="text-align: right;">
                 <span>🛒 VER CESTA</span>
                 <small>Tu cesta de compra</small>
             </div>
             <div class="hexagon-frame" style="border-color: var(--purple-main);">
-                <img src="https://img.icons8.com/color/48/minecraft-skeleton.png" alt="Cesta">
+                <img src="https://img.icons8.com/color/48/minecraft-skeleton.png" alt="Cart">
             </div>
-        </div>
+        </a>
     </header>
 
-    <div class="currency-container">
-        <button class="currency-btn" onclick="toggleCurrency()">$ USD / PYG ▾</button>
-        <div class="currency-menu" id="currencyMenu">
-            <div class="curr-item">AUD</div> <div class="curr-item">BRL</div>
-            <div class="curr-item">CAD</div> <div class="curr-item">EUR</div>
-            <div class="curr-item">GBP</div> <div class="curr-item">PYG</div>
-            <div class="curr-item" style="grid-column: span 2; background: var(--purple-main);">USD</div>
+    <section class="top-section">
+        <div class="featured-offer">
+            <span class="offer-badge">EN OFERTA</span>
+            <h2 class="offer-title">PACK DE KITS EXCLUSIVOS</h2>
+            <p class="offer-price">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 14px;">105.00 USD</span></p>
+            <div style="display: flex; gap: 10px;">
+                <button style="background: var(--cat-verde); border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver más detalles</button>
+                <button style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver artículos parecidos</button>
+            </div>
         </div>
-    </div>
 
-    <div class="hero-widgets">
-        <div class="widget-box wb-ip" onclick="copyIP()">
-            <p class="wb-title">PLAY.KUBEON.XYZ</p>
-            <span class="wb-sub">CLICK PARA COPIAR IP</span>
+        <div class="widgets-column">
+            <div class="widget-box wb-ip" onclick="copyIP()">
+                <p class="wb-title">PLAY.KUBEON.XYZ</p>
+                <span class="wb-sub">1,997 USUARIOS CONECTADOS</span>
+            </div>
+            <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
+                <p class="wb-title">¡ÚNETE A NUESTRO DISCORD!</p>
+                <span class="wb-sub">130,979 USUARIOS CONECTADOS</span>
+            </a>
         </div>
-        <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
-            <p class="wb-title">¡ÚNETE A NUESTRO DISCORD!</p>
-            <span class="wb-sub">CLICK PARA ENTRAR AL SERVIDOR</span>
-        </a>
-    </div>
+    </section>
 
     <div class="store-grid">
         <aside>
-            <div class="sidebar-title">Empieza a comprar!</div>
-            
-            <a href="#" class="cat-item c-ofertas">
-                <img src="ofertas.png" alt="icon"> OFERTAS ESPECIALES
-            </a>
-            
-            <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleRangos()">
-                <img src="rangos.png" alt="icon"> RANGOS EXCLUSIVOS <span style="margin-left:auto">▾</span>
-            </a>
-            <div class="submenu" id="rangosMenu">
-                <a href="#" class="sub-link">Rangos Permanentes</a>
-                <a href="#" class="sub-link">Rangos Temporales</a>
-            </div>
-
-            <a href="#" class="cat-item c-survival">
-                <img src="survival.png" alt="icon"> SURVIVAL CUSTOM
-            </a>
-
-            <a href="#" class="cat-item c-regalos">
-                <img src="regalos.png" alt="icon"> REGALOS
-            </a>
-
-            <div class="sidebar-title" style="margin-top: 35px;">Máximo Donador</div>
-            <div class="donor-box">
-                <img src="https://mc-heads.net/avatar/Steve/50" class="donor-avatar" alt="Donor">
-                <div class="header-info-text">
-                    <span style="font-size: 13px;">Ninguno</span>
-                    <small style="opacity: 0.6; color: white;">Has sido quien más donó este mes</small>
-                </div>
-            </div>
+            <div class="sidebar-header">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
+            <nav>
+                <a href="#" class="cat-item"><img src="tierra.png" alt="icon"> Inicio</a>
+                <a href="#" class="cat-item"><img src="ofertas.png" alt="icon"> Packs Oferta</a>
+                <a href="#" class="cat-item"><img src="regalos.png" alt="icon"> Cosméticos Exclusivos</a>
+                <a href="#" class="cat-item" style="border-left: 4px solid var(--cat-amarillo);"><img src="rangos.png" alt="icon"> Rangos Exclusivos</a>
+                <a href="#" class="cat-item"><img src="survival.png" alt="icon"> Survival Custom</a>
+            </nav>
         </aside>
 
         <main class="main-content">
-            <h1>Bienvenido a <span>Kubeon</span></h1>
-            <p style="color:var(--text-gray); line-height: 1.8; font-size: 15px;">
-                Esta es la tienda oficial de <strong>Kubeon Network</strong>. Aquí puedes adquirir rangos, beneficios y objetos exclusivos para mejorar tu experiencia en nuestros servidores. 
-                <br><br>
-                Todos los pagos son procesados de forma segura a través de <strong>Tebex</strong>. Si tienes dudas o problemas con tu compra, nuestro equipo de soporte en Discord está disponible para ayudarte.
+            <h2 style="margin-top: 0;">BIENVENIDO A LA TIENDA OFICIAL DE <span style="color: var(--cat-amarillo);">KUBEON NETWORK</span></h2>
+            <p style="color: var(--text-gray); font-size: 14px; line-height: 1.6;">
+                Te encuentras en la tienda de <strong>Kubeon</strong> y aquí puedes acceder a los mejores cosméticos, rangos, kits exclusivos y más artículos VIP.
+            </p>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <span class="info-badge">! INFORMACIÓN RELEVANTE</span>
+            </div>
+
+            <p style="color: var(--text-gray); font-size: 13px;">
+                Es muy importante que antes de comprar algún artículo de nuestra tienda, lo hagas teniendo por seguro si tu cuenta es premium o no. 
             </p>
         </main>
     </div>
 
     <div id="nickModal">
         <div class="modal-content">
-            <h2 style="font-weight: 900; margin: 0; color: white;">INTRODUCE TU NICK</h2>
-            <p style="font-size: 12px; opacity: 0.7; color: white; margin-top: 5px;">Escribe tu nombre de usuario de Minecraft</p>
-            <input type="text" placeholder="Ejemplo: Notch">
-            <button class="modal-btn" onclick="closeNick()">CONTINUAR →</button>
+            <h2 style="margin: 0; font-size: 18px;">INTRODUCE TU NICK</h2>
+            <input type="text" placeholder="Ingresa tu nick de Minecraft...">
+            <button class="modal-btn" onclick="closeNick()">Continuar ➜</button>
         </div>
     </div>
 
     <script>
-        function toggleRangos() { document.getElementById('rangosMenu').classList.toggle('active'); }
-        function toggleCurrency() { document.getElementById('currencyMenu').classList.toggle('active'); }
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
         function closeNick() { document.getElementById('nickModal').style.display = 'none'; }
-
         function copyIP() {
             navigator.clipboard.writeText('play.kubeon.xyz');
             alert('¡IP copiada: play.kubeon.xyz!');
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('nickModal')) closeNick();
         }
     </script>
 </body>
