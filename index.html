@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-body: #0f1115;
+            --bg-body: #0b0d10;
             --bg-panel: #16191e;
-            --purple-main: #8a2be2; /* Morado Kubeon */
+            --purple-main: #8a2be2; 
             --purple-hover: #9d4edd;
             --text-gray: #a5a9b0;
             
@@ -24,250 +24,187 @@
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-body);
+            background-image: radial-gradient(circle at 50% -20%, #1a222d 0%, var(--bg-body) 80%);
             color: white;
             overflow-x: hidden;
         }
 
-        /* --- TOP NAVIGATION --- */
-        .top-nav {
-            height: 70px;
+        /* --- HEADER ESTILO DIOSESMC --- */
+        .header-top {
             display: flex;
             align-items: center;
-            justify-content: flex-end;
-            padding: 0 40px;
-            gap: 15px;
-            position: relative;
-            z-index: 100;
+            justify-content: space-between;
+            padding: 30px 60px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .currency-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            gap: 8px;
+        .header-side { display: flex; align-items: center; gap: 15px; flex: 1; }
+        .header-right { justify-content: flex-end; text-align: right; }
+
+        .hexagon-frame {
+            width: 65px; height: 65px;
+            background: #1c2026;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(255,255,255,0.1);
             transition: 0.3s;
         }
-        .currency-btn:hover { border-color: var(--purple-main); }
+        .hexagon-frame:hover { border-color: var(--purple-main); transform: scale(1.05); }
+        .hexagon-frame img { width: 45px; height: 45px; border-radius: 4px; }
 
-        .cart-box {
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 8px 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
+        .header-info-text { display: flex; flex-direction: column; }
+        .header-info-text span { font-size: 14px; font-weight: 800; color: white; text-transform: uppercase; }
+        .header-info-text a, .header-info-text small { 
+            font-size: 11px; color: var(--purple-main); text-decoration: none; font-weight: 700; 
         }
 
-        .cart-text { display: flex; flex-direction: column; }
-        .cart-title { font-weight: 800; font-size: 13px; }
-        .cart-reg { 
-            font-size: 11px; 
-            color: var(--purple-main); 
-            text-decoration: none; 
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .cart-reg:hover { color: white; }
-
-        /* --- HERO SECTION (ESTILO DIOSESMC) --- */
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px 20px;
+        .header-center img {
+            max-width: 200px;
+            filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.4));
         }
 
-        .hero-logo img {
-            max-width: 320px;
-            filter: drop-shadow(0 0 30px rgba(138, 43, 226, 0.4));
-            margin-bottom: 40px;
-        }
-
+        /* --- WIDGETS IP Y DISCORD --- */
         .hero-widgets {
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
+            display: flex; gap: 20px; width: 100%; max-width: 900px; margin: 40px auto; padding: 0 20px; box-sizing: border-box;
         }
-
         .widget-box {
-            flex: 1;
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: center;
-            text-decoration: none;
-            color: white;
+            flex: 1; padding: 20px; border-radius: 12px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; cursor: pointer; transition: 0.3s;
+            text-align: center; text-decoration: none; color: white;
         }
-
-        .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
-        .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-
+        .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); box-shadow: 0 10px 20px rgba(249, 212, 35, 0.2); }
+        .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2); }
         .widget-box:hover { transform: translateY(-5px); filter: brightness(1.1); }
-        .wb-title { font-weight: 900; font-size: 18px; margin: 0; }
-        .wb-sub { font-size: 12px; opacity: 0.9; font-weight: 600; }
+        .wb-title { font-weight: 900; font-size: 20px; margin: 0; text-transform: uppercase; }
+        .wb-sub { font-size: 12px; opacity: 0.9; font-weight: 700; }
 
-        /* --- CONTENEDOR TIENDA --- */
-        .store-grid {
-            max-width: 1300px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 30px;
-            padding: 0 20px;
+        /* --- BOTON DIVISAS --- */
+        .currency-container { position: absolute; top: 100px; right: 60px; z-index: 50; }
+        .currency-btn {
+            background: #1c2026; border: 1px solid rgba(255,255,255,0.1); color: white;
+            padding: 8px 15px; border-radius: 6px; font-weight: 800; cursor: pointer; font-size: 12px;
         }
+        .currency-menu {
+            position: absolute; top: 40px; right: 0; background: var(--bg-panel); 
+            border-radius: 8px; display: none; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); width: 150px;
+        }
+        .currency-menu.active { display: grid; }
+        .curr-item { padding: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; cursor: pointer; font-size: 11px; text-align: center; font-weight: 700; }
+        .curr-item:hover { background: var(--purple-main); }
 
-        /* SIDEBAR CATEGORIAS */
-        .sidebar-title {
-            text-transform: uppercase;
-            font-weight: 900;
-            color: var(--purple-main);
-            margin-bottom: 15px;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+        /* --- TIENDA GRID --- */
+        .store-grid { max-width: 1300px; margin: 20px auto 100px; display: grid; grid-template-columns: 320px 1fr; gap: 30px; padding: 0 20px; }
+
+        .sidebar-title { text-transform: uppercase; font-weight: 900; color: var(--purple-main); margin-bottom: 15px; font-size: 13px; letter-spacing: 1px; }
 
         .cat-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 14px;
-            margin-bottom: 10px;
-            transition: 0.3s;
-            gap: 15px;
-            background: #1c2026;
+            display: flex; align-items: center; padding: 15px 20px; border-radius: 8px;
+            text-decoration: none; color: white; font-weight: 800; font-size: 14px;
+            margin-bottom: 10px; transition: 0.3s; gap: 15px; background: #1c2026;
+            border-bottom: 3px solid rgba(0,0,0,0.3);
         }
+        .cat-item img { width: 22px; height: 22px; }
+        .cat-item:hover { transform: translateX(8px); filter: brightness(1.1); }
 
-        .cat-item img { width: 24px; height: 24px; }
-        .cat-item:hover { transform: translateX(8px); }
-
-        /* Colores especificos */
+        /* Estilos de bordes por categoría */
         .c-ofertas { border-left: 5px solid var(--cat-verde); }
         .c-rangos { border-left: 5px solid var(--purple-main); background: #231a31; }
         .c-survival { border-left: 5px solid var(--cat-azul); }
         .c-regalos { border-left: 5px solid var(--cat-magenta); }
 
         /* Subcategorias Rangos */
-        .submenu {
-            display: none;
-            flex-direction: column;
-            margin-bottom: 15px;
-            border-radius: 0 0 8px 8px;
-            overflow: hidden;
-        }
+        .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 15px; border-radius: 0 0 8px 8px; overflow: hidden; }
         .submenu.active { display: flex; }
         .sub-link {
-            padding: 12px 50px;
-            background: #231a31; /* Mismo que el padre */
-            color: #d1d1d1;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 12px 55px; background: #231a31; color: #ccc;
+            text-decoration: none; font-weight: 700; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.03);
         }
         .sub-link:hover { color: white; background: var(--purple-main); }
 
-        /* DONADOR */
         .donor-box {
-            background: var(--bg-panel);
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
+            background: var(--bg-panel); padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px; border: 1px solid rgba(255,255,255,0.05);
         }
-        .donor-avatar { width: 50px; height: 50px; border-radius: 8px; background: #2a2e35; border: 2px solid var(--purple-main); }
+        .donor-avatar { width: 45px; height: 45px; border-radius: 6px; border: 2px solid var(--purple-main); }
 
-        /* --- MODAL NICK --- */
+        /* --- CONTENIDO --- */
+        .main-content { background: var(--bg-panel); padding: 50px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); min-height: 400px; }
+        .main-content h1 { font-size: 32px; font-weight: 900; margin-top: 0; text-transform: uppercase; }
+        .main-content h1 span { color: var(--purple-main); }
+
+        /* --- MODAL --- */
         #nickModal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000;
+            background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1000;
         }
         .modal-content {
-            background: var(--bg-panel); padding: 40px; border-radius: 15px; width: 400px; text-align: center;
-            border-top: 5px solid var(--purple-main);
+            background: var(--bg-panel); padding: 40px; border-radius: 15px; width: 380px; text-align: center;
+            border-top: 5px solid var(--purple-main); box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         .modal-content input {
-            width: 100%; padding: 12px; margin: 20px 0; border-radius: 5px; border: none; background: #0f1115; color: white;
+            width: 100%; padding: 15px; margin: 25px 0; border-radius: 6px; border: none; background: #0b0d10; color: white; font-weight: 600; box-sizing: border-box;
         }
-        .modal-btn {
-            background: var(--purple-main); color: white; padding: 12px 30px; border: none; border-radius: 5px; font-weight: 800; cursor: pointer;
-        }
-
-        /* --- DROPDOWN MONEDAS --- */
-        .currency-menu {
-            position: absolute; top: 65px; right: 240px; background: var(--bg-panel); 
-            border-radius: 8px; display: none; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
-        }
-        .currency-menu.active { display: grid; }
-        .curr-item { padding: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; cursor: pointer; font-size: 12px; text-align: center; font-weight: 700; }
-        .curr-item:hover { background: var(--purple-main); }
-        .curr-active { background: var(--purple-main); }
+        .modal-btn { background: var(--purple-main); color: white; padding: 14px 0; width: 100%; border: none; border-radius: 6px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .modal-btn:hover { background: var(--purple-hover); }
 
         @media (max-width: 900px) {
+            .header-top { flex-direction: column; gap: 20px; padding: 20px; }
+            .header-side { justify-content: center; }
             .hero-widgets { flex-direction: column; }
             .store-grid { grid-template-columns: 1fr; }
+            .currency-container { position: relative; top: 0; right: 0; text-align: center; margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="top-nav">
-        <div class="currency-btn" onclick="toggleCurrency()">
-            $ USD / PYG ▾
+    <header class="header-top">
+        <div class="header-side header-left">
+            <div class="hexagon-frame">
+                <img src="https://mc-heads.net/avatar/Steve/45" alt="Invitado">
+            </div>
+            <div class="header-info-text">
+                <span>Comprando como <strong>Invitado</strong></span>
+                <a href="javascript:void(0)" onclick="openNick()">[➜] Inicia sesión para comprar</a>
+            </div>
         </div>
-        
+
+        <div class="header-center">
+            <img src="logo.png" alt="Kubeon Network">
+        </div>
+
+        <div class="header-side header-right">
+            <div class="header-info-text">
+                <span>🛒 VER CESTA</span>
+                <small>Tu cesta de compra</small>
+            </div>
+            <div class="hexagon-frame" style="border-color: var(--purple-main);">
+                <img src="https://img.icons8.com/color/48/minecraft-skeleton.png" alt="Cesta">
+            </div>
+        </div>
+    </header>
+
+    <div class="currency-container">
+        <button class="currency-btn" onclick="toggleCurrency()">$ USD / PYG ▾</button>
         <div class="currency-menu" id="currencyMenu">
             <div class="curr-item">AUD</div> <div class="curr-item">BRL</div>
             <div class="curr-item">CAD</div> <div class="curr-item">EUR</div>
             <div class="curr-item">GBP</div> <div class="curr-item">PYG</div>
-            <div class="curr-item curr-active" style="grid-column: span 2;">USD</div>
+            <div class="curr-item" style="grid-column: span 2; background: var(--purple-main);">USD</div>
         </div>
+    </div>
 
-        <div class="cart-box">
-            <img src="https://mc-heads.net/avatar/Steve/32" alt="Cart" style="border-radius: 4px;">
-            <div class="cart-text">
-                <span class="cart-title">Comprando como Invitado</span>
-                <a href="javascript:void(0)" class="cart-reg" onclick="openNick()">Clickea para registrarte</a>
-            </div>
+    <div class="hero-widgets">
+        <div class="widget-box wb-ip" onclick="copyIP()">
+            <p class="wb-title">PLAY.KUBEON.XYZ</p>
+            <span class="wb-sub">CLICK PARA COPIAR IP</span>
         </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-logo">
-            <img src="logo.png" alt="Kubeon Network">
-        </div>
-        
-        <div class="hero-widgets">
-            <div class="widget-box wb-ip" onclick="copyIP()">
-                <p class="wb-title">PLAY.KUBEON.XYZ</p>
-                <span class="wb-sub">CLICK PARA COPIAR IP</span>
-            </div>
-            
-            <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
-                <p class="wb-title">¡ÚNETE A NUESTRO DISCORD!</p>
-                <span class="wb-sub">CLICK PARA ENTRAR AL SERVIDOR</span>
-            </a>
-        </div>
-    </header>
+        <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
+            <p class="wb-title">¡ÚNETE A NUESTRO DISCORD!</p>
+            <span class="wb-sub">CLICK PARA ENTRAR AL SERVIDOR</span>
+        </a>
+    </div>
 
     <div class="store-grid">
         <aside>
@@ -293,53 +230,46 @@
                 <img src="regalos.png" alt="icon"> REGALOS
             </a>
 
-            <div class="sidebar-title" style="margin-top: 30px;">Máximo Donador</div>
+            <div class="sidebar-title" style="margin-top: 35px;">Máximo Donador</div>
             <div class="donor-box">
                 <img src="https://mc-heads.net/avatar/Steve/50" class="donor-avatar" alt="Donor">
-                <div class="cart-text">
-                    <span style="font-weight: 800;">Ninguno</span>
-                    <span style="font-size: 11px; opacity: 0.7;">Has sido quien más donó este mes</span>
+                <div class="header-info-text">
+                    <span style="font-size: 13px;">Ninguno</span>
+                    <small style="opacity: 0.6; color: white;">Has sido quien más donó este mes</small>
                 </div>
             </div>
         </aside>
 
-        <main style="background: var(--bg-panel); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-            <h1 style="font-size: 30px; font-weight: 900; margin-top: 0;">Bienvenido a <span style="color:var(--purple-main)">Kubeon</span></h1>
-            <p style="color:var(--text-gray); line-height: 1.8;">
+        <main class="main-content">
+            <h1>Bienvenido a <span>Kubeon</span></h1>
+            <p style="color:var(--text-gray); line-height: 1.8; font-size: 15px;">
                 Esta es la tienda oficial de <strong>Kubeon Network</strong>. Aquí puedes adquirir rangos, beneficios y objetos exclusivos para mejorar tu experiencia en nuestros servidores. 
                 <br><br>
-                Todos los pagos son procesados de forma segura a través de <strong>Tebex</strong>. Si tienes dudas, nuestro soporte en Discord está disponible las 24 horas.
+                Todos los pagos son procesados de forma segura a través de <strong>Tebex</strong>. Si tienes dudas o problemas con tu compra, nuestro equipo de soporte en Discord está disponible para ayudarte.
             </p>
         </main>
     </div>
 
     <div id="nickModal">
         <div class="modal-content">
-            <h2 style="font-weight: 900; margin: 0;">INTRODUCE TU NICK</h2>
-            <p style="font-size: 13px; opacity: 0.7;">Escribe tu nombre exacto de Minecraft para continuar</p>
-            <input type="text" placeholder="Tu nombre de usuario...">
+            <h2 style="font-weight: 900; margin: 0; color: white;">INTRODUCE TU NICK</h2>
+            <p style="font-size: 12px; opacity: 0.7; color: white; margin-top: 5px;">Escribe tu nombre de usuario de Minecraft</p>
+            <input type="text" placeholder="Ejemplo: Notch">
             <button class="modal-btn" onclick="closeNick()">CONTINUAR →</button>
         </div>
     </div>
 
     <script>
-        function toggleRangos() {
-            document.getElementById('rangosMenu').classList.toggle('active');
-        }
-
-        function toggleCurrency() {
-            document.getElementById('currencyMenu').classList.toggle('active');
-        }
-
+        function toggleRangos() { document.getElementById('rangosMenu').classList.toggle('active'); }
+        function toggleCurrency() { document.getElementById('currencyMenu').classList.toggle('active'); }
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
         function closeNick() { document.getElementById('nickModal').style.display = 'none'; }
 
         function copyIP() {
             navigator.clipboard.writeText('play.kubeon.xyz');
-            alert('¡IP copiada al portapapeles: play.kubeon.xyz!');
+            alert('¡IP copiada: play.kubeon.xyz!');
         }
 
-        // Cerrar menus al hacer clic fuera
         window.onclick = function(event) {
             if (event.target == document.getElementById('nickModal')) closeNick();
         }
