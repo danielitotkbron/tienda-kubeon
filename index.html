@@ -39,33 +39,40 @@
             display: flex; align-items: center; justify-content: space-between;
             padding: 25px 80px; background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .header-btn {
             display: flex; align-items: center; gap: 15px; padding: 10px 20px;
             border-radius: 12px; border: 2px solid transparent; transition: 0.3s;
             cursor: pointer; text-decoration: none; color: white;
         }
         .header-btn:hover { border-color: var(--purple-main); background: rgba(138, 43, 226, 0.1); }
-
         .header-info-text { display: flex; flex-direction: column; }
         .header-info-text span { font-size: 15px; font-weight: 800; }
         .header-info-text small { color: var(--gold); font-weight: 700; font-size: 11px; margin-top: 4px; display: flex; align-items: center; gap: 5px; }
 
         .square-frame {
             width: 65px; height: 65px; background: #1c2026;
-            border-radius: 10px; display: flex; align-items: center; justify-content: center; 
-            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1);
         }
         .square-frame img { width: 45px; border-radius: 4px; }
-
         #cart-btn-header { display: none; }
 
-        /* --- SLIDER --- */
+        /* --- TOP SECTION (SLIDER 5 SEG) --- */
         .top-section { max-width: 1200px; margin: 30px auto; display: grid; grid-template-columns: 2.2fr 1fr; gap: 15px; padding: 0 20px; }
-        .featured-slider { position: relative; border-radius: 10px; overflow: hidden; height: 320px; border: 1px solid rgba(255,255,255,0.1); }
+        .featured-slider { position: relative; border-radius: 10px; overflow: hidden; height: 340px; border: 1px solid rgba(255,255,255,0.1); }
         
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 50px; box-sizing: border-box; background: linear-gradient(90deg, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2)), url('bosk.jpg'); background-size: cover; background-position: center; opacity: 0; transition: opacity 0.8s; }
+        .slide { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; justify-content: center; 
+            padding: 50px; box-sizing: border-box; 
+            background: linear-gradient(90deg, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.2)), url('bosk.jpg');
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 0.8s; 
+        }
         .slide.active { opacity: 1; z-index: 1; }
+
+        .slide-1 { box-shadow: inset 0 0 60px rgba(138, 43, 226, 0.4); }
+        .slide-2 { box-shadow: inset 0 0 60px rgba(46, 204, 113, 0.4); }
+        .slide-3 { box-shadow: inset 0 0 60px rgba(255, 204, 0, 0.3); }
 
         .offer-tag { background: #2ecc71; color: black; padding: 4px 10px; border-radius: 4px; font-weight: 900; font-size: 11px; text-transform: uppercase; width: fit-content; margin-bottom: 10px; }
         .offer-title { font-size: 28px; font-weight: 900; color: white; margin: 0; text-transform: uppercase; }
@@ -85,12 +92,11 @@
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 
-        /* --- TIENDA GRID --- */
-        .store-grid { max-width: 1200px; margin: 40px auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
+        /* --- SIDEBAR --- */
+        .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
         .sidebar-container { background: var(--bg-panel); border-radius: 10px; padding: 25px 15px; border: 1px solid rgba(255,255,255,0.03); }
-        
-        .cat-item { display: flex; align-items: center; padding: 20px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 15px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
-        .cat-item img { width: 32px; margin-right: 15px; }
+        .cat-item { display: flex; align-items: center; padding: 22px 25px; border-radius: 8px; text-decoration: none; color: white; font-weight: 800; font-size: 16px; margin-bottom: 12px; transition: 0.2s; border-width: 1.5px; border-style: solid; box-sizing: border-box; }
+        .cat-item img { width: 32px; margin-right: 18px; }
         .c-inicio { border-color: var(--c-inicio-b); background-color: var(--c-inicio-bg); }
         .c-ofertas { border-color: var(--c-oferta-b); background-color: var(--c-oferta-bg); }
         .c-rangos { border-color: var(--c-rango-b); background-color: var(--c-rango-bg); }
@@ -105,21 +111,19 @@
         .donors-section { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
         .donor-box { background: rgba(255,255,255,0.02); border-radius: 10px; padding: 15px; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 15px; }
         .donor-avatar { width: 45px; height: 45px; border-radius: 8px; border: 2px solid var(--purple-main); background: #1c2026; }
-        .donor-title { font-size: 10px; font-weight: 900; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-        .donor-name { font-size: 14px; font-weight: 800; color: white; display: block; }
+        .donor-title { font-size: 10px; font-weight: 900; color: var(--gold); text-transform: uppercase; }
+        .donor-name { font-size: 14px; font-weight: 800; color: white; }
 
-        /* --- CESTA LATERAL CORREGIDA --- */
+        /* --- CESTA LATERAL --- */
         .cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 2999; }
         .cart-drawer { position: fixed; top: 0; right: -420px; width: 420px; height: 100%; background: #0e1014; z-index: 3000; transition: 0.4s; box-shadow: -10px 0 30px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
         .cart-drawer.active { right: 0; }
         .cart-header { background: linear-gradient(135deg, var(--purple-main), var(--purple-dark)); padding: 40px 30px; color: white; position: relative; }
         .close-cart { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 22px; opacity: 0.7; }
-        
         .cart-value-bar { background: #1a1d24; padding: 15px 30px; border-bottom: 1px solid rgba(255,255,255,0.05); font-weight: 800; font-size: 13px; color: #a5a9b0; }
         .cart-body { padding: 40px 30px; text-align: center; flex: 1; overflow-y: auto; }
-        .cart-footer { padding: 25px; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        /* --- CONTENIDO --- */
+        /* --- CONTENIDO PRINCIPAL (CUADROS) --- */
         .main-content { background: var(--bg-panel); border-radius: 10px; padding: 60px; border: 1px solid rgba(255,255,255,0.03); line-height: 1.8; color: #a5a9b0; }
         .info-card { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 35px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.03); }
         .badge { display: inline-block; padding: 6px 15px; border-radius: 5px; font-weight: 900; font-size: 12px; text-transform: uppercase; margin-bottom: 20px; }
@@ -129,9 +133,9 @@
         .badge-gold { background: var(--gold); color: black; }
 
         .payment-icons { display: flex; gap: 25px; margin-top: 25px; flex-wrap: wrap; align-items: center; }
-        .payment-icons svg { height: 25px; transition: 0.3s; }
-        
-        .discord-btn-purple { display: inline-flex; align-items: center; gap: 12px; background: var(--purple-main); color: white; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: 900; margin-top: 10px; transition: 0.3s; box-shadow: 0 0 15px var(--purple-glow); text-transform: uppercase; }
+        .payment-icons svg { height: 25px; }
+
+        .discord-btn-purple { display: inline-flex; align-items: center; gap: 12px; background: var(--purple-main); color: white; padding: 15px 35px; border-radius: 8px; text-decoration: none; font-weight: 900; margin-top: 10px; transition: 0.3s; box-shadow: 0 0 15px var(--purple-glow); text-transform: uppercase; cursor:pointer; }
         .discord-btn-purple:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--purple-glow); filter: brightness(1.2); }
 
         /* --- MODAL --- */
@@ -142,7 +146,7 @@
         .modal-avatar-preview { width: 35px; height: 35px; border-radius: 4px; margin-right: 15px; }
         .modal-input { background: transparent; border: none; color: white; font-size: 16px; font-weight: 600; width: 100%; padding: 15px 0; font-family: inherit; }
         .modal-input:focus { outline: none; }
-        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; }
+        .modal-btn { background: var(--gold-gradient); color: #111; padding: 18px 0; width: 92%; border: none; border-radius: 8px; font-weight: 900; cursor: pointer; text-transform: uppercase; margin: 0 auto; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
 
         @media (max-width: 900px) { .header-top { padding: 20px; flex-direction: column; gap: 20px; } .top-section, .store-grid { grid-template-columns: 1fr; } }
     </style>
@@ -174,20 +178,20 @@
         <div class="cart-header">
             <div class="close-cart" onclick="toggleCart()">✕</div>
             <h2 style="margin:0; display:flex; align-items:center; gap:12px; font-size:18px;">🛒 CESTA VACÍA</h2>
-            <div style="display:flex; gap:10px; margin-top:25px;">
+            <div style="display:flex; gap:10px; margin-top:20px;">
                 <button style="background:#e74c3c; color:white; border:none; padding:10px; border-radius:6px; flex:1.5; font-weight:800; cursor:pointer; font-size:11px;" onclick="location.reload()">CERRAR SESIÓN</button>
                 <select style="background:#1c2026; color:white; border:none; padding:10px; border-radius:6px; flex:1; font-weight:800; font-size:11px; cursor:pointer;">
                     <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
                     <option value="PYG">PYG (₲)</option>
+                    <option value="GBP">GBP (£)</option>
                     <option value="ARS">ARS ($)</option>
                     <option value="UYU">UYU ($)</option>
-                    <option value="EUR">EUR (€)</option>
-                    <option value="GBP">GBP (£)</option>
                 </select>
             </div>
         </div>
         <div class="cart-value-bar">VALOR DE CESTA: 0,00 USD</div>
-        <div class="cart-body"><p style="color:#555; font-weight:700; margin-top:40px; font-size:14px;">No hay artículos en tu cesta todavía.</p></div>
+        <div class="cart-body"><p style="color:#555; font-weight:700; margin-top:40px;">No hay artículos en tu cesta todavía.</p></div>
     </div>
 
     <section class="top-section">
@@ -196,16 +200,16 @@
             <button class="slider-arrow arrow-next" onclick="nextSlide()">❯</button>
 
             <div class="slide slide-1 active">
-                <span class="offer-tag">Paquete Inicial</span>
+                <span class="offer-tag" style="background:var(--purple-main); color:white;">Especial</span>
                 <h2 class="offer-title">PAQUETE INICIAL</h2>
                 <p class="offer-price">3.99 USD <small style="color:white; opacity:0.6; font-size:12px;">(ILIMITADO)</small></p>
                 <div class="offer-buttons">
-                    <button class="btn-offer-green">Ver más detalles</button>
+                    <button class="btn-offer-green" style="background:var(--purple-main); color:white;">Ver más detalles</button>
                     <button class="btn-offer-dark">Artículos parecidos</button>
                 </div>
             </div>
 
-            <div class="slide slide-1">
+            <div class="slide slide-2">
                 <span class="offer-tag">67% Descuento</span>
                 <h2 class="offer-title">RANGO AERION</h2>
                 <p class="offer-price">9.99 USD <span>30.00 USD</span></p>
@@ -214,16 +218,26 @@
                     <button class="btn-offer-dark">Artículos parecidos</button>
                 </div>
             </div>
+
+            <div class="slide slide-3">
+                <span class="offer-tag" style="background:var(--gold)">50% Descuento</span>
+                <h2 class="offer-title" style="color:var(--gold)">KIT MINERO</h2>
+                <p class="offer-price" style="color:var(--gold)">7.49 USD <span>14.98 USD</span></p>
+                <div class="offer-buttons">
+                    <button class="btn-offer-green" style="background:var(--gold)">Ver más detalles</button>
+                    <button class="btn-offer-dark">Artículos parecidos</button>
+                </div>
+            </div>
         </div>
 
         <div style="display:flex; flex-direction:column; gap:15px;">
             <div class="widget-box wb-ip" onclick="copyIP(this)">
                 <svg width="30" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">PLAY.KUBEON.XYZ</p><small style="font-weight:800; opacity:0.8; font-size:10px;">CLICK PARA COPIAR IP</small></div>
+                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">PLAY.KUBEON.XYZ</p><small style="font-weight:800; opacity:0.8;">CLICK PARA COPIAR IP</small></div>
             </div>
             <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
                 <svg width="30" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">ÚNETE AL DISCORD</p><small style="font-weight:800; opacity:0.8; font-size:10px;">CLICK PARA IR</small></div>
+                <div style="display:flex; flex-direction:column;"><p style="font-weight:900; margin:0; font-size:16px;">ÚNETE AL DISCORD</p><small style="font-weight:800; opacity:0.8;">CLICK PARA IR</small></div>
             </a>
         </div>
     </section>
@@ -233,13 +247,15 @@
             <div class="sidebar-container">
                 <div style="text-align:center; font-weight:900; color:var(--gold); font-size:13px; margin-bottom:25px;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
                 <a href="#" class="cat-item c-inicio"><img src="tierra.png"> Inicio</a>
-                <a href="#" class="cat-item c-ofertas"><img src="ofertas.png"> Ofertas Exclusivas</a>
-                <a href="#" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="rangos.png"> Rangos <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <a href="ofertas/index.html" class="cat-item c-ofertas"><img src="ofertas.png"> Ofertas Exclusivas</a>
+                
+                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="rangos.png"> Rangos <span style="margin-left:auto; font-size:12px;">▼</span></a>
                 <div class="submenu active" id="rangosMenu">
                     <a href="permanentes/index.html" class="sub-link">Permanentes</a>
                     <a href="temporales/index.html" class="sub-link">Temporales</a>
                 </div>
-                <a href="#" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
+
+                <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
                 <div class="submenu active" id="survivalMenu">
                     <a href="comandos/index.html" class="sub-link">Comandos</a>
                     <a href="kits/index.html" class="sub-link">Kits Exclusivos</a>
@@ -248,10 +264,11 @@
                     <a href="spawners/index.html" class="sub-link">Spawners</a>
                     <a href="protecciones/index.html" class="sub-link">Protecciones</a>
                 </div>
-                <a href="#" class="cat-item c-regalos"><img src="regalos.png"> Regalos</a>
+
+                <a href="regalos/index.html" class="cat-item c-regalos"><img src="regalos.png"> Regalos</a>
 
                 <div class="donors-section">
-                    <div style="text-align:center; font-weight:900; font-size:11px; color:var(--gold); text-transform:uppercase; margin-bottom:15px;">Top Donadores</div>
+                    <div style="text-align:center; font-weight:900; font-size:11px; color:var(--gold); text-transform:uppercase; margin-bottom:10px;">Top Donadores</div>
                     <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Del Mes</span><span class="donor-name">Ninguno</span></div></div>
                     <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Semana</span><span class="donor-name">Ninguno</span></div></div>
                     <div class="donor-box"><img src="https://mc-heads.net/avatar/Steve/45" class="donor-avatar"><div class="donor-info"><span class="donor-title">Del Día</span><span class="donor-name">Ninguno</span></div></div>
@@ -261,23 +278,36 @@
 
         <main class="main-content">
             <h1 style="font-size: 28px; font-weight: 900; text-transform: uppercase; margin: 0; color:white;">Bienvenido a la tienda oficial de</h1>
-            <div style="color:var(--purple-main); font-weight:900; font-size:38px; letter-spacing:3px; text-transform:uppercase;">Kubeon Network</div>
+            <div style="color:var(--purple-main); font-weight:900; font-size:38px; letter-spacing:3px; text-transform:uppercase; margin-bottom: 20px;">Kubeon Network</div>
             
-            <p style="margin-top:30px; font-size:15px;">¡Te encuentras en la tienda oficial de <strong>Kubeon</strong>! Comprar aquí es <strong>100% seguro</strong> ya que todas las transacciones son protegidas por <strong>Tebex Limited</strong>.</p>
-            <p>Si tu cuenta es premium, recuerda usar el comando <strong>/premium</strong> antes de comprar.</p>
+            <p>¡Te encuentras en la tienda oficial de <strong>Kubeon Network</strong>! Aquí puedes acceder a los rangos, kits exclusivos y más artículos VIP.</p>
+
+            <div class="info-card">
+                <span class="badge badge-green">! Información Relevante</span>
+                <p style="font-size:14px; margin:0;">Es muy importante que antes de comprar algún artículo de nuestra tienda, lo hagas teniendo por seguro si tu cuenta es premium (comprada) o no. En caso de serlo, es importantísimo que actives el comando <strong>/premium</strong> dentro del servidor antes de comprar y jugar.</p>
+            </div>
 
             <div class="info-card">
                 <span class="badge badge-blue">🛒 Métodos de Pago</span>
-                <p style="font-size:14px; margin:0;">En caso de que tu compra no llegue en 5 minutos o tengas problemas, acude a abrir un ticket en nuestro Discord.</p>
+                <p style="font-size:14px; margin:0;">Comprar en Kubeon es <strong>100% seguro</strong> y gestionado por <strong>Tebex Limited</strong>. Tus datos están protegidos en todo momento.</p>
                 <div class="payment-icons">
-                    <svg viewBox="0 0 32 32" width="35"><path fill="#003087" d="M23.9 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z"/><path fill="#009cde" d="M21.5 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z" style="opacity:0.5"/></svg>
-                    <svg viewBox="0 0 32 32" width="35"><path fill="#1a1f71" d="M12 18h2l1-7h-2l-1 7zm9.6-6.8c-.3-.2-.8-.2-1.3-.2-1.2 0-2.1.6-2.1 1.6 0 .7.6 1.1 1.1 1.3.5.3.7.4.7.7 0 .4-.5.7-1 .7-.7 0-1-.1-1.6-.4l-.2 1.3c.4.2 1.1.4 1.8.4 1.3 0 2.2-.6 2.2-1.7 0-.6-.4-.9-1.2-1.3-.5-.3-.8-.4-.8-.7 0-.3.4-.6.9-.6.5 0 .9.1 1.3.3l.2-1.2z"/><path fill="#f7b600" d="M5 11l-.2 1.2s1.1.2 2 .5c1.2.4 1.4.8 1.4.8l1.6-4.5H5z"/></svg>
-                    <svg viewBox="0 0 32 32" width="35"><circle cx="12" cy="16" r="8" fill="#eb001b"/><circle cx="20" cy="16" r="8" fill="#ff5f00" fill-opacity="0.8"/></svg>
+                    <svg viewBox="0 0 32 32" width="40"><path fill="#003087" d="M23.9 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z"/><path fill="#009cde" d="M21.5 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z" style="opacity:0.5"/></svg>
+                    <svg viewBox="0 0 32 32" width="40"><path fill="#1a1f71" d="M12 18h2l1-7h-2l-1 7zm9.6-6.8c-.3-.2-.8-.2-1.3-.2-1.2 0-2.1.6-2.1 1.6 0 .7.6 1.1 1.1 1.3.5.3.7.4.7.7 0 .4-.5.7-1 .7-.7 0-1-.1-1.6-.4l-.2 1.3c.4.2 1.1.4 1.8.4 1.3 0 2.2-.6 2.2-1.7 0-.6-.4-.9-1.2-1.3-.5-.3-.8-.4-.8-.7 0-.3.4-.6.9-.6.5 0 .9.1 1.3.3l.2-1.2z"/></svg>
+                    <svg viewBox="0 0 32 32" width="40"><circle cx="12" cy="16" r="8" fill="#eb001b"/><circle cx="20" cy="16" r="8" fill="#ff5f00" fill-opacity="0.8"/></svg>
                 </div>
             </div>
 
-            <div style="text-align:center;">
-                <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="discord-btn-purple">Click Para Ir!</a>
+            <div class="info-card">
+                <span class="badge badge-red">🔒 Sobre Seguridad</span>
+                <p style="font-size:14px; margin:0;">Los pagos están totalmente cifrados. <strong>No guardamos tus datos bancarios</strong> en ningún momento, todo se delega a la plataforma segura de Tebex.</p>
+            </div>
+
+            <div class="info-card">
+                <span class="badge badge-gold">💡 Ayuda y Soporte</span>
+                <p style="font-size:14px; margin:0;">En el caso de que tu compra no se haya realizado en <strong>5 minutos o más</strong>, acude a abrir un ticket en nuestro Discord.</p>
+                <div style="text-align:center;">
+                    <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="discord-btn-purple">Click Para Ir!</a>
+                </div>
             </div>
         </main>
     </div>
@@ -305,19 +335,12 @@
             if (nick !== "") {
                 document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`;
                 document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`;
-                document.getElementById('user-action').innerText = "➜ Nick registrado";
                 document.getElementById('cart-btn-header').style.display = 'flex';
                 document.getElementById('nickModal').style.display = 'none';
             }
         }
 
-        function toggleCart() {
-            const dr = document.getElementById('cartDrawer');
-            const ov = document.getElementById('cartOverlay');
-            dr.classList.toggle('active');
-            ov.style.display = dr.classList.contains('active') ? 'block' : 'none';
-        }
-
+        // Lógica del Slider (5 SEG)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         function showSlide(i) {
@@ -327,7 +350,14 @@
         }
         function nextSlide() { showSlide(currentSlide + 1); }
         function prevSlide() { showSlide(currentSlide - 1); }
-        setInterval(nextSlide, 2000);
+        setInterval(nextSlide, 5000); // 5 SEGUNDOS
+
+        function toggleCart() {
+            const dr = document.getElementById('cartDrawer');
+            const ov = document.getElementById('cartOverlay');
+            dr.classList.toggle('active');
+            ov.style.display = dr.classList.contains('active') ? 'block' : 'none';
+        }
 
         function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
