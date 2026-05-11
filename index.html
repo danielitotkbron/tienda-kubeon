@@ -8,7 +8,7 @@
     <style>
         :root {
             --bg-body: #0b0d10;
-            --bg-panel: #0e1014; /* Gris oscurísimo como la imagen */
+            --bg-panel: #0e1014; /* Gris ultra oscuro */
             --bg-item: #16191e;
             --purple-main: #8a2be2; 
             --purple-glow: rgba(138, 43, 226, 0.6);
@@ -43,19 +43,19 @@
         }
 
         .header-btn {
-            display: flex; align-items: center; gap: 15px; padding: 10px 20px;
+            display: flex; align-items: center; gap: 15px; padding: 12px 25px;
             border-radius: 12px; border: 2px solid transparent; transition: 0.3s;
             cursor: pointer; text-decoration: none; color: white;
         }
         .header-btn:hover { border-color: var(--purple-main); background: rgba(138, 43, 226, 0.1); box-shadow: 0 0 20px var(--purple-glow); }
 
         .hexagon-frame {
-            width: 60px; height: 60px; background: #1c2026;
+            width: 65px; height: 65px; background: #1c2026;
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
             display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1);
         }
-        .hexagon-frame img { width: 40px; }
-        .header-center img { max-width: 180px; filter: drop-shadow(0 0 15px var(--purple-glow)); }
+        .hexagon-frame img { width: 42px; }
+        .header-center img { max-width: 200px; filter: drop-shadow(0 0 15px var(--purple-glow)); }
 
         /* --- SECCIÓN TOP --- */
         .top-section {
@@ -64,70 +64,90 @@
 
         .featured-offer {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('bosk.jpg');
-            background-size: cover; background-position: center; border-radius: 12px; padding: 40px;
-            display: flex; flex-direction: column; justify-content: flex-end; position: relative;
+            background-size: cover; background-position: center; border-radius: 12px; padding: 50px;
+            display: flex; flex-direction: column; justify-content: flex-end; position: relative; min-height: 250px;
         }
-        .offer-badge { position: absolute; top: 20px; right: 20px; background: #8ed321; color: black; padding: 5px 15px; border-radius: 5px; font-weight: 900; }
+        .offer-badge { position: absolute; top: 25px; right: 25px; background: #8ed321; color: black; padding: 6px 18px; border-radius: 5px; font-weight: 900; }
 
         .widget-box {
-            padding: 25px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; 
+            padding: 30px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; 
             justify-content: center; cursor: pointer; transition: 0.3s; text-align: center; text-decoration: none; color: white; margin-bottom: 20px;
         }
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .widget-box:hover { transform: translateY(-5px); filter: brightness(1.1); }
 
-        /* --- SIDEBAR PANEL (ESTILO DIOSESMC) --- */
-        .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 320px 1fr; gap: 30px; padding: 0 20px; }
+        /* --- SIDEBAR PANEL (BOTONES MÁS GRANDES Y LARGOS) --- */
+        .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
 
         .sidebar-container {
             background-color: var(--bg-panel);
-            border-radius: 8px;
-            padding: 20px 15px;
+            border-radius: 10px;
+            padding: 30px 20px;
             border: 1px solid rgba(255,255,255,0.03);
             height: fit-content;
         }
 
         .sidebar-title {
             text-align: center; font-weight: 900; color: var(--gold-text);
-            font-size: 13px; margin-bottom: 25px; text-transform: uppercase;
+            font-size: 14px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;
         }
 
         .cat-item {
-            display: flex; align-items: center; padding: 15px; border-radius: 8px;
-            text-decoration: none; color: white; font-weight: 700; font-size: 14px;
-            margin-bottom: 12px; background: var(--bg-item); transition: 0.2s;
+            display: flex; 
+            align-items: center; 
+            padding: 22px 25px; /* Padding aumentado para que sean más grandes */
+            border-radius: 10px;
+            text-decoration: none; 
+            color: white; 
+            font-weight: 800; 
+            font-size: 16px; /* Letra más grande */
+            margin-bottom: 15px; 
+            background: var(--bg-item); 
+            transition: 0.2s ease-in-out;
         }
-        .cat-item img { width: 32px; height: 32px; margin-right: 15px; }
 
-        /* Bordes y fondos por categoría */
-        .c-inicio { border: 1px solid var(--b-inicio); }
-        .c-ofertas { border: 1px solid var(--b-oferta); }
-        .c-cosmeticos { border: 1px solid var(--b-cosmetico); }
-        .c-rangos { border: 1px solid var(--b-rango); }
-        .c-survival { border: 1px solid var(--b-survival); }
-        .c-regalos { border: 1px solid var(--b-regalo); }
+        .cat-item img { 
+            width: 40px; /* Iconos más grandes */
+            height: 40px; 
+            margin-right: 20px; 
+        }
 
-        .cat-item:hover { transform: scale(1.02); filter: brightness(1.2); }
-        .arrow { margin-left: auto; opacity: 0.5; font-size: 12px; }
+        /* Bordes de color */
+        .c-inicio { border: 1.5px solid var(--b-inicio); }
+        .c-ofertas { border: 1.5px solid var(--b-oferta); }
+        .c-cosmeticos { border: 1.5px solid var(--b-cosmetico); }
+        .c-rangos { border: 1.5px solid var(--b-rango); }
+        .c-survival { border: 1.5px solid var(--b-survival); }
+        .c-regalos { border: 1.5px solid var(--b-regalo); }
+
+        .cat-item:hover { 
+            transform: scale(1.03); 
+            filter: brightness(1.2); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .arrow { margin-left: auto; opacity: 0.6; font-size: 14px; }
 
         /* SUBMENÚS */
-        .submenu { display: none; flex-direction: column; margin-top: -10px; margin-bottom: 12px; overflow: hidden; border-radius: 0 0 8px 8px; }
+        .submenu { display: none; flex-direction: column; margin-top: -12px; margin-bottom: 15px; overflow: hidden; border-radius: 0 0 10px 10px; }
         .submenu.active { display: flex; }
         .sub-link {
-            padding: 12px 60px; text-decoration: none; color: #bbb; font-weight: 600; font-size: 13px;
+            padding: 15px 85px; /* Ajustado al nuevo tamaño */
+            text-decoration: none; color: #ccc; font-weight: 700; font-size: 14px;
             background: rgba(138, 43, 226, 0.15); border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: 0.2s;
         }
-        .sub-link:hover { background: var(--purple-main); color: white; }
+        .sub-link:hover { background: var(--purple-main); color: white; padding-left: 95px; }
 
         /* CONTENIDO */
-        .main-content { background: var(--bg-panel); border-radius: 8px; padding: 40px; border: 1px solid rgba(255,255,255,0.03); }
+        .main-content { background: var(--bg-panel); border-radius: 10px; padding: 50px; border: 1px solid rgba(255,255,255,0.03); }
 
         /* MODAL */
         #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 1000; }
-        .modal-content { background: #1c2026; padding: 40px; border-radius: 12px; width: 350px; text-align: center; border-top: 5px solid var(--purple-main); }
-        .modal-content input { width: 100%; padding: 15px; margin: 20px 0; border-radius: 5px; border: none; background: #0b0d10; color: white; box-sizing: border-box; }
-        .modal-btn { background: var(--purple-main); color: white; padding: 12px 0; width: 100%; border: none; border-radius: 6px; font-weight: 800; cursor: pointer; }
+        .modal-content { background: #1c2026; padding: 45px; border-radius: 15px; width: 400px; text-align: center; border-top: 6px solid var(--purple-main); }
+        .modal-content input { width: 100%; padding: 18px; margin: 25px 0; border-radius: 6px; border: none; background: #0b0d10; color: white; box-sizing: border-box; font-size: 16px; }
+        .modal-btn { background: var(--purple-main); color: white; padding: 15px 0; width: 100%; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 16px; }
 
         @media (max-width: 900px) {
             .header-top { flex-direction: column; padding: 20px; }
@@ -139,17 +159,17 @@
 
     <header class="header-top">
         <a href="javascript:void(0)" class="header-btn" onclick="openNick()">
-            <div class="hexagon-frame"><img src="https://mc-heads.net/avatar/Steve/40" alt="Avatar"></div>
+            <div class="hexagon-frame"><img src="https://mc-heads.net/avatar/Steve/45" alt="Avatar"></div>
             <div class="header-info-text">
-                <span>Comprando como <strong>Invitado</strong></span>
-                <small style="color: var(--purple-main); font-weight: 700;">➜ Clickea para iniciar sesión</small>
+                <span style="font-weight: 900; font-size: 15px;">Comprando como <strong>Invitado</strong></span>
+                <small style="color: var(--purple-main); font-weight: 800; font-size: 12px;">➜ Clickea para iniciar sesión</small>
             </div>
         </a>
         <div class="header-center"><img src="logo.png" alt="Kubeon"></div>
         <a href="#" class="header-btn">
             <div class="header-info-text" style="text-align: right; margin-right: 15px;">
-                <span>🛒 VER CESTA</span>
-                <small style="color: var(--purple-main); font-weight: 700;">Tu cesta de compra</small>
+                <span style="font-weight: 900; font-size: 15px;">🛒 VER CESTA</span>
+                <small style="color: var(--purple-main); font-weight: 800; font-size: 12px;">Tu cesta de compra</small>
             </div>
             <div class="hexagon-frame" style="border-color: var(--purple-main);"><img src="https://img.icons8.com/color/48/minecraft-skeleton.png" alt="Cart"></div>
         </a>
@@ -158,21 +178,21 @@
     <section class="top-section">
         <div class="featured-offer">
             <span class="offer-badge">EN OFERTA</span>
-            <h2 style="font-size: 32px; font-weight: 900; color: #8ed321; margin: 0;">PACK DE KITS EXCLUSIVOS</h2>
-            <p style="font-size: 20px; font-weight: 700; margin: 10px 0;">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 14px;">105.00 USD</span></p>
-            <div style="display: flex; gap: 10px;">
-                <button style="background: #8ed321; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver más detalles</button>
-                <button style="background: #333; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 800; cursor: pointer;">Ver artículos parecidos</button>
+            <h2 style="font-size: 36px; font-weight: 900; color: #8ed321; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">PACK DE KITS EXCLUSIVOS</h2>
+            <p style="font-size: 22px; font-weight: 800; margin: 15px 0;">84.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 16px;">105.00 USD</span></p>
+            <div style="display: flex; gap: 15px;">
+                <button style="background: #8ed321; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 900; cursor: pointer; font-size: 14px;">Ver más detalles</button>
+                <button style="background: #333; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 900; cursor: pointer; font-size: 14px;">Ver artículos parecidos</button>
             </div>
         </div>
         <div class="widgets-column">
             <div class="widget-box wb-ip" onclick="copyIP(this)">
-                <p class="wb-title" style="font-weight: 900; font-size: 18px; margin: 0;">PLAY.KUBEON.XYZ</p>
-                <span class="wb-sub" style="font-size: 12px; font-weight: 700;">CLICK PARA COPIAR IP</span>
+                <p class="wb-title" style="font-weight: 900; font-size: 20px; margin: 0;">PLAY.KUBEON.XYZ</p>
+                <span class="wb-sub" style="font-size: 13px; font-weight: 800;">CLICK PARA COPIAR IP</span>
             </div>
             <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
-                <p class="wb-title" style="font-weight: 900; font-size: 18px; margin: 0;">¡ÚNETE A NUESTRO DISCORD!</p>
-                <span class="wb-sub" style="font-size: 12px; font-weight: 700;">130,976 USUARIOS CONECTADOS</span>
+                <p class="wb-title" style="font-weight: 900; font-size: 20px; margin: 0;">¡ÚNETE A NUESTRO DISCORD!</p>
+                <span class="wb-sub" style="font-size: 13px; font-weight: 800;">130,976 USUARIOS CONECTADOS</span>
             </a>
         </div>
     </section>
@@ -207,10 +227,13 @@
         </aside>
 
         <main class="main-content">
-            <h2 style="margin-top: 0;">BIENVENIDO A LA TIENDA DE <span style="color: var(--gold-text);">KUBEON NETWORK</span></h2>
-            <p style="color: var(--text-gray); font-size: 15px; line-height: 1.8;">
-                Te encuentras en la tienda oficial y aquí puedes adquirir los mejores productos para tu aventura.
+            <h1 style="margin-top: 0; font-size: 32px; font-weight: 900; text-transform: uppercase;">BIENVENIDO A <span style="color: var(--gold-text);">KUBEON NETWORK</span></h1>
+            <p style="color: var(--text-gray); font-size: 16px; line-height: 1.8;">
+                Estás en la tienda oficial de nuestra comunidad. Aquí podrás obtener beneficios únicos para tu estadía en el servidor.
             </p>
+            <div style="margin: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+                <span style="background: #8ed321; color: black; padding: 10px 25px; border-radius: 5px; font-weight: 900; font-size: 14px;">! INFORMACIÓN RELEVANTE</span>
+            </div>
         </main>
     </div>
 
