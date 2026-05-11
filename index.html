@@ -179,7 +179,7 @@
             <div class="close-cart" onclick="toggleCart()">✕</div>
             <h2 style="margin:0; display:flex; align-items:center; gap:12px; font-size:18px;">🛒 CESTA VACÍA</h2>
             <div style="display:flex; gap:10px; margin-top:20px;">
-                <button style="background:#e74c3c; color:white; border:none; padding:10px; border-radius:6px; flex:1.5; font-weight:800; cursor:pointer; font-size:11px;" onclick="location.reload()">CERRAR SESIÓN</button>
+                <button style="background:#e74c3c; color:white; border:none; padding:10px; border-radius:6px; flex:1.5; font-weight:800; cursor:pointer; font-size:11px;" onclick="logout()">CERRAR SESIÓN</button>
                 <select style="background:#1c2026; color:white; border:none; padding:10px; border-radius:6px; flex:1; font-weight:800; font-size:11px; cursor:pointer;">
                     <option value="USD">USD ($)</option>
                     <option value="EUR">EUR (€)</option>
@@ -245,15 +245,12 @@
     <div class="store-grid">
         <aside>
             <div class="sidebar-container">
-                <div style="text-align:center; font-weight:900; color:var(--gold); font-size:13px; margin-bottom:25px;">─ 🧭 ¡EMPIEZA A COMPRAR! ─</div>
+                <div style="text-align:center; font-weight:900; color:var(--gold); font-size:11px; margin-bottom:25px; text-transform:uppercase;">🧭 ¡Empieza a comprar!</div>
                 <a href="#" class="cat-item c-inicio"><img src="tierra.png"> Inicio</a>
                 <a href="ofertas-exclusivas/index.html" class="cat-item c-ofertas"><img src="ofertas.png"> Ofertas Exclusivas</a>
                 
-                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="rangos.png"> Rangos <span style="margin-left:auto; font-size:12px;">▼</span></a>
-                <div class="submenu active" id="rangosMenu">
-                    <a href="permanentes/index.html" class="sub-link">Permanentes</a>
-                    <a href="temporales/index.html" class="sub-link">Temporales</a>
-                </div>
+                <a href="javascript:void(0)" class="cat-item c-rangos" onclick="toggleMenu('rangosMenu')"><img src="rangos.png"> Rangos Exclusivos <span style="margin-left:auto; font-size:12px;">▼</span></a>
+                <div class="submenu" id="rangosMenu"><a href="permanentes/index.html" class="sub-link">Permanentes</a><a href="temporales/index.html" class="sub-link">Temporales</a></div>
 
                 <a href="javascript:void(0)" class="cat-item c-survival" onclick="toggleMenu('survivalMenu')"><img src="survival.png"> Survival Custom <span style="margin-left:auto; font-size:12px;">▼</span></a>
                 <div class="submenu active" id="survivalMenu">
@@ -289,7 +286,7 @@
 
             <div class="info-card">
                 <span class="badge badge-blue">🛒 Métodos de Pago</span>
-                <p style="font-size:14px; margin:0;">Comprar en Kubeon es <strong>100% seguro</strong> y gestionado por <strong>Tebex Limited</strong>. Tus datos están protegidos en todo momento.</p>
+                <p style="font-size:14px; margin:0;">Comprar en Kubeon es <strong>100% seguro</strong> ya que todas las transacciones son protegidas por <strong>Tebex Limited</strong>. Tus datos están protegidos en todo momento.</p>
                 <div class="payment-icons">
                     <svg viewBox="0 0 32 32" width="40"><path fill="#003087" d="M23.9 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z"/><path fill="#009cde" d="M21.5 8.2c0 4.1-3.6 7.3-8.1 7.3h-2.1l-1.1 5.6h-4.4l2.4-12.4c.1-.4.4-.7.8-.7h8.1c2.4 0 4.4 1.8 4.4 4.1h0z" style="opacity:0.5"/></svg>
                     <svg viewBox="0 0 32 32" width="40"><path fill="#1a1f71" d="M12 18h2l1-7h-2l-1 7zm9.6-6.8c-.3-.2-.8-.2-1.3-.2-1.2 0-2.1.6-2.1 1.6 0 .7.6 1.1 1.1 1.3.5.3.7.4.7.7 0 .4-.5.7-1 .7-.7 0-1-.1-1.6-.4l-.2 1.3c.4.2 1.1.4 1.8.4 1.3 0 2.2-.6 2.2-1.7 0-.6-.4-.9-1.2-1.3-.5-.3-.8-.4-.8-.7 0-.3.4-.6.9-.6.5 0 .9.1 1.3.3l.2-1.2z"/></svg>
@@ -297,17 +294,8 @@
                 </div>
             </div>
 
-            <div class="info-card">
-                <span class="badge badge-red">🔒 Sobre Seguridad</span>
-                <p style="font-size:14px; margin:0;">Los pagos están totalmente cifrados. <strong>No guardamos tus datos bancarios</strong> en ningún momento, todo se delega a la plataforma segura de Tebex.</p>
-            </div>
-
-            <div class="info-card">
-                <span class="badge badge-gold">💡 Ayuda y Soporte</span>
-                <p style="font-size:14px; margin:0;">En el caso de que tu compra no se haya realizado en <strong>5 minutos o más</strong>, acude a abrir un ticket en nuestro Discord.</p>
-                <div style="text-align:center;">
-                    <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="discord-btn-purple">Click Para Ir!</a>
-                </div>
+            <div style="text-align:center;">
+                <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="discord-btn-purple">Click Para Ir!</a>
             </div>
         </main>
     </div>
@@ -325,32 +313,53 @@
     </div>
 
     <script>
-        function updateModalSkin() {
-            const nick = document.getElementById('nick-input').value.trim();
-            document.getElementById('modal-skin-preview').src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`;
+        // LOGICA LOCALSTORAGE
+        window.onload = function() {
+            const savedNick = localStorage.getItem('mc_nick');
+            if (savedNick) {
+                applyLogin(savedNick);
+            }
+            startSlider();
+        };
+
+        function applyLogin(nick) {
+            document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`;
+            document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`;
+            document.getElementById('user-action').innerText = "➜ Nick registrado";
+            document.getElementById('cart-btn-header').style.display = 'flex';
         }
 
         function saveNick() {
             const nick = document.getElementById('nick-input').value.trim();
             if (nick !== "") {
-                document.getElementById('user-greeting').innerHTML = `Comprando como <strong>${nick}</strong>`;
-                document.getElementById('user-avatar').src = `https://mc-heads.net/avatar/${nick}/45`;
-                document.getElementById('cart-btn-header').style.display = 'flex';
+                localStorage.setItem('mc_nick', nick);
+                applyLogin(nick);
                 document.getElementById('nickModal').style.display = 'none';
             }
         }
 
-        // Lógica del Slider (5 SEG)
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        function showSlide(i) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (i + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
+        function logout() {
+            localStorage.removeItem('mc_nick');
+            location.reload();
         }
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
-        setInterval(nextSlide, 5000); // 5 SEGUNDOS
+
+        // OTROS SCRIPTS
+        function updateModalSkin() {
+            const nick = document.getElementById('nick-input').value.trim();
+            document.getElementById('modal-skin-preview').src = nick.length > 0 ? `https://mc-heads.net/avatar/${nick}/35` : `https://mc-heads.net/avatar/Steve/35`;
+        }
+
+        function startSlider() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            setInterval(() => {
+                if(slides.length > 1) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+            }, 5000);
+        }
 
         function toggleCart() {
             const dr = document.getElementById('cartDrawer');
