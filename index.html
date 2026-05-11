@@ -25,6 +25,7 @@
 
         body {
             margin: 0;
+            padding: 0;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg-body);
             background-image: radial-gradient(circle at 50% -20%, #1a222d 0%, var(--bg-body) 80%);
@@ -37,65 +38,75 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 80px;
+            padding: 20px 5%;
             background: rgba(0,0,0,0.4);
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            box-sizing: border-box;
         }
 
         .header-btn {
-            display: flex; align-items: center; gap: 15px; padding: 10px 20px;
+            display: flex; align-items: center; gap: 15px; padding: 10px 15px;
             border-radius: 12px; border: 2px solid transparent; transition: 0.3s;
             cursor: pointer; text-decoration: none; color: white;
         }
-        .header-btn:hover { border-color: var(--purple-main); background: rgba(138, 43, 226, 0.1); box-shadow: 0 0 20px var(--purple-glow); }
+        .header-btn:hover { 
+            border-color: var(--purple-main); 
+            background: rgba(138, 43, 226, 0.1); 
+            box-shadow: 0 0 20px var(--purple-glow); 
+        }
 
         .hexagon-frame {
             width: 60px; height: 60px; background: #1c2026;
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
             display: flex; align-items: center; justify-content: center; border: 2px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
         }
-        .hexagon-frame img { width: 40px; }
+        .hexagon-frame img { width: 40px; height: 40px; }
         .header-center img { max-width: 170px; filter: drop-shadow(0 0 15px var(--purple-glow)); }
 
-        /* --- SECCIÓN TOP (SLIDER + WIDGETS HORIZONTALES) --- */
+        /* --- SECCIÓN TOP (SLIDER + WIDGETS) --- */
         .top-section {
             max-width: 1200px;
             margin: 30px auto;
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 2.2fr 1fr;
             gap: 15px;
             padding: 0 20px;
-            align-items: stretch;
+            box-sizing: border-box;
         }
 
-        /* Slider de Ofertas */
+        /* Slider con transiciones suaves */
         .featured-slider {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            min-height: 300px;
+            height: 320px;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
         .slide {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding: 40px;
             box-sizing: border-box;
             background-size: cover;
             background-position: center;
-            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            pointer-events: none;
         }
 
-        .slide.active { display: flex; opacity: 1; }
+        .slide.active { 
+            opacity: 1; 
+            pointer-events: auto;
+        }
 
-        /* Colores de las ofertas */
-        .slide-1 { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), #5a2ca0; border-left: 8px solid var(--purple-main); }
-        .slide-2 { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), #c5a01d; border-left: 8px solid #ffcc00; }
-        .slide-3 { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), #1d6fc5; border-left: 8px solid #00b4ff; }
+        .slide-1 { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('bosk.jpg'), #5a2ca0; border-left: 8px solid var(--purple-main); }
+        .slide-2 { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), #c5a01d; border-left: 8px solid #ffcc00; }
+        .slide-3 { background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), #1d6fc5; border-left: 8px solid #00b4ff; }
 
         .offer-badge {
             position: absolute; top: 20px; right: 20px;
@@ -104,29 +115,29 @@
             text-transform: uppercase;
         }
 
-        .offer-title { font-size: 30px; font-weight: 900; margin: 0; text-transform: uppercase; }
+        .offer-title { font-size: 30px; font-weight: 900; margin: 0; text-transform: uppercase; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
         .offer-price { font-size: 20px; font-weight: 700; margin: 10px 0; }
 
-        /* Widgets con simbolos al lado */
+        /* Widgets Horizontales */
         .widgets-column { display: flex; flex-direction: column; gap: 15px; }
 
         .widget-box {
             flex: 1; padding: 20px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            gap: 15px; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: flex-start;
+            padding-left: 30px; gap: 20px; cursor: pointer; transition: 0.3s;
             text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.05);
+            box-sizing: border-box;
         }
 
         .wb-ip { background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%); }
         .wb-discord { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        
-        .widget-box:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .widget-box:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
 
-        .wb-text-wrap { display: flex; flex-direction: column; align-items: flex-start; }
-        .wb-title { font-weight: 900; font-size: 17px; margin: 0; text-transform: uppercase; }
-        .wb-sub { font-size: 12px; font-weight: 700; opacity: 0.9; }
+        .wb-text-wrap { display: flex; flex-direction: column; }
+        .wb-title { font-weight: 900; font-size: 18px; margin: 0; text-transform: uppercase; }
+        .wb-sub { font-size: 12px; font-weight: 700; opacity: 0.9; margin-top: 2px; }
 
-        /* --- SIDEBAR PANEL --- */
+        /* --- TIENDA GRID --- */
         .store-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 350px 1fr; gap: 30px; padding: 0 20px; }
 
         .sidebar-container {
@@ -147,10 +158,12 @@
             border-radius: 10px; text-decoration: none; color: white;
             font-weight: 800; font-size: 16px; margin-bottom: 15px;
             background: var(--bg-item); transition: 0.2s ease-in-out;
+            box-sizing: border-box;
         }
 
         .cat-item img { width: 38px; height: 38px; margin-right: 18px; }
 
+        /* Bordes categorías */
         .c-inicio { border: 1.5px solid var(--b-inicio); }
         .c-ofertas { border: 1.5px solid var(--b-oferta); }
         .c-cosmeticos { border: 1.5px solid var(--b-cosmetico); }
@@ -161,48 +174,51 @@
         .cat-item:hover { transform: scale(1.03); filter: brightness(1.2); }
         .arrow { margin-left: auto; opacity: 0.6; font-size: 14px; }
 
-        /* SUBMENÚS */
+        /* Submenús */
         .submenu { display: none; flex-direction: column; margin-top: -12px; margin-bottom: 15px; border-radius: 0 0 10px 10px; overflow: hidden; }
         .submenu.active { display: flex; }
         .sub-link {
             padding: 15px 85px; text-decoration: none; color: #ccc; font-weight: 700; font-size: 14px;
             background: rgba(138, 43, 226, 0.15); border-bottom: 1px solid rgba(255,255,255,0.03);
+            transition: 0.2s;
         }
         .sub-link:hover { background: var(--purple-main); color: white; padding-left: 95px; }
 
-        /* CONTENIDO */
+        /* Contenido */
         .main-content { background: var(--bg-panel); border-radius: 10px; padding: 50px; border: 1px solid rgba(255,255,255,0.03); }
 
-        /* MODAL */
-        #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 1000; }
-        .modal-content { background: #1c2026; padding: 45px; border-radius: 15px; width: 400px; text-align: center; border-top: 6px solid var(--purple-main); }
-        .modal-content input { width: 100%; padding: 18px; margin: 25px 0; border-radius: 5px; border: none; background: #0b0d10; color: white; box-sizing: border-box; font-size: 16px; }
+        /* Modal Nick */
+        #nickModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 2000; }
+        .modal-content { background: #1c2026; padding: 45px; border-radius: 15px; width: 400px; text-align: center; border-top: 6px solid var(--purple-main); box-sizing: border-box; }
+        .modal-content input { width: 100%; padding: 18px; margin: 25px 0; border-radius: 6px; border: none; background: #0b0d10; color: white; box-sizing: border-box; font-size: 16px; text-align: center; }
         .modal-btn { background: var(--purple-main); color: white; padding: 15px 0; width: 100%; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 16px; }
 
         @media (max-width: 900px) {
-            .header-top { padding: 20px; flex-direction: column; gap: 20px; }
+            .header-top { flex-direction: column; gap: 20px; }
             .top-section, .store-grid { grid-template-columns: 1fr; }
+            .cat-item { padding: 15px 20px; font-size: 14px; }
+            .sub-link { padding: 12px 40px; }
         }
     </style>
 </head>
 <body>
 
     <header class="header-top">
-        <a href="javascript:void(0)" class="header-btn" onclick="openNick()">
+        <div class="header-btn" onclick="openNick()">
             <div class="hexagon-frame"><img src="https://mc-heads.net/avatar/Steve/45" alt="Avatar"></div>
             <div class="header-info-text">
                 <span style="font-weight: 900; font-size: 15px;">Comprando como <strong>Invitado</strong></span>
                 <small style="color: var(--purple-main); font-weight: 800; font-size: 12px;">➜ Clickea para iniciar sesión</small>
             </div>
-        </a>
+        </div>
         <div class="header-center"><img src="logo.png" alt="Kubeon"></div>
-        <a href="#" class="header-btn">
+        <div class="header-btn">
             <div class="header-info-text" style="text-align: right; margin-right: 15px;">
                 <span style="font-weight: 900; font-size: 15px;">🛒 VER CESTA</span>
                 <small style="color: var(--purple-main); font-weight: 800; font-size: 12px;">Tu cesta de compra</small>
             </div>
             <div class="hexagon-frame" style="border-color: var(--purple-main);"><img src="https://img.icons8.com/color/48/minecraft-skeleton.png" alt="Cart"></div>
-        </a>
+        </div>
     </header>
 
     <section class="top-section">
@@ -211,37 +227,35 @@
                 <span class="offer-badge">EN OFERTA</span>
                 <h2 class="offer-title">RANGO SUPREMO</h2>
                 <p class="offer-price">25.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 15px;">40.00 USD</span></p>
-                <div style="display: flex; gap: 10px;">
-                    <button style="background: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer;">Ver detalles</button>
-                </div>
+                <button style="background: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer; width: fit-content;">Ver detalles</button>
             </div>
             <div class="slide slide-2">
                 <span class="offer-badge">¡NUEVO!</span>
                 <h2 class="offer-title" style="color: #ffcc00;">PACK DE MONEDAS</h2>
                 <p class="offer-price">10.00 USD</p>
-                <button style="background: #ffcc00; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer;">Comprar ahora</button>
+                <button style="background: #ffcc00; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer; width: fit-content;">Comprar ahora</button>
             </div>
             <div class="slide slide-3">
                 <span class="offer-badge">PROMOCIÓN</span>
                 <h2 class="offer-title" style="color: #00b4ff;">LLAVES MYSTERY</h2>
                 <p class="offer-price">5.00 USD <span style="text-decoration: line-through; opacity: 0.5; font-size: 15px;">8.00 USD</span></p>
-                <button style="background: #00b4ff; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer;">Ver llaves</button>
+                <button style="background: #00b4ff; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: 900; cursor: pointer; width: fit-content;">Ver llaves</button>
             </div>
         </div>
 
         <div class="widgets-column">
             <div class="widget-box wb-ip" onclick="copyIP(this)">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="black"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                 <div class="wb-text-wrap">
                     <p class="wb-title">PLAY.KUBEON.XYZ</p>
-                    <span class="wb-sub">CLICK PARA COPIAR</span>
+                    <span class="wb-sub">CLICK PARA COPIAR IP</span>
                 </div>
             </div>
             <a href="https://discord.gg/yBwJqHF2xk" target="_blank" class="widget-box wb-discord">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
                 <div class="wb-text-wrap">
                     <p class="wb-title">ÚNETE AL DISCORD</p>
-                    <span class="wb-sub">130,976 CONECTADOS</span>
+                    <span class="wb-sub">¡ENTRA A LA COMUNIDAD!</span>
                 </div>
             </a>
         </div>
@@ -280,10 +294,16 @@
         </main>
     </div>
 
-    <div id="nickModal"><div class="modal-content"><h2>INTRODUCE TU NICK</h2><input type="text" placeholder="Nick de Minecraft..."><button class="modal-btn" onclick="closeNick()">CONTINUAR ➜</button></div></div>
+    <div id="nickModal">
+        <div class="modal-content">
+            <h2 style="font-weight: 900; margin: 0; color: white;">INTRODUCE TU NICK</h2>
+            <input type="text" placeholder="Nick de Minecraft...">
+            <button class="modal-btn" onclick="closeNick()">CONTINUAR ➜</button>
+        </div>
+    </div>
 
     <script>
-        // Lógica del Slider Automático
+        // Slider con transiciones limpias
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         
@@ -293,7 +313,7 @@
             slides[currentSlide].classList.add('active');
         }
 
-        setInterval(nextSlide, 2000); // Cambia cada 2 segundos
+        setInterval(nextSlide, 2000);
 
         function toggleMenu(id) { document.getElementById(id).classList.toggle('active'); }
         function openNick() { document.getElementById('nickModal').style.display = 'flex'; }
@@ -302,9 +322,22 @@
         function copyIP(element) {
             const title = element.querySelector('.wb-title');
             const original = title.innerText;
-            navigator.clipboard.writeText('play.kubeon.xyz');
+            
+            // Intentar copiar al portapapeles
+            const tempInput = document.createElement("input");
+            tempInput.value = "play.kubeon.xyz";
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
             title.innerText = "IP COPIADA!";
             setTimeout(() => { title.innerText = original; }, 2000);
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('nickModal')) closeNick();
         }
     </script>
 </body>
